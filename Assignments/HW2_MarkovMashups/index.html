@@ -1,0 +1,683 @@
+<!DOCTYPE HTML>
+<!--
+	Editorial by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+<!-- Header !-->
+	<head>
+		<title>Ursinus CS 174: Object Oriented Programming, Fall 2020</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<!--[if lte IE 8]><script src="../../assets/js/ie/html5shiv.js"></script><![endif]-->
+		<link rel="stylesheet" href="../../assets/css/main.css" />
+		<!--[if lte IE 9]><link rel="stylesheet" href="../../assets/css/ie9.css" /><![endif]-->
+		<!--[if lte IE 8]><link rel="stylesheet" href="../../assets/css/ie8.css" /><![endif]-->
+        <style>
+        .image_off, #home:hover .image_on{
+           display:none
+        }
+        .image_on, #home:hover .image_off{
+           display:block
+        }
+        </style>
+	</head>
+	<body>
+
+		<!-- Wrapper -->
+			<div id="wrapper">
+
+				<!-- Main -->
+					<div id="main">
+						<div class="inner">
+
+							<!-- Header -->
+								<header id="header">
+									<a href="../../index.html" class="logo"><strong>Ursinus CS 174: Object Oriented Programming, Fall 2020</strong></a>
+								</header>
+<!-- End Header !-->
+
+							<!-- Content -->
+								<section>
+									<header class="main">
+										<h2>Assignment 2: Markov Mashups (50 Pts)</h2>
+										<h3><a href = "../../index.html#buddy">Buddy assignment</a></h3>
+                                        <h3><a href = "http://www.ctralie.com">Chris Tralie</a></h3>
+										<h3>Due Monday 10/5/2020</h3>
+										
+										<ul>
+											<li><a href = "#overview">Overview/Logistics</a>
+												<ul>
+													<li><a href = "#objectives">Learning Objectives</a></li>
+													<li><a href = "#readme">What To Submit</a></li>
+													<li><a href = "#timeline">Suggested Timeline</a></li>
+												</ul>
+											</li>
+											<li>Background
+												<ul>
+													<li><a href = "#markov">Markov Chains for Text Representation</a></li>
+													<li><a href = "#fileloading">File Loading with Exception Handling</a></li>
+													<li><a href = "#randchars">Drawing Random Characters</a></li>
+												</ul>
+											</li>
+											<li>
+												<a href = "#programming">Programming Tasks</a>
+												<ul>
+													<li><a href = "#datastructures">Setting up Data Structures (5 pts)</a></li>
+													<li><a href = "#addingtext">Adding Text (10 Pts)</a></li>
+													<li><a href = "#textfile">Adding Text from A File (5 Pts)</a></li>
+													<li><a href = "#synthesizing">Synthesizing Text (15 Pts)</a></li>
+													<li><a href = "#textdata">Testing with Text Data</a></li>
+													<li><a href = "#poeticstatement">Poetic Statement (5 Pts)</a></li>
+													<li><a href = "#ethics">Ethics Reflection (5 Pts)</a></li>
+													<li><a href = "#struggle">Reflection on Struggle (5 Pts)</a></li>
+												</ul>
+											</li>
+											<li><a href = "#extra">Extra Credit: Markov Classification (Up To +5 Pts)</a></li>
+										</ul>
+
+									</header>
+
+									<div id="page-content">
+
+                                        <h2><a name = "overview">Overview / Logistics</a></h2>
+										<p>
+                                            The purpose of this assignment is to get you practice with classes and HashMaps in a fun, creative application.  It will also give you some exposure to <a href = "https://en.wikipedia.org/wiki/Natural_language_processing">natural language processing</a>, which is an extremely important applications area in computer science, and to <a href = "https://en.wikipedia.org/wiki/Markov_chain">Markov chains</a>, which are incredibly powerful tools for representing sequences mathematically.
+										</p>
+
+                                        <p>
+                                            <h3><a name = "objectives">Learning Objectives</a></h3>
+                                            <ul>
+												<li>Write methods to fit a specification</li>
+												<li>Use appropriate types in a HashMap data structure</li>
+												<li>Populate HashMaps with data on the fly</li>
+												<li>Use instance methods and variables appropriately to create modular, reusable code in a class structure</li>
+                                                <li>Load text files line by line in Java</li>
+                                                <li>Write a complete program with very little code in the <code>main</code> function</li>
+                                            </ul>
+                                        </p>
+
+                                        <h3><a name = "readme">What to submit</a></h3>
+										<p>                                        <p>
+                                            There is no skeleton code for this lab.  Instead, you should <a href = "../../Software/index.html#instructions">make a new project in NetBeans</a>, and when you are finish, you should <a href = "../../Software/index.html#zip">zip it up</a> and submit it on Canvas. Finally, <b>please submit a README document with the following items</b>
+										
+										<ol>
+											<li>
+												Your <a href = "#poeticstatment">poetic statement</a>, a title that should go along with it, and what name/pseudonym you would like to use? (results will be displayed on the class web site).
+											</li>
+											<li>
+												Your <a href = "#ethics">ethics reflection</a>.
+											</li>
+											<li>
+												Your <a href = "#struggle">reflection on struggle</a>
+											</li>
+											<li>
+												Approximately how many hours it took you to finish this assignment (<i>I will not judge you for this at all...I am simply using it to gauge if the assignments are too easy or hard</i>)
+											</li>
+											<li>
+												Your overall impression of the assignment. Did you love it, hate it, or were you neutral? One word answers are fine, but if you have any suggestions for the future let me know.
+											</li>
+											<li>
+												Any other concerns that you have. For instance, if you have a bug that you were unable to solve but you made progress, write that here. The more you articulate the problem the more partial credit you will receive (fine to leave this blank)
+											</li>
+										</ol>
+
+										<h3><a name = "timeline">Suggested Timeline</a></h3>
+										<p>
+											This is a longer assignment, and you'll need to pace yourself.  I'd suggest you loosely follow the timeline below:
+										</p>
+										<ul>
+											<li><b>By Friday 9/25</b>: Have your class and data structures setup, and be in the process of attempting the method to <a href = "#addingtext">add new text</a> to the model</li>
+											<li>
+												<b>By Monday 9/28: </b> Finish debugging your method to add text, and start working on <a href = "#synthesizing">synthesizing text</a>
+											</li>
+											<li>
+												<b>By Friday 10/2: </b> Finish debugging your method to synthesize text, and test it on a number of examples
+											</li>
+											<li>
+												<b>By Monday 10/5: </b> Finish the poetic statement, ethics reflection, and reflection on struggle.
+											</li>
+										</ul>
+
+									<h2><a name = "markov">Background: Markov Chains for Text Representation</a></h2>
+
+									<p>
+										Human languages, often referred to as ``natural languages,'' are rich and full of meaning.  Compared to computer languages, they are much harder to automatically interpret and process.  However, as you will see in this assignment, we can make some progress at representing natural languages using a few simple statistical ideas.
+									</p>
+
+									<p>
+										In this assignment, our focus will be on creating an algorithm to capture the <i>style</i> of some given text from a set of examples, and to synthesize text in this style (for <a href = "#extracredit">extra credit</a>, students can also extend this concept to classify text by style).  The simplest possible thing we could do is try to match the frequency of occurrence of the characters in the example when synthesizing new text.  For example, if we use a collection of <a href = "#simpsonspongebob">spongebob quotes</a>, we find that we have the following character counts across all quotes:
+									</p>
+
+									<p>
+										{' ': 869, '!': 35, ''': 62, ',': 79, '-': 4, '.': 90, '0': 3, '1': 2, '2': 4, '4': 1, '5': 1, '?': 21, 'A': 8, 'B': 4, 'C': 8, 'D': 8, 'E': 6, 'F': 2, 'G': 5, 'H': 8, 'I': 55, 'K': 3, 'L': 3, 'M': 3, 'N': 7, 'O': 5, 'P': 11, 'R': 5, 'S': 22, 'T': 13, 'U': 2, 'V': 1, 'W': 14, 'Y': 9, 'a': 305, 'b': 91, 'c': 83, 'd': 133, 'e': 453, 'f': 70, 'g': 85, 'h': 163, 'i': 239, 'j': 6, 'k': 50, 'l': 170, 'm': 126, 'n': 241, 'o': 350, 'p': 63, 'q': 7, 'r': 233, 's': 242, 't': 314, 'u': 157, 'v': 36, 'w': 89, 'x': 4, 'y': 139, 'z': 5}
+									</p>
+
+									<p>
+										We can then try drawing characters according to these counts.  For example, we'd be more likely to draw an 'i' than we would to draw a 'z', and we're more likely to get a space ' ' than any other character.  If we draw 100 characters independently with these probabilities, we get text that looks like this:
+										<ul>
+											<li>onc 5donps fwyce  agoti'tm  ne  edoi a e Iueogd ei IralcrltItmo.g mimyheat tgesue  nwierayekra fP he</li>
+											<li>l   rOxttsu Iogrmetucafo ewa khtois!e bttcatnht,r Cyfhr  Pngkswhnwl oiet lyoatrl atumr e lenriadb Ie</li>
+											<li>Gi dyuh   b .di Po mmceooet'd'nne'n gdo dkimeo aanti is0o i 'uttj'Sstopfsasep!.  mosltayaaSso?lraV l</li>
+										</ul>
+									</p>
+									<p>
+										Interestingly, the size of the "words" looks about right since we are more likely to choose a space than any other character, but they are total gibberish. This is because the process has no memory; each character is chosen completely independently from the character preceding it.  As it turns out, if we have just a very simple memory, and we only remember a few characters before, we can do a much better job.  In particular, we will consider all possible sequences of characters of a particular length, and we will count the frequency of occurrence of each character that follows this sequence.  A sequence of length <b>k</b> is called a <b>k-gram</b>.  For example, here are all of the counts of the 4-gram <b>'you '</b> in the Spongebob text:
+									</p>
+									
+									<table>
+										<tr><td>New Sentence</td><td>Character Counts for 'you ' After Sentence</td></tr>
+										<tr><td>Gary, go away, can't <u>you </u><b>s</b>ee I'm trying to forget you?</td><td>{s=1}</td></tr>
+										<tr><td>Why are <u>you </u><b>m</b>ad? Because I can't see my forehead!</td><td>{s=1, m=1}</td></tr>
+										<tr><td>Can <u>you </u><b>t</b>ake the crust off my Krabby Patty?</td><td>{s=1, t=1, m=1}</td></tr>
+										<tr><td>Did <u>you </u><b>s</b>ee my underwear?</td><td>{s=2, t=1, m=1}</td></tr>
+										<tr><td>Well, it makes <u>you </u><b>l</b>ook like a girl!</td><td>{s=2, t=1, l=1, m=1}</td></tr>
+										<tr><td>East, oh I thought <u>you </u><b>s</b>aid Weest!</td><td>{s=3, t=1, l=1, m=1}</td></tr>
+										<tr><td>That's it, mister, <u>you </u><b>j</b>ust lost your brain priveleges!</td><td>{s=3, t=1, j=1, l=1, m=1}</td></tr>
+										<tr><td>I wumbo, <u>you </u><b>w</b>umbo, he she we, wumbo, wumboing, wumbology, the study of wumbo? </td><td>{s=3, t=1, w=1, j=1, l=1, m=1}</td></tr>
+										<tr><td>It's not <u>you </u><b>t</b>hat's got me... it's me that's got me!</td><td>{s=3, t=2, w=1, j=1, l=1, m=1}</td></tr>
+										<tr><td>Why don't <u>you </u><b>a</b>sk CowBob RanchPants and his friend Sir Eats-a-lot?</td><td>{a=1, s=3, t=2, w=1, j=1, l=1, m=1}</td></tr>
+										<tr><td>Krusty Krab Pizza, it's the pizza for <u>you </u><b>a</b>nd meeeee!</td><td>{a=2, s=3, t=2, w=1, j=1, l=1, m=1}</td></tr>
+										<tr><td>If <u>you </u><b>b</b>elieve in yourself, with a tiny pinch of magic all your dreams can come true!</td><td>{a=2, b=1, s=3, t=2, w=1, j=1, l=1, m=1}</td></tr>
+										<tr><td>Goodbye everyone, I'll remember <u>you </u><b>a</b>ll in therapy.</td><td>{a=3, b=1, s=3, t=2, w=1, j=1, l=1, m=1}</td></tr>
+										<tr><td>Don't <u>you </u><b>h</b>ave to be stupid somewhere else?</td><td>{a=3, b=1, s=3, t=2, w=1, h=1, j=1, l=1, m=1}</td></tr>
+										<tr><td>Squidward, <u>you </u><b>c</b>an't eat all those patties at one time!</td><td>{a=3, b=1, s=3, c=1, t=2, w=1, h=1, j=1, l=1, m=1}</td></tr>
+										<tr><td>I'll have <u>you </u><b>k</b>now, I stubbed my toe last week, while watering my spice garden, and I only cried for 20 minutes.</td><td>{a=3, b=1, s=3, c=1, t=2, w=1, h=1, j=1, k=1, l=1, m=1}</td></tr>
+										<tr><td>Squidward, <u>you </u><b>a</b>nd your nose will definitely not fit in.</td><td>{a=4, b=1, s=3, c=1, t=2, w=1, h=1, j=1, k=1, l=1, m=1}</td></tr>
+										<tr><td>Who <u>you </u><b>c</b>allin' pinhead?</td><td>{a=4, b=1, s=3, c=2, t=2, w=1, h=1, j=1, k=1, l=1, m=1}</td></tr>
+										<tr><td>Gee Patrick, I didn't know <u>you </u><b>c</b>ould speak bird.</td><td>{a=4, b=1, s=3, c=3, t=2, w=1, h=1, j=1, k=1, l=1, m=1}</td></tr>
+										<tr><td>Any particular reason <u>you </u><b>t</b>ook your pants off.</td><td>{a=4, b=1, s=3, c=3, t=3, w=1, h=1, j=1, k=1, l=1, m=1}</td></tr>
+										<tr><td>Let me get this straight, <u>you </u><b>t</b>wo ordered a giant screen television just so you could play in the box?</td><td>{a=4, b=1, s=3, c=4, t=4, w=1, h=1, j=1, k=1, l=1, m=1}</td></tr>
+										<tr><td>I'd hate <u>you </u><b>e</b>ven if I didn't hate you.</td><td>{a=4, b=1, s=3, c=4, t=4, e=1, w=1, h=1, j=1, k=1, l=1, m=1}</td></tr>
+										<tr><td>You're a man now, Spongebob, and it's time <u>you </u><b>s</b>tarted acting like one.</td><td>{a=4, b=1, s=4, c=4, t=4, e=1, w=1, h=1, j=1, k=1, l=1, m=1}</td></tr>
+										<tr><td>Can <u>you </u><b>g</b>ive Spongebob his brain back, I had to borrow it for a week.</td><td>{a=4, b=1, c=4, e=1, g=1, h=1, j=1, k=1, l=1, m=1, s=4, t=4, w=1}</td></tr>
+										
+									</table>
+
+									Now, let's say we do the following steps, starting with the gram <b>'you '</b>:
+									<ol>
+										<li>We randomly choose one of the characters that's to follow, and we choose a <b>'c'</b></li>
+										<li>We then slide over by one character move onto the next gram, which is <b>'ou c'</b>.  We then see the character counts {a=2, o=2} for that gram.</li>
+										<li>We make another random choice at this point, and we draw the character <b>'a'</b>. So then we slide onto the gram <b>'u ca'</b>, and we see the counts {l=1, n=1} for that gram.</li>
+										<li>We now make a random choice and draw the character <b>'n'</b>.  We then slide over to the gram <b>' can'</b>, and we see the counts {' '=3, '=4}</li>
+										<li>We now make a random choice and draw a space, so we slide over to the gram <b>'can '</b>, and we see the counts {c=1, h=1, I=1}</li>
+										<li>
+											We now make a random choice of an <b>h</b>, moving us to the gram <b>'an h'</b>, and so on and so forth
+										</li>
+									</ol>
+
+									So far in this example, we have synthesized the text <b>"you can h"</b>, and we could keep going.  Here are a few different outcomes if we keep following this process:
+									<ul>
+										<li>you can have facial hair!Now than 24, 25.You don't need a new I stupid</li>
+										<li>you can have to die right.You know the true!If your secrets is hot burns down</li>
+										<li>you can have feet?Since who can't you.I'd hate you and I'm absorbing</li>
+										<li>you can have to be alright.If I wish is nothere ther.No, Patty?</li>
+									</ul>
+
+									<p>
+										As you can see, this text is starting to make a lot more sense than choosing each character independently, even with a very short memory.
+									</p>
+									<p>
+										Your task in this assignment will be to replicate this process of creating counts for grams of different sizes for a collection of text, and then synthesizing new text according to the counts.
+									</p>
+
+
+									<h2><a name = "fileloading">Background: File Loading with Exception Handling</a></h2>
+									
+									<p>
+										One of the methods that you create will be responsible for loading text line by line.  The code below shows how to accomplish this in Java.  First, you will need to make sure you do the following imports at the top of your code
+									</p>
+
+									<script type="syntaxhighlighter" class="brush: cpp"><![CDATA[
+										import java.io.File;
+										import java.io.FileNotFoundException;
+									]]></script>
+
+									<p>
+										Then, assuming you have the filename stored in a string called <code>filename</code>, here's a loop that grabs each line of the file as a string
+									</p>
+
+									<script type="syntaxhighlighter" class="brush: cpp"><![CDATA[
+										File fin = new File(filename);
+										try {
+											Scanner in = new Scanner(fin);
+											while (in.hasNextLine()) {
+												String line = in.nextLine();
+												// Do something with this line
+											}
+										} catch (FileNotFoundException ex) {
+											ex.printStackTrace();
+										}
+									]]></script>
+
+									<p>
+										You may notice that there's some strange syntax we haven't talked about with a <code>try</code> and a <code>catch</code> around the file loading.  This is because it's possible that the file doesn't exist or there may be a disk read error as that code is trying to execute.  So we <code>try</code> to do it, but if it doesn't work, then we execute code in the <code>catch</code> block.  Right now, the catch block simply prints out information about where the error occurred, but you could do something fancier like inform the user that the file didn't load and return an empty string (for instance).  We will talk about exception handling more as we go through the course.
+									</p>
+
+									<h2><a name = "randchars">Background: Drawing Random Characters</a></h2>
+									<p>
+										Here's some code we went over in class to show how to draw characters that respect different <i>frequency distributions</i>, or counts.  They key idea is to convert the choice of a random integer into an appropriate choice of random character.  The code below accomplishes this using a series of if/else statements, but the code you write to draw random characters after grams should be more flexible and use loops to do something similar.
+									</p>
+
+									<script type="syntaxhighlighter" class="brush: cpp"><![CDATA[
+										import java.util.Random;
+										import java.util.HashMap;
+										
+										public class AlphabetCounts {
+											public static void main(String[] args) {
+												Random r = new Random();
+												HashMap<Character, Integer> counts;
+												counts = new HashMap<>();
+												// An 'a' occurs 10 out of every 40 times
+												counts.put('a', 10);
+												// A 'b' occurs 5 out of every 40 times
+												counts.put('b', 5);
+												// A 'c' occurs 3 out of every 40 times
+												counts.put('c', 3);
+												// An 'e' occurs 22 out of every 40 times
+												counts.put('e', 22);
+												
+												// Figure out the total counts
+												int total = 0;
+												for (Character key: counts.keySet()) {
+													total += counts.get(key);
+												}
+												System.out.println(total); // This should print out 40
+												
+												// Draw 100 characters with probabilities in accordance
+												// with the counts
+												String s = "";
+												for (int i = 0; i < 100; i++) {
+													int index = r.nextInt(total);
+													char res = ' ';
+													if (index < 10) {
+														// Range [0, 9]
+														res = 'a';
+													}
+													else if (index < 15) {
+														// Range [10, 14]
+														res = 'b';
+													}
+													else if (index < 18) {
+														// Range [15, 17]
+														res = 'c';
+													}
+													else if (index < 40) {
+														// Range [18, 39]
+														res = 'e';
+													}
+													s += res;
+												}
+												System.out.println(s);
+											}
+										}										
+									]]></script>
+
+									<p>
+										An example run of the above code gives the following string
+										
+									</p>
+									<code>
+										aaeeeeceaeaaaeeeebeaaceeeeeceaaeeaaeeeeeceeeeaeeaabeecabeebeeeaeeaeaeeeeeeebabeeaaabeebaaabaaeececee
+									</code>
+									<p>
+										Notice how most of the characters are es, and there are hardly any cs
+									</p>
+
+
+
+									<h2><a name = "programming">Programming Tasks</a></h2>
+
+									<p>
+										As you write your code below, you should be mindful of the <a href = "../../style.html">style guide</a>.  Good class organization is of paramount importance here.  Points may be deducted for sloppy style.  
+									</p>
+
+									<h3><a name = "datastructures">Setting up Data Structures (5 Pts)</a></h3>
+									<p>
+										You should create a class that encapsulates all of the information for a particular model.  The class constructor should have one parameter: the length of a gram.  You should also setup and initialize the appropriate <code>HashMap</code> structures to represent your text model.  You will need to store a count of all of the grams.  Also, for each gram, you will need to store the possible characters that follow that gram and how often they occur.
+									</p>
+
+									<p>
+										Once you setup your class this way, it will be possible to make different objects for different models.  For instance, you could make a model to represent <a href = "#spam">spam texts</a> using a gram-length of 6, or another model of spam text using gram lengths of 10.  You could also make a completely separate model representing Darth Vader quotes.  These models shouldn't mix data at all, which is why we want to encapsulate the gram length, gram counts, and gram character counts as instance variables in an object.
+									</p>
+
+									<h3><a name = "addingtext">Adding Text (10 Points)</a></h3>
+									<p>
+										You should create an instance method that takes a string as a parameter and incorporates that string into your model.  You should loop through all possible grams in the string and update the counts of the grams (or add a new gram if this is the first time you're seeing it).  You should also update the counts of the characters that follow each gram.  Two things to watch out for here:
+										<ul>
+											<li>
+												To prevent your model from running into dead ends when you go to synthesize new text, you should loop around once you run out of room to make a gram at the end.  For example, if you had the text
+												<p>
+													<code>jane is having a great day</code>
+												</p>
+
+												<p>And you chose to use gram lengths of 5, you should have all of these grams</p>
+<pre>
+	jane 
+	ane i
+	ne is
+	e is 
+	 is h
+	is ha
+	s hav
+	 havi
+	havin
+	aving
+	ving 
+	ing a
+	ng a 
+	g a g
+	 a gr
+	a gre
+	 grea
+	great
+	reat 
+	eat d
+	at da
+	t day
+	 dayj
+	dayja
+	ayjan
+	yjane
+</pre>
+
+												<p>But also all of these grams</p>
+
+<pre>
+	dayj
+	dayja
+	ayjan
+	yjane
+</pre>
+
+											<p>
+												The easiest way to accomplish this is simply to add the string to itself so you can keep going once you get to the end
+											</p>
+
+											</li>
+											<li>
+												Do not add strings with have a length less than the chosen gram length.  Simply do nothing if such a string is passed.
+											</li>
+										</ul>
+
+										As an example to check to make sure this is working properly, if you add all of the lines from the the <a href = "#simpsonspongebob">spongebob</a> file using 5-grams, you should have <code>4033</code> unique grams, and the gram counts for the string <code>" you "</code> should be as follows:
+									</p>
+
+									<p>
+										<code>
+											{a=4, b=1, c=4, e=1, g=1, h=1, j=1, k=1, l=1, m=1, s=4, t=4, w=1}
+										</code>
+									</p>
+
+									<h3><a name = "textfile">Adding Text From A File (5 Pts)</a></h3>
+									<p>
+										You should create an instance method that takes in a String parameter for a filename and which adds each line in this file to the model by calling add text method you wrote above.  
+									</p>
+
+									<h3><a name = "synthesizing">Synthesizing Text (15 Pts)</a></h3>
+									<p>
+										Finally, you should create an instance method that synthesizes new text based on the grams and the counts of the possible characters that follow them.  You should synthesize the text one character at a time, and you should update the current gram you're on to be the last k characters in the string you're synthesizing.  The String methods <code><a href = "https://beginnersbook.com/2013/12/java-string-substring-method-example/">substring</a></code> and <code><a href = "https://www.tutorialspoint.com/java/java_string_charat.htm">charAt</a></code> will come in handy here.
+										
+									<p>
+										Your method should take in two parameters: the first which is the gram to start on, and the second which is the total number of characters to synthesize.  If an empty string is specified for the first gram, or the length of the specified gram does not match the gram-length of the current object, then you should randomly choose a starting gram from the set of available grams in your map.
+									</p>
+
+
+									<h3><a name = "textdata">Testing with Text Data</a></h3>
+
+									<p>
+										Once you've written the above methods, you should test them on a few simple sentences of your own.  But to really see their power, you should also test them on longer collections of text and make sure you get reasonable outputs.  To get you started, there are a variety of text sources you can draw from.  <a href = "textCollections.zip">Click here</a> to download a .zip file with a few collections I've created for you to try.  For the <a href = "#poeticstatement">poetic statement</a>, you should also come up with your own text files.
+									</p>
+
+									<ul><li><b>Sith quotes</b> This file was curated by Prof. Tralie and contains a list of quotes from <a href = "https://starwars.fandom.com/wiki/Sith_Lord">sith lords</a> in the Star Wars franchise</li>
+
+									<li><a name = "simpsonspongebob">Simpsons Quotes / Spongebob Quotes</a> These files were curated by Joseph Pantel in <a href = "http://www.ctralie.com/Teaching/IDS301_S2020/index.html">IDS 301: Problem Solving And Analysis with Python</a>, Spring 2020</li>
+
+									<li><b>Positive/Negative Movie Reviews</b>: 
+										This dataset was obtained from the <a href = "https://www.cs.cornell.edu/people/pabo/movie%2Dreview%2Ddata/">Movie Sentiment Analysis Dataset</a>.  It consists of 1000 positive movie reviews and 1000 negative movie reviews
+									</li>
+									<li>
+										<b><a name = "spamham">SMS Spam/Ham</a></b>: These files were obtained from the <a href = "https://archive.ics.uci.edu/ml/datasets/SMS+Spam+Collection">UCI SMS Spam Collection</a> data set.
+									</li>
+									<li><b>Ursinus tweets</b>: A collection of tweets from the official <a href = "https://twitter.com/UrsinusCollege">Ursinus college twitter account</a></li>
+									<li>
+										<b>Bush/Kerry Debate Text</b> These text files each have a transcript from a different debate during the 2004 election.  They were obtained from a <a href = "https://www.cs.princeton.edu/courses/archive/spring08/cos226/assignments/markov.html">similar assignment</a> that Prof. Tralie did when he was in college.</b>
+									</li>
+									</ul>
+
+									<h3><a name = "poeticstatement">Poetic Statement (5 Pts)</a></h3>
+									<p>
+										You just made a very powerful text engine, so use it!  Come up with your own collection of text and train a model.  Put on some good music and find around 100 lines of text in a particular style, and place them all in a text file (for instance, you may try to collect 100 notable Harry Potter quotes).  Then, play around with the gram size and see what kinds of outputs you get.  Once you are satisfied, please submit <b>three or more examples</b> that you believe capture the spirit of your synthesizer.  
+									</p>
+
+									<p>
+										One thing you might try to make this really fun is something I'll call <b>Markov Hybrids</b>.  The idea is to load in two different styles in the same model and to have the synthesizer mash them up.  For example, if you load both the Sith quotes and Ursinus tweets in, you may get some results like this:
+
+
+										<Ul>
+                                                
+											<li>"the cpd has yet another tip for undergraduates to explore the dark side"</li>
+
+											<li>
+												"check out this scholarship alert: before your eyes. i can drive you mad with fear, shred your sanity, and leave you a raving lunatic"
+											</li>
+
+											<li>"thomas j. watson fellowship, a yearlong grant that anyone who knows the words and scientific committee of the force"</li>
+
+											<li>"kill the spring! 78 days until opening day!"</li>
+
+											<li>"vanessa wilson-marshall '02 recalls the words and actions of significance is the result of conquest"</li>
+										</Ul>
+										
+										If you choose to do this, at least one of the styles should be different from the examples I've given.
+									</p>
+
+									<h3><a name = "ethics">Ethics Reflection (5 Pts)</a></h3>
+									<p>
+										With great power comes great responsibility.  Even this relatively simple model can be used for nefarious purposes, and we should take care with how such code is deployed.  Reflect on this, and see if you can come up with at least three such examples.  Beyond just the synthesis, even if you didn't complete the extra credit, you may also think about what could be problematic about using this to identify/classify text automatically.  We will discuss in class and think how a society might institute tech safeguards.
+									</p>
+
+									<h3><a name = "struggle">Reflection on Struggle (5 Pts)</a></h3>
+									<p>
+										This is the hardest assignment I've given so far, so I want you to briefly reflect on the process of struggle during this assignment.  The productive struggle has been shown to be the best way to move towards mastering a skill, so we want to learn how to work our way through that.  It may be helpful if you journal as you progress through the assignment.  Here are a few things you might consider:
+										<ul>
+											<li>
+												When did you notice yourself struggling during this assignment?
+											</li>
+											<li>
+												How did it feel to struggle?  What thoughts did you notice around that?  For example, how did you feel about yourself?  How did you feel towards me?  How did you feel about yourself in relation to others?  And if you're comfortable describing this, where did you feel struggle in your body? (We are often unaware of the latter as we move through difficult emotions)
+											</li>
+											<li>
+												What strategies did you use to get yourself through the struggle?  Which of these strategies seemed helpful and productive?  Which of these strategies struck you as less productive or possibly toxic?
+											</li>
+											<li>
+												How do you feel now that the assignment is completed?
+											</li>
+										</ul>
+
+										Since this can be very personal, please only share what you're comfortable sharing, and do not feel pressured to answer all of the above questions.  But I want to hear particularly about where you got stuck and what your strategies were at a level of description that you feel is appropriate.
+
+									</p>
+
+
+									<h2><a name = "extra">Extra Credit: Markov Classification (up to +5 Pts)</a></h2>
+
+									<h3>The probability of a sequence</h3>
+									<p>
+										In addition to synthesizing text, there is a way to compute a probability that a particular sequence came from a model you created.  We've made a simplifying assumption of <a href = "https://en.wikipedia.org/wiki/Independence_(probability_theory)">independence</a> that will help make this easier to compute.  In particular, the next character is chosen only based on the current gram, and none of the previous grams influence this decision.
+									<p>
+										Independent events are nice to work with because the probability of independent events occurring is a simple multiplication.  For example, it's reasonable to assume that the type of weather in Beijing on a particular day is independent of the weather in Collegeville.  So if the probability it rains in Collegeville is 0.4 and the probability it rains in Beijing is 0.6, then the joint probability of both occurring is <code>0.4 x 0.6 = 0.24</code>
+									</p>
+
+									<p>
+										To compute the probability of a particular sequence of characters, we must first compute the probability that each character was drawn under our model, and then we may compute the joint probability of the entire sequence by multiplying them together.  The probability of a particular character <code>c</code> preceded by the gram <code>p</code> is given as 
+
+										\[ p(c) = \frac{N(p.c) + 1}{N(p)+S} \]
+
+										where <code>N(p)</code> is the number of times the gram occurs in the model, <code>N(p.c)</code> is the number of times the character <code>c</code> follows gram <code>p</code>, and <code>S</code> is the size of the alphabet in the model (i.e. the number of unique characters across all grams).  So the joint probability of all characters is obtained by multiplying a bunch of these together.
+									</p>
+
+									<p>
+										There is a slight numerical issue with the above scheme, however.  Since there are many characters in most sequences of interest, and since the probabilities of each character are small, we can run into <a href = "https://en.wikipedia.org/wiki/Arithmetic_underflow">arithmetic underflow</a> where the multiplication of many small numbers ends up just bottoming out at zero numerically.  To get around this, we can instead compute the ``log probability''.  Since 
+										
+										\[ \log(AB) = \log(A) + \log(B) \]
+
+										We can compute the log of the product probabilities as the sum of the log of each probability.  So simply modify the formula as 
+
+										\[ \log \left( p(c) \right) = \log \left( \frac{N(p.c) + 1}{N(p)+S} \right) \]
+
+										and then sum all of these up for each character to get the final log probability.
+									</p>
+
+									<h3>Classification Problems</h3>
+									<p>
+										Once you're able to compute the probability for a model, you can train two (or more) different models on different types of text, and you can see which model gives a higher log probability.  We'll say the model with the highest probability is most likely to be related to the text in question.  For example, here are a few things you can try from the <a href = "#textdata">data I've given</a>
+									</p>
+									<ul>
+										<li>Create model with the first 900 positive movie reviews, and create a model with the first 900 negative movie reviews (add an entire file at once, not just one line at a time).  Then, compute probabilities for the last 100 positive and negative reviews.  If the probability is greater for the positive model, guess that it's a positive review.  Otherwise, guess it's a negative review.  Report how many of the 100 positive and 100 negative reviews were guessed correctly</li>
+
+										<li>
+											Create a model from the lines in the "spam_train.txt" file and another model from the lines in the "ham_train.txt" file.  Then, test each on the "ham_test.txt" and "spam_test.txt," and report how many of them you guess correctly
+										</li>
+
+										<li>
+											Train a model on Bush debate text and a model on Kerry debate text.  Since there aren't too many examples, you should assess the model by doing a "leave-one-out" test; that is, train on all of the Kerry debates files and 29/30 of the Bush debate files, and test on the remaining bush file to see whether the Bush or Kerry model has a higher probability.  Retrain the models on all possible subsets leaving one out, and report how many of them got the one they left out correct.
+										</li>
+									</ul>
+
+									To get the full extra credit, you should perform at least two of the experiments above each over a range of gram lengths and report which one gives the best results.  And if you finish that and you're still bored, you can make up your own example!
+
+                                    
+                                </div>
+						</div>
+					</div>
+
+					<!--LaTeX in Javascript!-->
+					<script src="../../../../jsMath/easy/load.js"></script>
+					<!--Syntax highlighting in Javascript!-->
+					<script type="text/javascript" src="../../../../syntaxhighlighter/scripts/shCore.js"></script>
+					<script type="text/javascript" src="../../../syntaxhighlighter/scripts/shBrushJScript.js"></script>
+                    <script type="text/javascript" src="../../../../syntaxhighlighter/scripts/shBrushCpp.js"></script>
+					<script type="text/javascript" src="../../../../syntaxhighlighter/scripts/shBrushXml.js"></script>
+					<script type="text/javascript" src="../../../../syntaxhighlighter/scripts/shBrushMatlabSimple.js"></script>
+					<script type="text/javascript" src="../../../../syntaxhighlighter/scripts/shBrushPython.js"></script>
+					<link type="text/css" rel="stylesheet" href="../../../../syntaxhighlighter/styles/shCoreDefault.css"/>
+					<script type="text/javascript">SyntaxHighlighter.all();</script>
+
+<!-- Sidebar -->
+					<div id="sidebar">
+						<div class="inner">
+							<!-- Menu -->
+								<nav id="menu">
+									<header class="major">
+										<h2>Menu</h2>
+									</header>
+									<ul>
+                                        <li>
+											<span class="opener">General</span>
+											<ul>
+												<li><a href = "../../index.html#overview">Overview</a></li>
+												<li><a href = "../../index.html#logistics">Technology Logistics</a></li>
+												<li><a href = "../../index.html#homework">Homework</a></li>
+												<li><a href = "../../index.html#grading">Grading</a></li>
+												<li><a href = "../../index.html#environment">Classroom Environment</a></li>
+												<li><a href = "../../index.html#participation">Participation</a></li>
+												<li><a href = "../../index.html#collaboration">Collaboration Policy</a></li>
+												<li><a href = "../../index.html#other">Other Resources / Policies</a></li>
+											</ul>
+										</li>
+										<li><a href = "../../Software/index.html">Software</a></li>
+										<li><a href = "../../Schedule/index.html">Schedule</a></li>
+										<li><a href = "../../style.html">Style Guide</a></li>
+										<li><a href = "../../drills.html">Drills</a></li>
+                                        <li>
+											<span class="opener">Labs</span>
+											<ul>
+												<li><a href = "../../Labs/Lab1_Holidays/index.html">Lab1: HTML Holidays</a></li>
+												<li><a href = "../../Labs/Lab2_ChooseYourAdventure/index.html">Lab2: Choose Your Own Adventure</a></li>
+												<li><a href = "../../Labs/Lab3_ShapesInheritance/index.html">Lab3: Drawing Shapes with Inheritance</a></li>
+												<li><a href = "../../Labs/Lab4_COVIDPolymorphism/index.html">Lab4: COVID Polymorphism</a></li>
+												<li><a href = "../../Labs/Lab5_MyArrayList/index.html">Lab 5: My ArrayList</a></li>
+												<li><a href = "../../Labs/Lab6_RoadDetection/index.html">Lab 6: Road Detection with Threads</a></li>
+												<li><a href = "../../Labs/Lab7_BugHunt">Lab 7: C++ Bug Hunt</a></li> 
+											</ul>
+										</li>
+                                        <li>
+											<span class="opener">Assignments</span>
+											<ul>
+												<li><a href = "../../Assignments/HW0_Warmup/index.html">HW0: Warmup</a></li>
+												<li><a href = "../../Assignments/HW1_VirtualCities">HW1: Make Your Virtual City</a>
+												
+												<ul>
+													<li><a href = "../../Assignments/HW1_VirtualCities/ArtContest">Art Gallery!</a></li>
+												</ul>
+												</li>
+												<li><a href = "../../Assignments/HW2_MarkovMashups">HW2: Markov Mashups</a></li>
+												<li><a href = "../../Assignments/HW3_DequeFires">HW3: Deque Fires</a></li>
+												<li><a href = "../../Assignments/HW4_AudioFiltering">HW4: Consonant/Vowel Filtering in Audio</a></li>
+												<li><a href = "../../Assignments/HW5a_BasketballHashing">HW5a: Basketball Hashing</a></li>
+												<li><a href = "../../Assignments/HW5b_Shazam">HW5b: Shazam</a></li>
+											</ul>
+										</li>
+                                        <li>
+											<span class="opener">Pre-Class Modules</span>
+											<ul>
+												<li><a href = "https://ursinus-cs174-f2020.github.io/Modules/Module1/Video1">Module 1: Classes Intro</a></li>
+												<li><a href = "https://ursinus-cs174-f2020.github.io/Modules/Module2/Video1">Module 2: Hash Maps</a></li>
+												<li><a href = "https://ursinus-cs174-f2020.github.io/Modules/Module3/Inheritance1">Module 3: Inheritance1</a></li>
+												<li><a href = "https://ursinus-cs174-f2020.github.io/Modules/Module4/Video1">Module 4: Linked List Removal And Iterators</a></li>
+												<li><a href = "https://ursinus-cs174-f2020.github.io/Modules/Module5/Video1">Module 5: Threads And Synchronization</a></li>
+												<li><a href = "https://ursinus-cs174-f2020.github.io/Modules/Module6/Video1">Module 6: C++ Basics</a></li>
+												<li><a href = "https://ursinus-cs174-f2020.github.io/Modules/Module7/Video1">Module 7: Addresses And Pointers</a></li>
+												<li><a href = "https://ursinus-cs174-f2020.github.io/Modules/Module8/Exercise0">Module 8: Pointers Continued</a></li>
+												<li><a href = "https://ursinus-cs174-f2020.github.io/Modules/Module9/Video1">Module 9: C++ Classes</a></li>
+												<li><a href = "https://ursinus-cs174-f2020.github.io/Modules/Module10/Video1">Module 10: C++ Object References / Linked Lists</a></li>
+												<li><a href = "https://ursinus-cs174-f2020.github.io/Modules/Module11/Video1">Module 11: ADTs / Linked Map</a></li>
+												<li><a href = "https://ursinus-cs174-f2020.github.io/Modules/Module12/Video1">Module 12: C++ Inheritance</a></li>
+												<li><a href = "https://ursinus-cs174-f2020.github.io/Modules/Module13/Video1">Module 13: Recursion And STL Vectors</a></li>
+												<li><a href = "https://ursinus-cs174-f2020.github.io/Modules/Module14/Video1">Module 14: Recursion Part 2</a></li>
+												<li><a href = "https://ursinus-cs174-f2020.github.io/Modules/Module15/Video1">Module 15: Binary Trees Intro</a></li>
+												<li><a href = "https://ursinus-cs174-f2020.github.io/Modules/Module16/Video1">Module 16: Binary Trees Level And Depth</a></li>
+											</ul>
+										</li>
+                                        <li>
+											<span class="opener">Class Exercises</span>
+											<ul>
+												<li><a href = "../../ClassExercises/Week1_2048/index.html">Week 1: Building The 2048 Game Together</a></li>
+												<li><a href = "../../ClassExercises/Week5_SortingTweets/index.html">Week 5: Sorting Tweets</a></li>
+											</ul>
+										</li>
+									</ul>
+								</nav>
+
+							<!-- Section -->
+								<section>
+									<div class="mini-posts">
+										Announcements							
+                                    </div>
+								</section>
+
+
+							<!-- Footer -->
+								<footer id="footer">
+									<p class="copyright">&copy; <a href = "http://www.ctralie.com">Christopher J. Tralie</a>. All rights reserved.  Contact chris.tralie@gmail.com. Design: <a href="https://html5up.net">HTML5 UP</a>.</p>
+								</footer>
+
+						</div>
+					</div>
+
+			</div>
+			
+            <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+            <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+<!-- End Sidebar !-->
+
+<!-- Scripts -->
+			<script src="../../assets/js/jquery.min.js"></script>
+			<script src="../../assets/js/skel.min.js"></script>
+			<script src="../../assets/js/util.js"></script>
+			<!--[if lte IE 8]><script src="../../assets/js/ie/respond.min.js"></script><![endif]-->
+			<script src="../../assets/js/main.js"></script>
+<!-- End Scripts -->
+	</body>

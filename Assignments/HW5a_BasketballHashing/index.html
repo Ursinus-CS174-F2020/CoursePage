@@ -1,0 +1,387 @@
+<!DOCTYPE HTML>
+<!--
+	Editorial by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+<!-- Header !-->
+	<head>
+		<title>Ursinus CS 174: Object Oriented Programming, Fall 2020</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<!--[if lte IE 8]><script src="../../assets/js/ie/html5shiv.js"></script><![endif]-->
+		<link rel="stylesheet" href="../../assets/css/main.css" />
+		<!--[if lte IE 9]><link rel="stylesheet" href="../../assets/css/ie9.css" /><![endif]-->
+		<!--[if lte IE 8]><link rel="stylesheet" href="../../assets/css/ie8.css" /><![endif]-->
+        <style>
+        .image_off, #home:hover .image_on{
+           display:none
+        }
+        .image_on, #home:hover .image_off{
+           display:block
+        }
+        </style>
+	</head>
+	<body>
+
+		<!-- Wrapper -->
+			<div id="wrapper">
+
+				<!-- Main -->
+					<div id="main">
+						<div class="inner">
+
+							<!-- Header -->
+								<header id="header">
+									<a href="../../index.html" class="logo"><strong>Ursinus CS 174: Object Oriented Programming, Fall 2020</strong></a>
+								</header>
+<!-- End Header !-->
+
+							<!-- Content -->
+								<section>
+									<header class="main">
+                                        <h2>Assignment 5a: Basketball Hashing (36 pts)</h2>
+                                        <h3><a href = "http://www.ctralie.com">Chris Tralie</a></h3>
+                                        <h3>Due Tuesday 10/24/2020</h3>
+									</header>
+
+									<div id="page-content">
+
+										<ul>
+											<li><a href = "#overview">Overview/Logistics</a></li>
+											<li><a href = "#background">Background: Hash Tables</a></li>
+											<li>
+												<a href = "#programming">Programming Tasks</a>
+												<ul>
+													<li><a href = "#loading">Player Loading / Database Queries (8 pts)</a></li>
+													<li><a href = "#string">String Hashing (5 pts)</a></li>
+													<li><a href = "#hashtable">HashTable Implementation (15 Pts)</a></li>
+													<li><a href = "#comparison">HashTable / LinkedMap Comparison (8 pts)</a></li>
+												</ul>
+											</li>
+										</ul>
+										
+
+                                        <h2><a name = "overview">Overview / Logistics</a></h2>
+										<p>
+                                            The purpose of this assignment is to give you practice designing collections in C++, and to explore how the right implementation of an abstract data type (a hash table implementation instead of a linked list implementation of a map) can lead to much faster queries in an unordered collection.  <a href = "https://github.com/Ursinus-CS174-F2020/HW5a_BasketballHashing/archive/main.zip">Click here</a> to download the starter code.  When you are finished, please upload a .zip file of this entire folder with your completed code to Canvas.
+                                        </p>
+
+                                        <p>
+                                            <h3>Learning Objectives</h3>
+                                            <ul>
+                                                <li>Use makefiles in C++ to build a medium scale project with many files</li>
+                                                <li>Use multiple classes together in concert to accomplish a task</li>
+												<li>Use object references to perform efficient lookups yielding constant time operations in a collection</li>
+												<li>Leverage polymorphism to quickly swap out different implementations of abstract data types (LinkedMap and HashTable)</li>
+												<li>Create tests to verify the correctness of a code implementation and to empirically explore its efficiency.</li>
+                                            </ul>
+                                        </p>
+
+                                        <h2><a name = "background">Background: Hash Tables</a></h2>
+                                        <p>
+                                            In class, we showed how it is possible to implement a <a href = "https://en.wikipedia.org/wiki/Associative_array">map data structure</a> by using a linked list (the so-called <b>LinkedMap</b>), but that this leads to slow (linear time) average and worst case times for the <code>get()</code>, <code>containsKey()</code>, and <code>remove()</code> operations.  Motivated by this, we showed how it is possible to use the concept of a <b>hash table</b> to reduce the time of queries in a map data structure.  The idea is to have a deterministic function called a <b>hash function</b> that gives a particular number, or a <b>hash code</b> for each object.  One can then jump right to a <b>bin</b> corresponding to this hash code, which contains a linked list of all objects in the collection that have this hash code (objects that have the same hash code are said to be in "<b>collision</b>").  For instance, if we do hashing on a select bunch of <a href = "../../ClassExercises/AlgorithmsDemos/Hashing/Hashing.html">Harry Potter characters</a>, and their hash code is the month during which they were born, then we have the following hash table:
+										</p>
+										
+										<img src = "HarryPotter.svg">
+
+										<p>
+											Then, if we are looking for <a href = "https://en.wikipedia.org/wiki/Neville_Longbottom">Neville Longbottom</a> (i.e. <a href = "https://en.wikipedia.org/wiki/Matthew_Lewis_(actor)">Matthew Lewis</a>), for example, we compute his birth month of 6 and jump straight to bin 6 and follow two pointers to get to him.
+										</p>
+
+										<h3>Number of Bins</h3>
+										<p>
+											We can choose a fixed number of bins, regardless of the range of our hash function, by simply taking the modulus of our hash code by the number of bins, giving us the bin indices 
+										</p>
+										<p>
+											<code>[0, 1, 2, ..., NBins-1]</code>  
+										</p>
+										<p>
+										For example, if we want to use only 5 bins, then Percy Weasley in bin 11 above would get bin index 
+										</p>
+										<p>
+											<code>11 % 5 = 1</code>
+										</p>
+										<p>
+											There is a classic space vs time efficiency trade-off here, however.  Assuming we have a hash function which evenly distributes objects over the available bins, then the more bins we use, the faster queries and additions/removals will be, but the more memory is needed to store the bins.  Conversely, if we use fewer bins, we need less memory, but these operations take longer.  The most extreme case is a single bin, in which case a HashTable reduces to a LinkedMap.
+										</p>
+										
+										<h2><a name = "programming">Programming Tasks</a></h2>
+										<p>
+											<b>NOTE: This assignment is setup so that if you simply type <code>make</code> in your terminal, it will build everything for the assignment.  So you should never have to issue individual compile commands.</b>
+										</p>
+										<p>
+											In this assignment, you will implement your own <code>HashTable</code> (hashtable.cpp, hashtable.h) data structure and compare it to a <code>LinkedMap</code> (linkedmap.cpp, linkedmap.h) that has been provided for you.  They both inherit from an abstract class known as <code>Map</code> (map.h), which has a number of methods <a href = "#hashtable">you will need to implement</a> for your hash table.  The keys of this map are specified as pointers to <code>Hashable</code> (hashable.h, hashable.cpp) objects, for which a method <code>getHash()</code> has been implemented to compute a hash code on that object.  The values of this map are specified as pointers to <code>Cloneable</code> (cloneable.h) objects, which are objects for which a <code>clone()</code> method is provided to make deep copies.  Since Hashable objects are also Cloneable, deep copies can be made of both the key and the value, and runtime polymorphism is leveraged so that calling the <code>clone()</code> method on a <code>Cloneable*</code> or <code>Hashable*</code> pointer makes a clone of the correct type.
+										</p>
+										
+										<p>
+											To test the LinkedMap and HashTable, you will load in information about <a href = "players.txt">NBA players born between 1913-1997</a> (data obtained at <a href = "https://www.kaggle.com/drgilermo/nba-players-stats">this link</a>), including their name, the college/school they attended, their height in centimeters, their weight in kilograms, and their birth year.   You have been provided with a class <code>Player</code> (player.cpp, player.h) that encapsulates all this information in one place.  You will need to load in the players in from a file and put them into a LinkedMap.  Then, once you have implemented your HashTable structure, you should also load the players into a HashTable and compare the efficiency of <code>get()</code> queries between the two data structures.  The tasks below break this process down further.
+										</p>
+
+                                        <h3><a name = "loading">Player Loading / Database Queries (8 pts)</a></h3>
+                                        <p>
+											Your first task should be to load in all of the players in the text file into a map.  In particular, you will fill in the <code>loadPlayers(Map* m)</code> method in the <code>player.cpp</code> file.  You should look at <code>Person.cpp</code> for an example of how to use the map.  In particular, it accepts object references for both the key and value.
+										</p>
+
+										<p>
+											Once you have loaded in the players, you should fill in the file <code>playerlookup.cpp</code> to lookup a player in the map specified on the command line.  For instance, 
+										</p>
+
+
+										<script type="syntaxhighlighter" class="brush: cpp"><![CDATA[
+											./playerlookup Allen Iverson]]></script>
+
+										Should print out 
+
+										<script type="syntaxhighlighter" class="brush: cpp"><![CDATA[
+											Birth Year: 1975
+											School: Georgetown University
+											Height: 183 cm
+											Weight: 74 kg]]></script>
+
+										and running 
+
+										<script type="syntaxhighlighter" class="brush: cpp"><![CDATA[
+											./playerlookup Charles Barkley]]></script>
+
+										Should print out 
+
+										<script type="syntaxhighlighter" class="brush: cpp"><![CDATA[
+											Charles Barkley
+											Birth Year: 1963
+											School: Auburn University
+											Height: 198 cm
+											Weight: 114 kg]]></script>
+
+										<p>
+											If a player is not in the database, you should output "not found"
+											<script type="syntaxhighlighter" class="brush: cpp"><![CDATA[
+												./playerlookup Chris Tralie]]></script>
+										
+											<script type="syntaxhighlighter" class="brush: cpp"><![CDATA[
+												Chris Tralie not found]]></script>
+
+										</p>
+
+										<p>
+											<b>HINT:</b> The names of the players are stored as "Firstname Lastname", but you will need two command line arguments for the first name and last name.  So you will have to use string concatenation to add them together with a space in order to match what's in the database.
+										</p>
+
+
+										<h3><a name = "string">String Hashing (5 pts)</a></h3>
+										<p>
+											The next step you need to do to prepare to use a HashTable on this data is to define how to hash a string, since the keys are strings.  For this, you should fill in the <code>getHash()</code> method of the <code>HashableString</code> class in <code>hashable.cpp</code>.  You will be implementing the same hash function that Java uses for it's <code>String</code> type.  In particular, here is pseudocode for the algorithm
+
+										<script type="syntaxhighlighter" class="brush: cpp"><![CDATA[
+											Given a string s
+											let hash = 0
+											for each character c in s:
+												hash = 31*hash + c]]></script>
+												
+										assuming that each character <code>c</code> has been cast to a <code>size_t</code>.  Once you are finished this, you should create a file <code>stringtest.cpp</code> to test out the hash codes on a few examples.  You should add an entry to your makefile to automatically compile this based on its dependencies.  Then, you should use it to output and verify the following hash codes by initializing objects of type <code>HashableString</code>:
+
+										<script type="syntaxhighlighter" class="brush: cpp"><![CDATA[
+											Hello: 69609650
+											CS 174: 1995807518
+											Computers rock: 10723489678636550637</script>
+										</p>
+										
+
+										<h3><a name = "hashtable">HashTable Implementation (15 Pts)</a></h3>
+
+										<p>
+											You are now ready to implement the HashTable functions.  You can add private variables, but you should not change the interface in <code>hashtable.h</code>.  The bulk of your code should go in <code>hashtable.cpp</code>.  As a hint, the primary private variable in your object should be an array of <code>HashNode*</code> references, each representing the head of a linked list for a different bin.  All references should start off as <code>NULL</code>.  Then, you should implement all of the methods below.  You can borrow heavily from the code in <code>linkedlist.cpp</code>, but you will have to have an additional step of computing a hash to look up which bin's head you should start with.  Below are the methods you need to implement
+										</p>
+
+
+                                        <ul>
+                                            <li>
+                                                (3 pts) <code>void put(Hashable* key, Cloneable* value)</code>: Put an item into the hash table, using the key's hash function.  To keep this simple, you do not need to check if the key already exists, so it is okay to end up with duplicates of the same key.
+                                            </li>
+                                            <li>
+                                                (3 pts) <code>Cloneable* get(Hashable* key)</code>: Return a reference to the value associated to this key, or <code>NULL</code> if the key is not in the collection.
+                                            </li>
+                                            <li>
+                                                (3 pts) <code>void remove(Hashable* key)</code>: Remove a key/value pair from the hash table, if the key exists in the table.
+                                            </li>
+                                            <li>
+                                                (3 pts) <code>bool containsKey(Hashable* key)</code>: Return true if the key is in the hash table or false if it is not.
+                                            </li>
+                                            <li>(3 pts) <code>Hashable** getKeyList(size_t* N)</code>: Dynamically create an array to hold references to all of the keys in this map in an arbitrary order, and return the length of this array by reference.
+										</ul>
+										
+										<p>
+											Be sure also to implement a destructor that frees all memory that was allocated during the lifetime of a hash table object.  You will lose points if there are any memory leaks!
+										</p>
+
+										<h3><a name = "comparison">HashTable / LinkedMap Comparison (8 pts)</a></h3>
+
+										<p>
+											You will now compare your HashTable implementation to the LinkedMap implementation both to check the former's correctness, and also to compare their efficiency.  First, you should increment the <code>numOps</code> variable in each of your methods in <code>HashTable</code> every time a hash function is computed and every time a node is visited.  This will allow you to keep track of how many operations are happening under different queries (refer to how this was done in <code>LinkedMap</code> if you are lost).
+										<p>
+											Next, you should fill in the <code>compareMaps()</code> method in the <code>mapcheck.cpp</code> file to perform the following steps:
+											<ol>
+												<li>
+													Create a map <code>m1</code> of type <code>LinkedMap</code> and a map <code>m2</code> of type <code>HashTable</code>, and fill them each in with the NBA players.
+												</li>
+												<li>
+													Reset the operation counts of each map.
+												</li>
+												<li>
+													Loop through all of the keys in <code>m1</code> and make sure they're in <code>m2</code> by calling the <code>containsKey()</code> method.  If they're not, print out the ones that are missing to help you debug.
+												</li>
+												<li>
+													Loop through all of the keys in <code>m2</code> and make sure they're in <code>m1</code> by calling the <code>containsKey()</code> method.  If they're not, print out the ones that are missing to help you debug.
+												</li>
+												<li>
+													Report the number of operations in steps 3 and 4, and the average number of operations per player.
+												</li>
+											</ol>
+
+										</p>
+
+										<p>
+											Assuming everything is working correctly, if you use 100 bins, for example, you should see the following stats:
+										<script type="syntaxhighlighter" class="brush: cpp"><![CDATA[
+											3922 players
+											Number of operations in hash table: 80829
+											Average 20 per player
+											Number of operations in linked map: 7685601
+											Average 1959 per player</script>
+										
+										Try to see what happens when you increase or decrease the number of bins.  Does the average number of operations per player change in a way that makes sense?
+										</p>
+
+
+
+
+
+
+
+
+                                    
+                                </div>
+						</div>
+					</div>
+
+					<!--LaTeX in Javascript!-->
+					<script src="../../../../jsMath/easy/load.js"></script>
+					<!--Syntax highlighting in Javascript!-->
+					<script type="text/javascript" src="../../../../syntaxhighlighter/scripts/shCore.js"></script>
+					<script type="text/javascript" src="../../../syntaxhighlighter/scripts/shBrushJScript.js"></script>
+                    <script type="text/javascript" src="../../../../syntaxhighlighter/scripts/shBrushCpp.js"></script>
+					<script type="text/javascript" src="../../../../syntaxhighlighter/scripts/shBrushXml.js"></script>
+					<script type="text/javascript" src="../../../../syntaxhighlighter/scripts/shBrushMatlabSimple.js"></script>
+					<script type="text/javascript" src="../../../../syntaxhighlighter/scripts/shBrushPython.js"></script>
+					<link type="text/css" rel="stylesheet" href="../../../../syntaxhighlighter/styles/shCoreDefault.css"/>
+					<script type="text/javascript">SyntaxHighlighter.all();</script>
+
+<!-- Sidebar -->
+					<div id="sidebar">
+						<div class="inner">
+							<!-- Menu -->
+								<nav id="menu">
+									<header class="major">
+										<h2>Menu</h2>
+									</header>
+									<ul>
+                                        <li>
+											<span class="opener">General</span>
+											<ul>
+												<li><a href = "../../index.html#overview">Overview</a></li>
+												<li><a href = "../../index.html#logistics">Technology Logistics</a></li>
+												<li><a href = "../../index.html#homework">Homework</a></li>
+												<li><a href = "../../index.html#grading">Grading</a></li>
+												<li><a href = "../../index.html#environment">Classroom Environment</a></li>
+												<li><a href = "../../index.html#participation">Participation</a></li>
+												<li><a href = "../../index.html#collaboration">Collaboration Policy</a></li>
+												<li><a href = "../../index.html#other">Other Resources / Policies</a></li>
+											</ul>
+										</li>
+										<li><a href = "../../Software/index.html">Software</a></li>
+										<li><a href = "../../Schedule/index.html">Schedule</a></li>
+										<li><a href = "../../style.html">Style Guide</a></li>
+										<li><a href = "../../drills.html">Drills</a></li>
+                                        <li>
+											<span class="opener">Labs</span>
+											<ul>
+												<li><a href = "../../Labs/Lab1_Holidays/index.html">Lab1: HTML Holidays</a></li>
+												<li><a href = "../../Labs/Lab2_ChooseYourAdventure/index.html">Lab2: Choose Your Own Adventure</a></li>
+												<li><a href = "../../Labs/Lab3_ShapesInheritance/index.html">Lab3: Drawing Shapes with Inheritance</a></li>
+												<li><a href = "../../Labs/Lab4_COVIDPolymorphism/index.html">Lab4: COVID Polymorphism</a></li>
+												<li><a href = "../../Labs/Lab5_MyArrayList/index.html">Lab 5: My ArrayList</a></li>
+												<li><a href = "../../Labs/Lab6_RoadDetection/index.html">Lab 6: Road Detection with Threads</a></li>
+												<li><a href = "../../Labs/Lab7_BugHunt">Lab 7: C++ Bug Hunt</a></li>
+											</ul>
+										</li>
+                                        <li>
+											<span class="opener">Assignments</span>
+											<ul>
+												<li><a href = "../../Assignments/HW0_Warmup/index.html">HW0: Warmup</a></li>
+												<li><a href = "../../Assignments/HW1_VirtualCities">HW1: Make Your Virtual City</a>
+												
+												<ul>
+													<li><a href = "../../Assignments/HW1_VirtualCities/ArtContest">Art Gallery!</a></li>
+												</ul>
+												</li>
+												<li><a href = "../../Assignments/HW2_MarkovMashups">HW2: Markov Mashups</a></li>
+												<li><a href = "../../Assignments/HW3_DequeFires">HW3: Deque Fires</a></li>
+												<li><a href = "../../Assignments/HW4_AudioFiltering">HW4: Consonant/Vowel Filtering in Audio</a></li>
+											</ul>
+										</li>
+                                        <li>
+											<span class="opener">Pre-Class Modules</span>
+											<ul>
+												<li><a href = "https://ursinus-cs174-f2020.github.io/Modules/Module1/Video1">Module 1: Classes Intro</a></li>
+												<li><a href = "https://ursinus-cs174-f2020.github.io/Modules/Module2/Video1">Module 2: Hash Maps</a></li>
+												<li><a href = "https://ursinus-cs174-f2020.github.io/Modules/Module3/Inheritance1">Module 3: Inheritance1</a></li>
+												<li><a href = "https://ursinus-cs174-f2020.github.io/Modules/Module4/Video1">Module 4: Linked List Removal And Iterators</a></li>
+												<li><a href = "https://ursinus-cs174-f2020.github.io/Modules/Module5/Video1">Module 5: Threads And Synchronization</a></li>
+												<li><a href = "https://ursinus-cs174-f2020.github.io/Modules/Module6/Video1">Module 6: C++ Basics</a></li>
+												<li><a href = "https://ursinus-cs174-f2020.github.io/Modules/Module7/Video1">Module 7: Addresses And Pointers</a></li>
+												<li><a href = "https://ursinus-cs174-f2020.github.io/Modules/Module8/Exercise0">Module 8: Pointers Continued</a></li>
+												<li><a href = "https://ursinus-cs174-f2020.github.io/Modules/Module9/Video1">Module 9: C++ Classes</a></li>
+												<li><a href = "https://ursinus-cs174-f2020.github.io/Modules/Module10/Video1">Module 10: C++ Object References / Linked Lists</a></li>
+											</ul>
+										</li>
+                                        <li>
+											<span class="opener">Class Exercises</span>
+											<ul>
+												<li><a href = "../../ClassExercises/Week1_2048/index.html">Week 1: Building The 2048 Game Together</a></li>
+												<li><a href = "../../ClassExercises/Week5_SortingTweets/index.html">Week 5: Sorting Tweets</a></li>
+											</ul>
+										</li>
+									</ul>
+								</nav>
+
+							<!-- Section -->
+								<section>
+									<div class="mini-posts">
+										Announcements							
+                                    </div>
+								</section>
+
+
+							<!-- Footer -->
+								<footer id="footer">
+									<p class="copyright">&copy; <a href = "http://www.ctralie.com">Christopher J. Tralie</a>. All rights reserved.  Contact chris.tralie@gmail.com. Design: <a href="https://html5up.net">HTML5 UP</a>.</p>
+								</footer>
+
+						</div>
+					</div>
+
+			</div>
+			
+            <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+            <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+<!-- End Sidebar !-->
+
+<!-- Scripts -->
+			<script src="../../assets/js/jquery.min.js"></script>
+			<script src="../../assets/js/skel.min.js"></script>
+			<script src="../../assets/js/util.js"></script>
+			<!--[if lte IE 8]><script src="../../assets/js/ie/respond.min.js"></script><![endif]-->
+			<script src="../../assets/js/main.js"></script>
+<!-- End Scripts -->
+	</body>
