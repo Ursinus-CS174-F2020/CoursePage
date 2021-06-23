@@ -1,0 +1,12 @@
+[submodule "ClassExercises/AlgorithmsDemos"]
+	path = ClassExercises/AlgorithmsDemos
+	url = https://github.com/ctralie/AlgorithmsDemos.git
+[submodule "ClassExercises/Week1_2048/Week1_2048"]
+	path = ClassExercises/Week1_2048/Week1_2048
+	url = https://github.com/Ursinus-CS174-F2020/Week1_2048.git
+[submodule "ClassExercises/Week1_2048/frontend-101"]
+	path = ClassExercises/Week1_2048/frontend-101
+	url = https://github.com/kunal-mohta/frontend-101.git
+[submodule "ClassExercises/Week5_SortingTweets/Week5_SortingTweets"]
+	path = ClassExercises/Week5_SortingTweets/Week5_SortingTweets
+	url = https://github.com/Ursinus-CS174-F2020/Week5_SortingTweets.git

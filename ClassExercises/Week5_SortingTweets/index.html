@@ -1,0 +1,305 @@
+<!DOCTYPE HTML>
+<!--
+	Editorial by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+<!-- Header !-->
+	<head>
+		<title>Ursinus CS 174: Object Oriented Programming, Fall 2020</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<!--[if lte IE 8]><script src="../../assets/js/ie/html5shiv.js"></script><![endif]-->
+		<link rel="stylesheet" href="../../assets/css/main.css" />
+		<!--[if lte IE 9]><link rel="stylesheet" href="../../assets/css/ie9.css" /><![endif]-->
+		<!--[if lte IE 8]><link rel="stylesheet" href="../../assets/css/ie8.css" /><![endif]-->
+        <style>
+        .image_off, #home:hover .image_on{
+           display:none
+        }
+        .image_on, #home:hover .image_off{
+           display:block
+        }
+        </style>
+	</head>
+	<body>
+
+		<!-- Wrapper -->
+			<div id="wrapper">
+
+				<!-- Main -->
+					<div id="main">
+						<div class="inner">
+
+							<!-- Header -->
+								<header id="header">
+									<a href="../../index.html" class="logo"><strong>Ursinus CS 174: Object Oriented Programming, Fall 2020</strong></a>
+								</header>
+<!-- End Header !-->
+
+							<!-- Content -->
+								<section>
+									<header class="main">
+                                        <h2>Week 5 Class Exercise 1: Sorting Spongebob Tweets</h2>
+                                        <h3><a href = "http://www.ctralie.com">Chris Tralie</a></h3>
+									</header>
+
+									<div id="page-content">
+
+										<blockquote class="twitter-tweet"><p lang="en" dir="ltr">when the sponge is away the snail comes out to play <a href="https://t.co/PqXuZGuwwZ">pic.twitter.com/PqXuZGuwwZ</a></p>&mdash; SpongeBob (@SpongeBob) <a href="https://twitter.com/SpongeBob/status/1313269912593412097?ref_src=twsrc%5Etfw">October 6, 2020</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script> 
+
+                                        <h2>Overview / Logistics</h2>
+										<p>
+											The purpose of this class exercise is to give you practice with <a href = "https://www.tutorialspoint.com/java/java_interfaces.htm">interfaces</a>, and, in particular, the <a href = "https://www.codejava.net/java-core/collections/sorting-arrays-examples-with-comparable-and-comparator">Comparable</a> interface.  In the process, you will also learn some basic strategies for <i>data wrangling</i>, or the process of combing through large amounts of data to find what's relevant.
+										</p>
+
+                                        <p>
+                                            <a href = "https://github.com/Ursinus-CS174-F2020/Week5_SortingTweets/archive/main.zip">Click here</a> to download the skeleton code for this exercise, which you can open with NetBeans.  You will be editing <code>src/Tweet.java</code>.
+										</p>
+
+
+                                        <p>
+                                            <h3>Learning Objectives</h3>
+                                            <ul>
+												<li>Implement <code>compareTo</code> from the comparator interface</li>
+                                                <li>Work with arrays of objects</li>
+												<li>Access array indices carefully</li>
+                                            </ul>
+                                        </p>
+
+
+
+                                    <h2><a name = "background">Background: Tweet Objects</a></h2>
+
+										<p>
+											I have scraped the majority of the tweets from the <a href = "https://twitter.com/SpongeBob">SpongeBob</a> account on Twitter in 2020 using the <a href = "https://developer.twitter.com/en/docs">Twitter API</a>, and I have put them into the file <code>tweets.txt</code> in the Data directory.  (Those curious about how I scraped the tweets can refer to the <a href = "https://github.com/Ursinus-CS174-F2020/Week5_SortingTweets/blob/main/Data/TwitterScraper.py">TwitterScraper.py</a> in the Data folder).  I then created a <code>Tweet</code> class to encapsulate what it means to be a tweet, along with a static method to load an array of tweets from the data text file.  Every tweet object has the following fields:
+											<ul>
+												<li>
+													<code>date</code>: A YYYY/MM/DD format of the date
+												</li>
+												<li>
+													<code>time</code>: The time in HH:MM:SS format
+												</li>
+												<li>
+													<code>text</code>: The text of the tweet
+												</li>
+												<li>
+													<code>retweets</code>: How many retweets the tweet has
+												</li>
+												<li>
+													<code>likes</code>: How many likes the tweet has
+												</li>
+											</ul>
+										</p>
+
+										<p>
+											I've provided a sample static method that goes through an array of tweets and figures out the most commonly used words, as you can see if you <a href = "https://github.com/Ursinus-CS174-F2020/Week5_SortingTweets/blob/e5bf50bf20bd7d29be8b015c0f70d7326313f8f9/src/Tweet.java#L82">click here</a>.  This is a great example of using HashMaps together with the <code>Comparator</code> interface, so you should study it before class.  If you run that method, you should see the following output
+										</p>
+
+										<pre>
+the: 249
+spongebob: 150
+a: 140
+on: 125
+your: 109
+to: 105
+is: 102
+you: 101
+of: 87
+and: 84
+this: 70
+in: 64
+for: 61
+with: 60
+|: 46
+we: 44
+episodes: 39
+all: 37
+now: 36
+@nickelodeon: 34
+are: 34
+our: 34
+it's: 33
+at: 33
+patrick: 31
+day: 31
+free: 29
+what: 29
+bikini: 26
+happy: 26
+who: 26
+not: 25
+from: 24
+when: 24
+an: 24
+you're: 23
+🍔: 23
+new: 22
+it: 22
+if: 21
+don't: 20
+bottom: 20
+need: 20
+👏: 20
+that: 20
+like: 20
+have: 19
+but: 19
+us: 19
+@plutotv: 18
+										</pre>
+
+									<h2>Programming Tasks</h2>
+									<p>
+										During class, your group will work on the following tasks
+									</p>
+
+									<h3>Task 1: Sort the tweets by their number of likes</h3>
+									<p>
+										Implement the <code>Comparable</code> interface and sort the tweets by their number of likes.  Print the tweet with the most likes and the tweet with the least likes.
+									</p>
+
+									<h3>Task 2: Sort the tweets by their date</h3>
+									<p>
+										Change your comparator so that it sorts the tweets from most recent to oldest.  You will have to use the <code>compareTo</code> method of the <code>String</code> class.
+									</p>
+
+									<p>
+										Then, update your comparator so that it sorts the tweets first by date, and then by time.  So tweets on the same date but at a later time should be first.
+									</p>
+									
+
+                                    
+                                </div>
+						</div>
+					</div>
+
+					<!--LaTeX in Javascript!-->
+					<script src="../../../../jsMath/easy/load.js"></script>
+					<!--Syntax highlighting in Javascript!-->
+					<script type="text/javascript" src="../../../../syntaxhighlighter/scripts/shCore.js"></script>
+					<script type="text/javascript" src="../../../syntaxhighlighter/scripts/shBrushJScript.js"></script>
+                    <script type="text/javascript" src="../../../../syntaxhighlighter/scripts/shBrushCpp.js"></script>
+					<script type="text/javascript" src="../../../../syntaxhighlighter/scripts/shBrushXml.js"></script>
+					<script type="text/javascript" src="../../../../syntaxhighlighter/scripts/shBrushMatlabSimple.js"></script>
+					<script type="text/javascript" src="../../../../syntaxhighlighter/scripts/shBrushPython.js"></script>
+					<link type="text/css" rel="stylesheet" href="../../../../syntaxhighlighter/styles/shCoreDefault.css"/>
+					<script type="text/javascript">SyntaxHighlighter.all();</script>
+
+<!-- Sidebar -->
+					<div id="sidebar">
+						<div class="inner">
+							<!-- Menu -->
+								<nav id="menu">
+									<header class="major">
+										<h2>Menu</h2>
+									</header>
+									<ul>
+                                        <li>
+											<span class="opener">General</span>
+											<ul>
+												<li><a href = "../../index.html#overview">Overview</a></li>
+												<li><a href = "../../index.html#logistics">Technology Logistics</a></li>
+												<li><a href = "../../index.html#homework">Homework</a></li>
+												<li><a href = "../../index.html#grading">Grading</a></li>
+												<li><a href = "../../index.html#environment">Classroom Environment</a></li>
+												<li><a href = "../../index.html#participation">Participation</a></li>
+												<li><a href = "../../index.html#collaboration">Collaboration Policy</a></li>
+												<li><a href = "../../index.html#other">Other Resources / Policies</a></li>
+											</ul>
+										</li>
+										<li><a href = "../../Software/index.html">Software</a></li>
+										<li><a href = "../../Schedule/index.html">Schedule</a></li>
+										<li><a href = "../../style.html">Style Guide</a></li>
+										<li><a href = "../../drills.html">Drills</a></li>
+                                        <li>
+											<span class="opener">Labs</span>
+											<ul>
+												<li><a href = "../../Labs/Lab1_Holidays/index.html">Lab1: HTML Holidays</a></li>
+												<li><a href = "../../Labs/Lab2_ChooseYourAdventure/index.html">Lab2: Choose Your Own Adventure</a></li>
+												<li><a href = "../../Labs/Lab3_ShapesInheritance/index.html">Lab3: Drawing Shapes with Inheritance</a></li>
+												<li><a href = "../../Labs/Lab4_COVIDPolymorphism/index.html">Lab4: COVID Polymorphism</a></li>
+												<li><a href = "../../Labs/Lab5_MyArrayList/index.html">Lab 5: My ArrayList</a></li>
+												<li><a href = "../../Labs/Lab6_RoadDetection/index.html">Lab 6: Road Detection with Threads</a></li>
+												<li><a href = "../../Labs/Lab7_BugHunt">Lab 7: C++ Bug Hunt</a></li> 
+											</ul>
+										</li>
+                                        <li>
+											<span class="opener">Assignments</span>
+											<ul>
+												<li><a href = "../../Assignments/HW0_Warmup/index.html">HW0: Warmup</a></li>
+												<li><a href = "../../Assignments/HW1_VirtualCities">HW1: Make Your Virtual City</a>
+												
+												<ul>
+													<li><a href = "../../Assignments/HW1_VirtualCities/ArtContest">Art Gallery!</a></li>
+												</ul>
+												</li>
+												<li><a href = "../../Assignments/HW2_MarkovMashups">HW2: Markov Mashups</a></li>
+												<li><a href = "../../Assignments/HW3_DequeFires">HW3: Deque Fires</a></li>
+												<li><a href = "../../Assignments/HW4_AudioFiltering">HW4: Consonant/Vowel Filtering in Audio</a></li>
+												<li><a href = "../../Assignments/HW5a_BasketballHashing">HW5a: Basketball Hashing</a></li>
+												<li><a href = "../../Assignments/HW5b_Shazam">HW5b: Shazam</a></li>
+											</ul>
+										</li>
+                                        <li>
+											<span class="opener">Pre-Class Modules</span>
+											<ul>
+												<li><a href = "https://ursinus-cs174-f2020.github.io/Modules/Module1/Video1">Module 1: Classes Intro</a></li>
+												<li><a href = "https://ursinus-cs174-f2020.github.io/Modules/Module2/Video1">Module 2: Hash Maps</a></li>
+												<li><a href = "https://ursinus-cs174-f2020.github.io/Modules/Module3/Inheritance1">Module 3: Inheritance1</a></li>
+												<li><a href = "https://ursinus-cs174-f2020.github.io/Modules/Module4/Video1">Module 4: Linked List Removal And Iterators</a></li>
+												<li><a href = "https://ursinus-cs174-f2020.github.io/Modules/Module5/Video1">Module 5: Threads And Synchronization</a></li>
+												<li><a href = "https://ursinus-cs174-f2020.github.io/Modules/Module6/Video1">Module 6: C++ Basics</a></li>
+												<li><a href = "https://ursinus-cs174-f2020.github.io/Modules/Module7/Video1">Module 7: Addresses And Pointers</a></li>
+												<li><a href = "https://ursinus-cs174-f2020.github.io/Modules/Module8/Exercise0">Module 8: Pointers Continued</a></li>
+												<li><a href = "https://ursinus-cs174-f2020.github.io/Modules/Module9/Video1">Module 9: C++ Classes</a></li>
+												<li><a href = "https://ursinus-cs174-f2020.github.io/Modules/Module10/Video1">Module 10: C++ Object References / Linked Lists</a></li>
+												<li><a href = "https://ursinus-cs174-f2020.github.io/Modules/Module11/Video1">Module 11: ADTs / Linked Map</a></li>
+												<li><a href = "https://ursinus-cs174-f2020.github.io/Modules/Module12/Video1">Module 12: C++ Inheritance</a></li>
+												<li><a href = "https://ursinus-cs174-f2020.github.io/Modules/Module13/Video1">Module 13: Recursion And STL Vectors</a></li>
+												<li><a href = "https://ursinus-cs174-f2020.github.io/Modules/Module14/Video1">Module 14: Recursion Part 2</a></li>
+												<li><a href = "https://ursinus-cs174-f2020.github.io/Modules/Module15/Video1">Module 15: Binary Trees Intro</a></li>
+												<li><a href = "https://ursinus-cs174-f2020.github.io/Modules/Module16/Video1">Module 16: Binary Trees Level And Depth</a></li>
+											</ul>
+										</li>
+                                        <li>
+											<span class="opener">Class Exercises</span>
+											<ul>
+												<li><a href = "../../ClassExercises/Week1_2048/index.html">Week 1: Building The 2048 Game Together</a></li>
+												<li><a href = "../../ClassExercises/Week5_SortingTweets/index.html">Week 5: Sorting Tweets</a></li>
+											</ul>
+										</li>
+									</ul>
+								</nav>
+
+							<!-- Section -->
+								<section>
+									<div class="mini-posts">
+										Announcements							
+                                    </div>
+								</section>
+
+
+							<!-- Footer -->
+								<footer id="footer">
+									<p class="copyright">&copy; <a href = "http://www.ctralie.com">Christopher J. Tralie</a>. All rights reserved.  Contact chris.tralie@gmail.com. Design: <a href="https://html5up.net">HTML5 UP</a>.</p>
+								</footer>
+
+						</div>
+					</div>
+
+			</div>
+			
+            <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+            <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+<!-- End Sidebar !-->
+
+<!-- Scripts -->
+			<script src="../../assets/js/jquery.min.js"></script>
+			<script src="../../assets/js/skel.min.js"></script>
+			<script src="../../assets/js/util.js"></script>
+			<!--[if lte IE 8]><script src="../../assets/js/ie/respond.min.js"></script><![endif]-->
+			<script src="../../assets/js/main.js"></script>
+<!-- End Scripts -->
+	</body>
