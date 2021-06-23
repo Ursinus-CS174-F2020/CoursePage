@@ -1,0 +1,166 @@
+<!DOCTYPE HTML>
+<!--
+	Editorial by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+<!-- Header !-->
+	<head>
+		<title>Ursinus CS 174: Object Oriented Programming, Fall 2020</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<!--[if lte IE 8]><script src="../../assets/js/ie/html5shiv.js"></script><![endif]-->
+		<link rel="stylesheet" href="../../assets/css/main.css" />
+		<!--[if lte IE 9]><link rel="stylesheet" href="../../assets/css/ie9.css" /><![endif]-->
+		<!--[if lte IE 8]><link rel="stylesheet" href="../../assets/css/ie8.css" /><![endif]-->
+        <style>
+        .image_off, #home:hover .image_on{
+           display:none
+        }
+        .image_on, #home:hover .image_off{
+           display:block
+        }
+        </style>
+	</head>
+	<body>
+
+		<!-- Wrapper -->
+			<div id="wrapper">
+
+				<!-- Main -->
+					<div id="main">
+						<div class="inner">
+
+							<!-- Header -->
+								<header id="header">
+									<a href="../../index.html" class="logo"><strong>Ursinus CS 174: Object Oriented Programming, Fall 2020</strong></a>
+								</header>
+<!-- End Header !-->
+
+							<!-- Content -->
+								<section>
+									<header class="main">
+										<h2>Assignment 0: Warmup (25 Points)</h2>
+									</header>
+
+									<div id="page-content">
+										<p>
+                                            The purpose of this assignment is to get us setup for the course by getting to know each other better, by setting up the software and communications environments, and by reviewing the course syllabus.
+										</p>
+										
+										<ul>
+											<li><a href = "#survey">Personal Survey (5 pts)</a></li>
+											<li><a href = "#scheduling">Scheduling 20 Minute 1 on 1 Meeting (5 pts)</a></li>
+											<li><a href = "#doodle">Doodle Office Hours</a></li>
+											<li><a href = "#software">Software Environment (5 pts)</a></li>
+											<li><a href = "#vpn">VPN / Backend Modules Testing (2 pts)</a></li>
+											<li><a href = "#syllabus">Syllabus Quiz (8 pts)</a></li>
+										</ul>
+										
+										<HR>
+                                        <h3><a name = "survey">Personal Survey (5 Pts)</a></h3>
+                                        <p>
+                                            We are fortunate to have a small number of students per class at Ursinus, and I want to get to know every student as well as I can.   Please fill out <a href = "https://ursinus.co1.qualtrics.com/jfe/form/SV_6GztFDvrks0F2Op">this qualtrics survey</a>.  For those of you who had me before, I apologize that this is a bit longer than usual, but I also want to make sure we have our bases covered with remote learning.
+                                        </p>
+
+										<HR>
+                                        <h3><a name = "scheduling">Scheduling 20 Minute 1 on 1 Meeting (5 pts)</a></h3>
+
+                                        <p>
+                                            We sadly will not have the opportunity to meet in person, but I still want to get to know everyone and to have an opportunity to discuss the class with students real time face to face.  Therefore, each student will schedule a 20 minute block of time to meet with me virtually over Microsoft Teams during the first week of class, sometime between 7AM and 1PM (if this time range doesn't work, we can arrange another time).  To schedule the meeting, follow thee steps below (you can also view <a href = "https://ursinus.instructure.com/courses/2839/pages/sign-up-for-an-appointment?module_item_id=81810">this guide</a> that Library & IT put together).  Once you have made a selection, <b>please be sure to be logged onto Microsoft Teams at least 5 minutes before your selected time</b>.  I will then initiate a personal call from my end.
+											
+											<h4>Directions for Scheduling</h4>
+											<ol>
+												<li>Open up canvas, and click "Calendar" on the left navigation pane</li>
+												<li>On the right, under <code>Appointments</code>, click <code>Find Appointment</code>, and select <code>OO Programming</code></li>
+												<li>Navigate to the week of 9/7, and reserve a 20 minute block that works for you</li>
+											</ol>
+                                        </p>
+
+										<HR>
+                                        <h3><a name = "doodle">Doodle Office Hours (Optional)</a></h3>
+										<p>
+											It is my goal to have at least 5 hours of virtual office hours per week over Microsoft Teams.  This worked well last spring for those who took advantage of it, especially because we were able to record little snippets and to save code for everyone to review later.  If you would like to ensure that you can make these office hours, please fill out the Doodle poll <a href = "https://doodle.com/poll/kdn3cmegi6hf6r35">at this link</a>.  Please check off all of the hour intervals for which you attend at least 30 minutes (ignore the absolute dates; it's just the time of day / day of the week that matter).
+										</p>
+
+
+                                        <HR>
+										<h3><a name = "software">Software Environment (5 pts)</a></h3>
+                                        <p>
+                                            Please follow <a href = "../../Software">the directions on the software page</a> to install Netbeans on your computer.  Once you have Netbeans installed, <a href = "https://github.com/Ursinus-CS174-F2020/HW0_NetbeansCheck/archive/master.zip">click here</a> to download some code that we will use to test it.  Save it somewhere on your computer that you know where to find it (the easiest way to do this in most browsers is to right click on the link and select "save as").  It is recommended that you make a folder that you use to place all of your CS 174 work in one place.  As an example, I will create such a folder on my desktop named <code>CS174</code>, and I will copy the file I just downloaded into it.  Next, you will want to <i>extract</i> the contents of the file you just downloaded into the folder.  For example, on Windows, I would right click on <code>HW0-master.zip</code> and click extract, and put the following into this dialog that pops up:
+                                        </p>
+                                        <img src = "Extract.png">
+                                        <p>
+                                            Note that the default option is to extract to <code>CS174/HW0_NetbeansCheck-master</code>, but if you do this, it will create a folder within a folder (not the end of the world, but it makes things a little messy).
+                                        </p>
+                                        <p>
+                                            Next, open Netbeans and go to <code>File->Open Project</code> and navigate to the folder you just extracted.  Then, open the project <code>HW0_NetbeansCheck-master</code>
+                                        </p>
+
+                                        <img src = "OpenProject.png">
+
+                                        <p>
+                                            Next, expand <code>Source Packages -> hw0</code> and double click on <code>LFSR.java</code> to open the test code (some of you may recognize this from <a href = "../../../CS173_S2020/Assignments/HW6_PseudoRandomCrypto">CS 173</a>).  Once you've done this, right click on the file <code>LFSR.java</code>, and click "Run File" (you can also click the play button circled in red in the image below)
+                                        </p>
+
+                                        <p>
+                                            <img src = "LFSR.png">
+                                        </p>
+                                        
+                                        <p>
+                                            The code will then run, and it will print out a special message inside of a terminal at the botton of the Netbeans window.  <b>Please send this text to me as a message on Microsoft Teams (5 pts)</b>.  This will confirm both that your software environment is ready to go and that you are able to use Teams to send me direct messages.  If you are having any trouble, please let me know.
+                                        </p>
+										
+										<h3><a name = "vpn">VPN / Backend Modules Testing (2 pts)</a></h3>
+										<p>
+											Students will be completing online, interactive pre-class modules to learn topics before class. Part of these modules will involve completing small code exercises live in the browser to check comprehension. In order to get credit for completing these exercises correctly, students must either be on campus, or they must be connected to the Ursinus VPN. If you are off campus, please follow the directions at <a href = "https://www.ursinus.edu/offices/information-technology/technology-support/hardware-and-software-help/remote-connections-and-vpn/">this link</a> to setup the multi-factor authentication on your Ursinus account, followed by VPN on your machine (If you have an operating system other than Mac or Windows, please contact me and I can help you). Once you are either on campus or connected to the VPN, <a href = "https://ursinus-cs174-f2020.github.io/Modules/VPNCheck">click here</a> to visit a link that will check your connection for you.  If everything is working, you will receive an e-mail, and you will automatically receive 2 points on canvas.
+										</p>
+
+                                        <h3><a name = "syllabus">Syllabus Quiz (8 pts)</a></h3>
+                                        <p>
+                                            Please take a moment to familiarize yourself with <a href = "../../">the course syllabus</a>.  Then, complete the 8 questions on the <code>Assignment 0 Syllabus Quiz</code> on Canvas.  You will have as many attempts as needed.  Please feel free to ask questions to me or to the class on GroupMe if anything in the syllabus is unclear.
+                                            
+                                        </p>
+
+                                    </div>
+						</div>
+					</div>
+
+					<!--LaTeX in Javascript!-->
+					<script src="../../../../jsMath/easy/load.js"></script>
+					<!--Syntax highlighting in Javascript!-->
+					<script type="text/javascript" src="../../../../syntaxhighlighter/scripts/shCore.js"></script>
+					<script type="text/javascript" src="../../../syntaxhighlighter/scripts/shBrushJScript.js"></script>
+					<script type="text/javascript" src="../../../../syntaxhighlighter/scripts/shBrushCpp.js"></script>
+					<script type="text/javascript" src="../../../../syntaxhighlighter/scripts/shBrushMatlabSimple.js"></script>
+					<script type="text/javascript" src="../../../../syntaxhighlighter/scripts/shBrushPython.js"></script>
+					<link type="text/css" rel="stylesheet" href="../../../../syntaxhighlighter/styles/shCoreDefault.css"/>
+					<script type="text/javascript">SyntaxHighlighter.all();</script>
+
+			
+            <!-- Start of StatCounter Code -->
+            <script type="text/javascript">
+            var sc_project=7309088; 
+            var sc_invisible=1; 
+            var sc_security="f655b56d"; 
+            </script>
+            <script type="text/javascript"
+            src="http://www.statcounter.com/counter/counter.js"></script>
+            <noscript><div class="statcounter"><a title="free hit counter"
+            href="http://statcounter.com/" target="_blank"><img class="statcounter"
+            src="http://c.statcounter.com/7309088/0/f655b56d/1/" alt="free hit
+            counter"></a></div></noscript>
+            <!-- End of StatCounter Code -->
+<!-- End Sidebar !-->
+
+<!-- Scripts -->
+			<script src="../../assets/js/jquery.min.js"></script>
+			<script src="../../assets/js/skel.min.js"></script>
+			<script src="../../assets/js/util.js"></script>
+			<!--[if lte IE 8]><script src="../../assets/js/ie/respond.min.js"></script><![endif]-->
+			<script src="../../assets/js/main.js"></script>
+<!-- End Scripts -->
+	</body>
+</html>
+

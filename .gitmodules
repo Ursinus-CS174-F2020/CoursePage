@@ -55,3 +55,6 @@
 [submodule "Labs/Lab7_BugHunt/Lab7_BugHunt"]
 	path = Labs/Lab7_BugHunt/Lab7_BugHunt
 	url = https://github.com/Ursinus-CS174-F2020/Lab7_BugHunt.git
+[submodule "Assignments/HW0_Warmup/HW0_NetbeansCheck"]
+	path = Assignments/HW0_Warmup/HW0_NetbeansCheck
+	url = https://github.com/Ursinus-CS174-F2020/HW0_NetbeansCheck.git
