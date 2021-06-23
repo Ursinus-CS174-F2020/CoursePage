@@ -73,3 +73,6 @@
 [submodule "Assignments/HW5a_BasketballHashing/HW5a_BasketballHashing"]
 	path = Assignments/HW5a_BasketballHashing/HW5a_BasketballHashing
 	url = https://github.com/Ursinus-CS174-F2020/HW5a_BasketballHashing.git
+[submodule "Assignments/HW5b_Shazam/HW5b_Shazam"]
+	path = Assignments/HW5b_Shazam/HW5b_Shazam
+	url = https://github.com/Ursinus-CS174-F2020/HW5b_Shazam.git
