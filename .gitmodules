@@ -58,3 +58,12 @@
 [submodule "Assignments/HW0_Warmup/HW0_NetbeansCheck"]
 	path = Assignments/HW0_Warmup/HW0_NetbeansCheck
 	url = https://github.com/Ursinus-CS174-F2020/HW0_NetbeansCheck.git
+[submodule "Assignments/HW1_VirtualCities/HW1_VirtualCities"]
+	path = Assignments/HW1_VirtualCities/HW1_VirtualCities
+	url = https://github.com/Ursinus-CS174-F2020/HW1_VirtualCities.git
+[submodule "Assignments/HW1_VirtualCities/ggslac"]
+	path = Assignments/HW1_VirtualCities/ggslac
+	url = https://github.com/ctralie/ggslac.git
+[submodule "Assignments/HW1_VirtualCities/ArtContest/ggslac"]
+	path = Assignments/HW1_VirtualCities/ArtContest/ggslac
+	url = https://github.com/ctralie/ggslac.git
