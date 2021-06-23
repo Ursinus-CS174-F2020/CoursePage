@@ -10,3 +10,6 @@
 [submodule "ClassExercises/Week1_2048/frontend-101"]
 	path = ClassExercises/Week1_2048/frontend-101
 	url = https://github.com/Ursinus-CS174-F2020/frontend-101.git
+[submodule "Lectures/HashingLecture/AlgorithmsDemos"]
+	path = Lectures/HashingLecture/AlgorithmsDemos
+	url = https://github.com/ctralie/AlgorithmsDemos.git
