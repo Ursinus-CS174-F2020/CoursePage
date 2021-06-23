@@ -13,3 +13,27 @@
 [submodule "Lectures/HashingLecture/AlgorithmsDemos"]
 	path = Lectures/HashingLecture/AlgorithmsDemos
 	url = https://github.com/ctralie/AlgorithmsDemos.git
+[submodule "ClassExercises/Week6_MyCollections"]
+	path = ClassExercises/Week6_MyCollections
+	url = https://github.com/Ursinus-CS174-F2020/Week6_MyCollections.git
+[submodule "ClassExercises/Week7_Threads"]
+	path = ClassExercises/Week7_Threads
+	url = https://github.com/Ursinus-CS174-F2020/Week7_Threads.git
+[submodule "ClassExercises/Week8_AudioCpp"]
+	path = ClassExercises/Week8_AudioCpp
+	url = https://github.com/Ursinus-CS174-F2020/Week8_AudioCpp.git
+[submodule "ClassExercises/Week10_Code"]
+	path = ClassExercises/Week10_Code
+	url = https://github.com/Ursinus-CS174-F2020/Week10_Code.git
+[submodule "ClassExercises/Week11_Code"]
+	path = ClassExercises/Week11_Code
+	url = https://github.com/Ursinus-CS174-F2020/Week11_Code.git
+[submodule "ClassExercises/Week13_RecursiveDrawing"]
+	path = ClassExercises/Week13_RecursiveDrawing
+	url = https://github.com/Ursinus-CS174-F2020/Week13_RecursiveDrawing.git
+[submodule "ClassExercises/Week13_Recursion1"]
+	path = ClassExercises/Week13_Recursion1
+	url = https://github.com/Ursinus-CS174-F2020/Week13_Recursion1.git
+[submodule "ClassExercises/Week14_BinarySearchTrees"]
+	path = ClassExercises/Week14_BinarySearchTrees
+	url = https://github.com/Ursinus-CS174-F2020/Week14_BinarySearchTrees.git
