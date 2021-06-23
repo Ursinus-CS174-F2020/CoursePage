@@ -1,0 +1,906 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   width="56cm"
+   height="35cm"
+   viewBox="78 89 1115 689"
+   version="1.1"
+   id="svg324"
+   sodipodi:docname="LinkedLIsts.svg"
+   inkscape:version="0.92.5 (2060ec1f9f, 2020-04-08)"
+   inkscape:export-filename="/home/ctralie/Desktop/CS174/CS174/Lectures/Week6_Collections/LinkedLIsts.png"
+   inkscape:export-xdpi="136.08"
+   inkscape:export-ydpi="136.08">
+  <metadata
+     id="metadata330">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <defs
+     id="defs328" />
+  <sodipodi:namedview
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1"
+     objecttolerance="10"
+     gridtolerance="10"
+     guidetolerance="10"
+     inkscape:pageopacity="0"
+     inkscape:pageshadow="2"
+     inkscape:window-width="1840"
+     inkscape:window-height="980"
+     id="namedview326"
+     showgrid="false"
+     inkscape:zoom="0.49231399"
+     inkscape:cx="677.4132"
+     inkscape:cy="661.41732"
+     inkscape:window-x="0"
+     inkscape:window-y="0"
+     inkscape:window-maximized="0"
+     inkscape:current-layer="svg324" />
+  <g
+     id="g10"
+     transform="translate(0,3.2101728)">
+    <rect
+       style="fill:#ffffff"
+       x="227"
+       y="90"
+       width="129"
+       height="75"
+       id="rect2" />
+    <rect
+       style="fill:none;fill-opacity:0;stroke:#000000;stroke-width:2"
+       x="227"
+       y="90"
+       width="129"
+       height="75"
+       id="rect4" />
+    <text
+       font-size="12.7998px"
+       style="font-style:normal;font-weight:normal;font-family:sans-serif;text-anchor:middle;fill:#000000"
+       x="291.5"
+       y="132.3"
+       id="text8">
+      <tspan
+         x="291.5"
+         y="132.3"
+         id="tspan6">0</tspan>
+    </text>
+  </g>
+  <g
+     id="g20">
+    <rect
+       style="fill: #ffffff"
+       x="466"
+       y="93.4"
+       width="129"
+       height="75"
+       id="rect12" />
+    <rect
+       style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000"
+       x="466"
+       y="93.4"
+       width="129"
+       height="75"
+       id="rect14" />
+    <text
+       font-size="12.7998"
+       style="fill: #000000;text-anchor:middle;font-family:sans-serif;font-style:normal;font-weight:normal"
+       x="530.5"
+       y="135.7"
+       id="text18">
+      <tspan
+         x="530.5"
+         y="135.7"
+         id="tspan16">7</tspan>
+    </text>
+  </g>
+  <g
+     id="g30">
+    <rect
+       style="fill: #ffffff"
+       x="721"
+       y="91.8"
+       width="129"
+       height="75"
+       id="rect22" />
+    <rect
+       style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000"
+       x="721"
+       y="91.8"
+       width="129"
+       height="75"
+       id="rect24" />
+    <text
+       font-size="12.7998"
+       style="fill: #000000;text-anchor:middle;font-family:sans-serif;font-style:normal;font-weight:normal"
+       x="785.5"
+       y="134.1"
+       id="text28">
+      <tspan
+         x="785.5"
+         y="134.1"
+         id="tspan26">5</tspan>
+    </text>
+  </g>
+  <g
+     id="g40">
+    <rect
+       style="fill: #ffffff"
+       x="913"
+       y="93.2"
+       width="129"
+       height="75"
+       id="rect32" />
+    <rect
+       style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000"
+       x="913"
+       y="93.2"
+       width="129"
+       height="75"
+       id="rect34" />
+    <text
+       font-size="12.7998"
+       style="fill: #000000;text-anchor:middle;font-family:sans-serif;font-style:normal;font-weight:normal"
+       x="977.5"
+       y="135.5"
+       id="text38">
+      <tspan
+         x="977.5"
+         y="135.5"
+         id="tspan36">2</tspan>
+    </text>
+  </g>
+  <g
+     id="g50">
+    <ellipse
+       style="fill: #ffffff"
+       cx="528.933"
+       cy="242.966"
+       rx="40.3964"
+       ry="18.6472"
+       id="ellipse42" />
+    <ellipse
+       style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000"
+       cx="528.933"
+       cy="242.966"
+       rx="40.3964"
+       ry="18.6472"
+       id="ellipse44" />
+    <text
+       font-size="12.7998"
+       style="fill: #000000;text-anchor:middle;font-family:sans-serif;font-style:normal;font-weight:normal"
+       x="528.933"
+       y="247.766"
+       id="text48">
+      <tspan
+         x="528.933"
+         y="247.766"
+         id="tspan46">node</tspan>
+    </text>
+  </g>
+  <g
+     id="g60">
+    <ellipse
+       style="fill: #ffffff"
+       cx="291.275"
+       cy="238.33"
+       rx="51.5177"
+       ry="16.7584"
+       id="ellipse52" />
+    <ellipse
+       style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000"
+       cx="291.275"
+       cy="238.33"
+       rx="51.5177"
+       ry="16.7584"
+       id="ellipse54" />
+    <text
+       font-size="12.7998"
+       style="fill: #000000;text-anchor:middle;font-family:sans-serif;font-style:normal;font-weight:normal"
+       x="291.275"
+       y="243.13"
+       id="text58">
+      <tspan
+         x="291.275"
+         y="243.13"
+         id="tspan56">last</tspan>
+    </text>
+  </g>
+  <g
+     id="g70">
+    <ellipse
+       style="fill: #ffffff"
+       cx="785.129"
+       cy="247.643"
+       rx="54.0059"
+       ry="20.8589"
+       id="ellipse62" />
+    <ellipse
+       style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000"
+       cx="785.129"
+       cy="247.643"
+       rx="54.0059"
+       ry="20.8589"
+       id="ellipse64" />
+    <text
+       font-size="12.7998"
+       style="fill: #000000;text-anchor:middle;font-family:sans-serif;font-style:normal;font-weight:normal"
+       x="785.129"
+       y="252.443"
+       id="text68">
+      <tspan
+         x="785.129"
+         y="252.443"
+         id="tspan66">node.next</tspan>
+    </text>
+  </g>
+  <g
+     id="g80">
+    <ellipse
+       style="fill: #ffffff"
+       cx="975.433"
+       cy="213.966"
+       rx="68.6319"
+       ry="22.6818"
+       id="ellipse72" />
+    <ellipse
+       style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000"
+       cx="975.433"
+       cy="213.966"
+       rx="68.6319"
+       ry="22.6818"
+       id="ellipse74" />
+    <text
+       font-size="12.7998"
+       style="fill: #000000;text-anchor:middle;font-family:sans-serif;font-style:normal;font-weight:normal"
+       x="975.433"
+       y="218.766"
+       id="text78">
+      <tspan
+         x="975.433"
+         y="218.766"
+         id="tspan76">node.next.next</tspan>
+    </text>
+  </g>
+  <text
+     font-size="12.7998"
+     style="fill: #000000;text-anchor:start;font-family:sans-serif;font-style:normal;font-weight:normal"
+     x="633"
+     y="335"
+     id="text84">
+    <tspan
+       x="633"
+       y="335"
+       id="tspan82" />
+  </text>
+  <text
+     font-size="12.7998px"
+     style="font-style:normal;font-weight:normal;font-family:sans-serif;text-anchor:start;fill:#000000"
+     x="656.80542"
+     y="329.94446"
+     id="text88">
+    <tspan
+       x="656.80542"
+       y="329.94446"
+       id="tspan86">Linked List (N)</tspan>
+  </text>
+  <text
+     font-size="12.7998px"
+     style="font-style:normal;font-weight:normal;font-family:sans-serif;text-anchor:start;fill:#000000"
+     x="874.94244"
+     y="330.78983"
+     id="text92">
+    <tspan
+       x="874.94244"
+       y="330.78983"
+       id="tspan90">Array (N)</tspan>
+  </text>
+  <text
+     font-size="12.7998"
+     style="fill: #000000;text-anchor:start;font-family:sans-serif;font-style:normal;font-weight:normal"
+     x="139.557"
+     y="382.543"
+     id="text98">
+    <tspan
+       x="139.557"
+       y="382.543"
+       id="tspan94">Access element</tspan>
+    <tspan
+       x="139.557"
+       y="398.543"
+       id="tspan96">at index i</tspan>
+  </text>
+  <text
+     font-size="12.7998"
+     style="fill: #000000;text-anchor:start;font-family:sans-serif;font-style:normal;font-weight:normal"
+     x="693.066"
+     y="331.055"
+     id="text102">
+    <tspan
+       x="693.066"
+       y="331.055"
+       id="tspan100" />
+  </text>
+  <text
+     font-size="12.7998px"
+     style="font-style:normal;font-weight:normal;font-family:sans-serif;text-anchor:start;fill:#000000"
+     x="873.37402"
+     y="372.47406"
+     id="text108">
+    <tspan
+       x="873.37402"
+       y="372.47406"
+       id="tspan104">Constant</tspan>
+    <tspan
+       x="873.37402"
+       y="388.47406"
+       id="tspan106">arr[i]</tspan>
+  </text>
+  <text
+     font-size="12.7998px"
+     style="font-style:normal;font-weight:normal;font-family:sans-serif;text-anchor:start;fill:#000000"
+     x="643.78864"
+     y="368.05124"
+     id="text116">
+    <tspan
+       x="643.78864"
+       y="368.05124"
+       id="tspan110">i steps</tspan>
+    <tspan
+       x="643.78864"
+       y="384.05124"
+       id="tspan112">(loop through arrows</tspan>
+    <tspan
+       x="643.78864"
+       y="400.05124"
+       id="tspan114">starting at head)</tspan>
+  </text>
+  <text
+     font-size="12.7998"
+     style="fill: #000000;text-anchor:start;font-family:sans-serif;font-style:normal;font-weight:normal"
+     x="137.411"
+     y="460.104"
+     id="text120">
+    <tspan
+       x="137.411"
+       y="460.104"
+       id="tspan118">Remove first</tspan>
+  </text>
+  <text
+     font-size="12.7998px"
+     style="font-style:normal;font-weight:normal;font-family:sans-serif;text-anchor:start;fill:#000000"
+     x="636.27075"
+     y="441.7869"
+     id="text126">
+    <tspan
+       x="636.27075"
+       y="441.7869"
+       id="tspan122">Constant</tspan>
+    <tspan
+       x="636.27075"
+       y="457.7869"
+       id="tspan124">(head = head.next)</tspan>
+  </text>
+  <text
+     font-size="12.7998px"
+     style="font-style:normal;font-weight:normal;font-family:sans-serif;text-anchor:start;fill:#000000"
+     x="1019.5489"
+     y="674.27008"
+     id="text138">
+    <tspan
+       x="1019.5489"
+       y="674.27008"
+       id="tspan128">Ex) [1, 10, -43, 2, 6]</tspan>
+    <tspan
+       x="1019.5489"
+       y="690.27008"
+       id="tspan130">0 1 2 3 4</tspan>
+    <tspan
+       x="1019.5489"
+       y="706.27008"
+       id="tspan132" />
+    <tspan
+       x="1019.5489"
+       y="722.27008"
+       id="tspan134">[10, -43, 2, 6]</tspan>
+    <tspan
+       x="1019.5489"
+       y="738.27008"
+       id="tspan136">0 1 2 3</tspan>
+  </text>
+  <text
+     font-size="12.7998px"
+     style="font-style:normal;font-weight:normal;font-family:sans-serif;text-anchor:start;fill:#000000"
+     x="864.00232"
+     y="430.75525"
+     id="text146">
+    <tspan
+       x="864.00232"
+       y="430.75525"
+       id="tspan140">~N steps</tspan>
+    <tspan
+       x="864.00232"
+       y="446.75525"
+       id="tspan142">1. Make new array of length N-1</tspan>
+    <tspan
+       x="864.00232"
+       y="462.75525"
+       id="tspan144">2. Copy everything over shifted left by one</tspan>
+  </text>
+  <text
+     font-size="12.7998px"
+     style="font-style:normal;font-weight:normal;font-family:sans-serif;text-anchor:start;fill:#000000"
+     x="717.75671"
+     y="726.12335"
+     id="text150">
+    <tspan
+       x="717.75671"
+       y="726.12335"
+       id="tspan148">1 + 2 + ... N = N(N-1)/2</tspan>
+  </text>
+  <text
+     font-size="12.7998px"
+     style="font-style:normal;font-weight:normal;font-family:sans-serif;text-anchor:start;fill:#000000"
+     x="899.87073"
+     y="661.23834"
+     id="text162">
+    <tspan
+       x="899.87073"
+       y="661.23834"
+       id="tspan152">.</tspan>
+    <tspan
+       x="899.87073"
+       y="677.23834"
+       id="tspan154">. .</tspan>
+    <tspan
+       x="899.87073"
+       y="693.23834"
+       id="tspan156">. . .</tspan>
+    <tspan
+       x="899.87073"
+       y="709.23834"
+       id="tspan158">. . . .</tspan>
+    <tspan
+       x="899.87073"
+       y="725.23834"
+       id="tspan160">. . . . .</tspan>
+  </text>
+  <text
+     font-size="12.7998"
+     style="fill: #000000;text-anchor:start;font-family:sans-serif;font-style:normal;font-weight:normal"
+     x="135.049"
+     y="530.26"
+     id="text166">
+    <tspan
+       x="135.049"
+       y="530.26"
+       id="tspan164">Remove last</tspan>
+  </text>
+  <text
+     font-size="12.7998px"
+     style="font-style:normal;font-weight:normal;font-family:sans-serif;text-anchor:start;fill:#000000"
+     x="859.15619"
+     y="510.88632"
+     id="text174">
+    <tspan
+       x="859.15619"
+       y="510.88632"
+       id="tspan168">~N steps</tspan>
+    <tspan
+       x="859.15619"
+       y="526.88629"
+       id="tspan170">1. Make new array of length N-1</tspan>
+    <tspan
+       x="859.15619"
+       y="542.88629"
+       id="tspan172">2. Copy everything over except last</tspan>
+  </text>
+  <text
+     font-size="12.7998"
+     style="fill: #000000;text-anchor:start;font-family:sans-serif;font-style:normal;font-weight:normal"
+     x="840.829"
+     y="519.713"
+     id="text178">
+    <tspan
+       x="840.829"
+       y="519.713"
+       id="tspan176" />
+  </text>
+  <text
+     font-size="12.7998"
+     style="fill: #000000;text-anchor:start;font-family:sans-serif;font-style:normal;font-weight:normal"
+     x="857.187"
+     y="523.53"
+     id="text182">
+    <tspan
+       x="857.187"
+       y="523.53"
+       id="tspan180" />
+  </text>
+  <text
+     font-size="12.7998"
+     style="fill: #000000;text-anchor:start;font-family:sans-serif;font-style:normal;font-weight:normal"
+     x="913.893"
+     y="532.254"
+     id="text186">
+    <tspan
+       x="913.893"
+       y="532.254"
+       id="tspan184" />
+  </text>
+  <text
+     font-size="12.7998px"
+     style="font-style:normal;font-weight:normal;font-family:sans-serif;text-anchor:start;fill:#000000"
+     x="634.14978"
+     y="506.84891"
+     id="text194">
+    <tspan
+       x="634.14978"
+       y="506.84891"
+       id="tspan188">~N step</tspan>
+    <tspan
+       x="634.14978"
+       y="522.84888"
+       id="tspan190">1. Walk all the way to the end</tspan>
+    <tspan
+       x="634.14978"
+       y="538.84888"
+       id="tspan192">2. Change second to last ref</tspan>
+  </text>
+  <g
+     id="g202">
+    <line
+       style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000"
+       x1="913"
+       y1="130.7"
+       x2="859.734"
+       y2="129.516"
+       id="line196" />
+    <polygon
+       style="fill: #000000"
+       points="852.236,129.35 862.344,124.573 859.734,129.516 862.122,134.571 "
+       id="polygon198" />
+    <polygon
+       style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000"
+       points="852.236,129.35 862.344,124.573 859.734,129.516 862.122,134.571 "
+       id="polygon200" />
+  </g>
+  <g
+     id="g210">
+    <line
+       style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000"
+       x1="721"
+       y1="129.3"
+       x2="604.735"
+       y2="130.776"
+       id="line204" />
+    <polygon
+       style="fill: #000000"
+       points="597.236,130.872 607.172,125.745 604.735,130.776 607.299,135.744 "
+       id="polygon206" />
+    <polygon
+       style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000"
+       points="597.236,130.872 607.172,125.745 604.735,130.776 607.299,135.744 "
+       id="polygon208" />
+  </g>
+  <g
+     id="g218">
+    <line
+       style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000"
+       x1="466"
+       y1="130.9"
+       x2="365.732"
+       y2="127.801"
+       id="line212" />
+    <polygon
+       style="fill: #000000"
+       points="358.235,127.569 368.385,122.88 365.732,127.801 368.076,132.876 "
+       id="polygon214" />
+    <polygon
+       style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000"
+       points="358.235,127.569 368.385,122.88 365.732,127.801 368.076,132.876 "
+       id="polygon216" />
+  </g>
+  <g
+     id="g228">
+    <ellipse
+       style="fill: #ffffff"
+       cx="1143.28"
+       cy="132.172"
+       rx="49.5005"
+       ry="16.6977"
+       id="ellipse220" />
+    <ellipse
+       style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000"
+       cx="1143.28"
+       cy="132.172"
+       rx="49.5005"
+       ry="16.6977"
+       id="ellipse222" />
+    <text
+       font-size="12.7998"
+       style="fill: #000000;text-anchor:middle;font-family:sans-serif;font-style:normal;font-weight:normal"
+       x="1143.28"
+       y="136.972"
+       id="text226">
+      <tspan
+         x="1143.28"
+         y="136.972"
+         id="tspan224">tail</tspan>
+    </text>
+  </g>
+  <g
+     id="g236">
+    <line
+       style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000"
+       x1="1093.78"
+       y1="132.172"
+       x2="1051.73"
+       y2="130.977"
+       id="line230" />
+    <polygon
+       style="fill: #000000"
+       points="1044.24,130.764 1054.37,126.05 1051.73,130.977 1054.09,136.046 "
+       id="polygon232" />
+    <polygon
+       style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000"
+       points="1044.24,130.764 1054.37,126.05 1051.73,130.977 1054.09,136.046 "
+       id="polygon234" />
+  </g>
+  <text
+     font-size="12.7998px"
+     style="font-style:normal;font-weight:normal;font-family:sans-serif;text-anchor:start;fill:#000000"
+     x="439.55255"
+     y="329.99957"
+     id="text240">
+    <tspan
+       x="439.55255"
+       y="329.99957"
+       id="tspan238">Reversed Linked List (N)</tspan>
+  </text>
+  <text
+     font-size="12.7998px"
+     style="font-style:normal;font-weight:normal;font-family:sans-serif;text-anchor:start;fill:#000000"
+     x="476.15173"
+     y="377.98901"
+     id="text246">
+    <tspan
+       x="476.15173"
+       y="377.98901"
+       id="tspan242">~N-i steps</tspan>
+    <tspan
+       x="476.15173"
+       y="393.98901"
+       id="tspan244" />
+  </text>
+  <text
+     font-size="12.7998"
+     style="fill: #000000;text-anchor:start;font-family:sans-serif;font-style:normal;font-weight:normal"
+     x="444.241"
+     y="517.989"
+     id="text252">
+    <tspan
+       x="444.241"
+       y="517.989"
+       id="tspan248">Constant time</tspan>
+    <tspan
+       x="444.241"
+       y="533.989"
+       id="tspan250">tail = tai.prev</tspan>
+  </text>
+  <text
+     font-size="12.7998"
+     style="fill: #000000;text-anchor:start;font-family:sans-serif;font-style:normal;font-weight:normal"
+     x="291.5"
+     y="127.5"
+     id="text256">
+    <tspan
+       x="291.5"
+       y="127.5"
+       id="tspan254" />
+  </text>
+  <text
+     font-size="12.7998"
+     style="fill: #000000;text-anchor:start;font-family:sans-serif;font-style:normal;font-weight:normal"
+     x="445.241"
+     y="436.989"
+     id="text264">
+    <tspan
+       x="445.241"
+       y="436.989"
+       id="tspan258">~N steps</tspan>
+    <tspan
+       x="445.241"
+       y="452.989"
+       id="tspan260">1. Walk to beginning</tspan>
+    <tspan
+       x="445.241"
+       y="468.989"
+       id="tspan262">2. Change reference</tspan>
+  </text>
+  <text
+     font-size="12.7998px"
+     style="font-style:normal;font-weight:normal;font-family:sans-serif;text-anchor:start;fill:#000000"
+     x="275.17624"
+     y="331.37686"
+     id="text268">
+    <tspan
+       x="275.17624"
+       y="331.37686"
+       id="tspan266">Double-Linked List</tspan>
+  </text>
+  <text
+     font-size="12.7998"
+     style="fill: #000000;text-anchor:start;font-family:sans-serif;font-style:normal;font-weight:normal"
+     x="307.241"
+     y="388.989"
+     id="text272">
+    <tspan
+       x="307.241"
+       y="388.989"
+       id="tspan270">~N</tspan>
+  </text>
+  <text
+     font-size="12.7998"
+     style="fill: #000000;text-anchor:start;font-family:sans-serif;font-style:normal;font-weight:normal"
+     x="291.242"
+     y="451.989"
+     id="text276">
+    <tspan
+       x="291.242"
+       y="451.989"
+       id="tspan274">Constant Time</tspan>
+  </text>
+  <text
+     font-size="12.7998"
+     style="fill: #000000;text-anchor:start;font-family:sans-serif;font-style:normal;font-weight:normal"
+     x="297.241"
+     y="522.989"
+     id="text280">
+    <tspan
+       x="297.241"
+       y="522.989"
+       id="tspan278">Constant Time</tspan>
+  </text>
+  <g
+     id="g290">
+    <ellipse
+       style="fill: #ffffff"
+       cx="127.444"
+       cy="130.064"
+       rx="47.6219"
+       ry="17.6175"
+       id="ellipse282" />
+    <ellipse
+       style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000"
+       cx="127.444"
+       cy="130.064"
+       rx="47.6219"
+       ry="17.6175"
+       id="ellipse284" />
+    <text
+       font-size="12.7998"
+       style="fill: #000000;text-anchor:middle;font-family:sans-serif;font-style:normal;font-weight:normal"
+       x="127.444"
+       y="134.864"
+       id="text288">
+      <tspan
+         x="127.444"
+         y="134.864"
+         id="tspan286">head</tspan>
+    </text>
+  </g>
+  <g
+     id="g298">
+    <line
+       style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000"
+       x1="175.91"
+       y1="128.816"
+       x2="217.267"
+       y2="127.751"
+       id="line292" />
+    <polygon
+       style="fill: #000000"
+       points="224.765,127.558 214.897,132.813 217.267,127.751 214.639,122.817 "
+       id="polygon294" />
+    <polygon
+       style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000"
+       points="224.765,127.558 214.897,132.813 217.267,127.751 214.639,122.817 "
+       id="polygon296" />
+  </g>
+  <g
+     id="g306">
+    <line
+       style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000"
+       x1="356"
+       y1="108.75"
+       x2="456.269"
+       y2="111.849"
+       id="line300" />
+    <polygon
+       style="fill: #000000"
+       points="463.765,112.081 453.615,116.77 456.269,111.849 453.924,106.774 "
+       id="polygon302" />
+    <polygon
+       style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000"
+       points="463.765,112.081 453.615,116.77 456.269,111.849 453.924,106.774 "
+       id="polygon304" />
+  </g>
+  <g
+     id="g314">
+    <line
+       style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000"
+       x1="595"
+       y1="112.15"
+       x2="711.265"
+       y2="110.674"
+       id="line308" />
+    <polygon
+       style="fill: #000000"
+       points="718.764,110.578 708.829,115.705 711.265,110.674 708.702,105.706 "
+       id="polygon310" />
+    <polygon
+       style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000"
+       points="718.764,110.578 708.829,115.705 711.265,110.674 708.702,105.706 "
+       id="polygon312" />
+  </g>
+  <g
+     id="g322">
+    <line
+       style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000"
+       x1="850"
+       y1="110.55"
+       x2="903.267"
+       y2="111.734"
+       id="line316" />
+    <polygon
+       style="fill: #000000"
+       points="910.765,111.9 900.656,116.677 903.267,111.734 900.878,106.679 "
+       id="polygon318" />
+    <polygon
+       style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000"
+       points="910.765,111.9 900.656,116.677 903.267,111.734 900.878,106.679 "
+       id="polygon320" />
+  </g>
+  <path
+     style="fill:none;stroke:#000000;stroke-width:0.526804px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+     d="m 427.90883,284.09322 1.07006,328.50766"
+     id="path1157" />
+  <path
+     style="fill:none;stroke:#000000;stroke-width:0.526804px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+     d="m 262.58493,283.55821 1.07006,328.50766"
+     id="path1157-7" />
+  <path
+     style="fill:none;stroke:#000000;stroke-width:0.526804px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+     d="m 611.42371,293.18872 1.07006,328.50766"
+     id="path1157-8" />
+  <path
+     style="fill:none;stroke:#000000;stroke-width:0.526804px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+     d="m 836.13581,308.16953 1.07006,328.50766"
+     id="path1157-8-6" />
+  <path
+     style="fill:none;stroke:#000000;stroke-width:0.526804px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+     d="M 102.61132,414.64024 1158.7582,408.2199"
+     id="path1195" />
+  <path
+     style="fill:none;stroke:#000000;stroke-width:0.526804px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+     d="M 104.21638,490.61434 1160.3633,484.194"
+     id="path1195-9" />
+  <path
+     style="fill:none;stroke:#000000;stroke-width:0.526804px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+     d="M 106.3565,356.85714 1162.5034,350.4368"
+     id="path1195-98" />
+</svg>

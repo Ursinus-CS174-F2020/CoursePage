@@ -1,0 +1,1063 @@
+<!DOCTYPE HTML>
+<!--
+	Editorial by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+<!-- Header !-->
+	<head>
+		<title>Ursinus CS 174: Object Oriented Programming, Fall 2020</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<!--[if lte IE 8]><script src="assets/js/ie/html5shiv.js"></script><![endif]-->
+		<link rel="stylesheet" href="assets/css/main.css" />
+		<!--[if lte IE 9]><link rel="stylesheet" href="assets/css/ie9.css" /><![endif]-->
+		<!--[if lte IE 8]><link rel="stylesheet" href="assets/css/ie8.css" /><![endif]-->
+        <style>
+        .image_off, #home:hover .image_on{
+           display:none
+        }
+        .image_on, #home:hover .image_off{
+           display:block
+        }
+        </style>
+	</head>
+	<body>
+
+		<!-- Wrapper -->
+			<div id="wrapper">
+
+				<!-- Main -->
+					<div id="main">
+						<div class="inner">
+
+							<!-- Header -->
+								<header id="header">
+									<a href="index.html" class="logo"><strong>Ursinus CS 174: Object Oriented Programming, Fall 2020</strong></a>
+								</header>
+<!-- End Header !-->
+
+							<!-- Banner -->
+								<section id="banner">
+									<div class="content">
+										<header>
+											<h1>CS 174: Object Oriented Programming</h1>
+
+											<h2><a href = "http://www.ursinus.edu">Ursinus College</a>, Fall 2020</h2>
+										</header>
+
+											<div class = "row">
+												<div class="4u 12u">
+													<center>
+													<img src = "OverviewPictures/C7.gif" width = 300 height = 270>
+                                                    </center>
+                                                </div>
+                                                <div class="4u 12u">
+													<center>
+													<img src = "OverviewPictures/Epidemic.gif" width = 300 height = 300>
+													</center>
+												</div>
+												<div class="4u 12u$">
+													<center>
+													<img src = "OverviewPictures/Spectrogram.png" width = 300 height = 300>
+                                                    </center>
+												</div>
+											</div>
+
+
+<!-- Start of Last Updated -->
+<h2><b>Course Evolving: Site Last Updated 12/17/2020
+</b></h2><!-- End of Last Updated -->
+
+											<h2>Table Of Contents</h2>
+											<h3>
+												<table>
+													<tr>
+														<td>
+															<ul>
+																<li><a href = "#overview">Overview</a></li>
+																<li><a href = "#logistics">Technology Logistics</a></li>
+																<li><a href = "#homework">Homework</a></li>
+															</ul>
+														</td>
+														<td>
+															<ul>
+																<li><a href = "#grading">Grading</a></li>
+																<li><a href = "#environment">Classroom Environment</a></li>
+																<li><a href = "#participation">Participation</a></li>
+															</ul>
+														</td>
+														<td>
+															<ul>
+
+																<li><a href = "#collaboration">Collaboration Policy</a></li>
+																<li><a href = "#other">Other Resources / Policies</a></li>
+															</ul>
+														</td>
+													</tr>
+												</table>
+											</h3>
+											
+                                            <HR>
+											<h2><a name = "overview">Overview</a></h2>
+
+											<h3>Class Times / Locations</h3>
+											<h4>
+                                                <ul>
+													<li>Virtual Synchronous Meetings: Monday/Tuesday/Wednesday/Friday, 1:30-2:20PM on Zoom</li>
+                                                </ul>
+
+											</h4>
+											<h3><a name = "officehours">Virtual Office Hours</a></h3>
+											<h4>
+												<ul>
+													<li>
+														Monday 10AM - 11AM
+													</li>
+													<li>
+														Wednesday 11AM - 12PM
+													</li>
+													<li>
+														Wednesday 4PM - 5PM
+													</li>
+													<li>
+														Thursday 10:30AM - 11:30AM
+													</li>
+													<li>
+														Friday 5PM - 6PM
+													</li>
+												</ul>
+											</h4>
+
+											<h3>Prerequisites/Requirements</h3>
+											<p>
+												CS 173 with a grade of C- or better, or permission of the instructor.
+											</p>
+
+											<h3>Remote Instruction</h3>
+											<p>
+												This course will be conducted remotely.  Please review to the <a href = "#logistics">logistics</a> section for more info.  In spite of this boundary, I will make every effort to make sure you feel welcome and valued, that we can still build a community, and that you get all of the help you need (this is part of the reason we are using so many different technologies).
+											</p>
+
+											<h3>Instructor</h3>
+											<p>
+												<a href = "http://www.ctralie.com">Christopher J. Tralie</a>
+											</p>
+											<img src = "ctralie_headshot.jpg">
+											
+											<p>
+												I grew up right around the corner in the Montgomery County and attended <a href = "https://www.udsd.org/schools/udhs/">Upper Dublin High school</a> (class of 2007).  I then did my undergraduate degree in <a href = "https://ee.princeton.edu/">Electrical Engineering</a> at Princeton University and my master's and Ph.D. degrees in <a href = "https://ece.duke.edu/">Electrical And Computer Engineering</a> at Duke University (heavily studying math and CS along the way).  I finally started my dream job at Ursinus College in Fall of 2019!  You can read more about my interests on my <a href = "http://www.ctralie.com/">professional web site</a>.  Looking forward to getting to know everyone as we work through this course together!
+											</p>
+
+											<p>
+
+											</p>
+											
+
+											<h3>Course Description</h3>
+                                            <p>
+												<!--As stated in Harvey Mudd's <a href = "https://www.cs.hmc.edu/csforallbook/">CS For All Book</a> "An important principle in computer science is “if you are building lots of very similar things, try instead to build one thing that can do it all.”"!-->
+
+												This course is the continuation of <a href = "../CS173_S2020/">CS 173</a>, and it can be seen as the second part of an introductory computer science and introductory programming sequence.  
+											</p>
+
+											<p>
+												Now that students are familiar with the fundamentals of programming, such as variable types, conditional statements, loops, and methods, the class will focus more on the <i>design</i> of programs.  The goal is to make programs that are easy to read and maintain by others.  Less skeleton code will be provided overall, and it will often be up to the student to choose how to structure their code.  
+												
+											<p>
+												A key paradigm that we will explore in this course is <b>object-oriented programming</b> (hence, the title of the course).  While we always have primitive variable types, such as <code>int</code>, <code>double</code>, and <code>char</code> at our disposal, a <i>class</i> can be though of as a "designer variable type."  For example, we can make a "Person" class that stores the name, age, and height of a person.  This might look something like this:
+
+												<script type="syntaxhighlighter" class="brush: cpp"><![CDATA[
+													public class Person {
+														private String name;
+														private int age;
+														private double height;
+
+														...
+													}
+												]]></script>  
+
+												An instance of a class is known as an <i>object</i>.  Just like <code>10</code> is an example of an <code>int</code>, <code>chris</code> is an example of a person, whose name is "Chris", whose age is 31, and whose height is 6.08 feet.  In this way, we have <i>encapsulated</i> (i.e. "placed in a capsule") what it means to be a person all in once place.  This makes it way easier to define multiple people, as we don't have to define separate variables for their name, age, and height each time.  Moreover, we can start to create <i>instance methods</i> in a class that can be used to change the state of a particular object.  For instance, a method <code>void doBirthday()</code> could increment the age of a person by 1 (e.g. <code>chris.doBirthday()</code> would change the age of the <code>chris</code> object to 32).
+											</p>
+											
+											<p>
+												Objects allow us to enforce two principles that make software much more usable and easier to maintain: <b>modularity</b> and <b>reusability</b>.  Modularity refers to the ability to encapsulate everything doing related tasks under one umbrella, while reusability refers to versatile, general purpose code that doesn't have to be completely rewritten for minor changes.  Both of these properties should be apparent from any well-executed object oriented design.
+											</p>
+											
+											<p>
+												As was emphasized in <a href = "../CS173_S2020">CS 173</a>, Java and objects give us a good, organized way to talk to computers, but computer science is automation and computing in general, not tied to a specific language.  We will use object-oriented programming the service of a broad, interdisciplinary array of applications, including but not limited to
+												<ul>
+													<li>
+														Implementing an algorithm to synthesize novel text passages in a particular style by mashing up training passages.
+													</li>
+
+													<li>
+														Creating a COVID-19 simulation which includes quarantined areas and medics (a more advanced version of the <a href = "../CS173_S2020/Labs/Lab7_COVID19/">COVID lab</a> from CS 173).
+													</li>
+
+													<li>
+														Simulating a supermarket and figuring out how many checkout lines are needed to avoid congestion.
+													</li>
+													<li>
+														Implementing parts of the <a href = "https://en.wikipedia.org/wiki/Acoustic_fingerprint">"Shazam algorithm"</a> to automatically determine what song someone is listening to based on a small clip of audio.
+													</li>
+												</ul>
+											</p>
+
+											<p>
+												We will start off using Java in the first half of the course, and then will transition to using C++.  Along the way, we will learn <i>metaprogramming</i>, or the use of a text-based interface to the computer known as "the terminal" to setup our programs to run.
+											</p>
+
+
+
+
+											<h3><a name = "goals">Learning Goals</a></h3>
+											<p>
+											<ol>
+												<li>
+													Implement and engineer multi-component systems that solve real world problems.
+												</li>
+
+												<li>
+													Write software that is well-organized with good <i>encapsulation</i> and which is easy to read and maintain by others.
+												</li>
+
+												<li>
+													Begin to develop a sense for algorithm efficiency and the synergy between algorithms and data structures.
+												</li>
+				
+											</ol>
+											</p>
+
+											<h3><a name = "objectives">Learning Objectives</a></h3>
+											<p>
+											<ol>
+
+                                                <!--<li>Articulate the difference between computer programming and computer science, and explain the role of programming in computer science.</li>!-->
+
+												<li>
+													Practice patient problem solving by developing comfort with the edit -> compile -> run loop, along with intermediate debugging skills.</li>
+												
+												<li>
+													Make appropriate design choices between compile time (e.g. static members of a class and compile time memory) and runtime code structures (e.g. object member variables and dynamic memory).
+												</li>
+
+												<li>
+													Learn the basics of "metaprogramming," or writing scripts to compile code, in the <i>command line</i>.
+												</li>
+
+												<li>
+													Allocate and clean up dynamic memory, avoiding memory leaks.
+												</li>
+
+												<li>
+													Implement data structures, such as queues, linked lists, and trees, using object-oriented paradigms.
+												</li>
+
+                                                <!-- <li>Identify the appropriate control structures (if statements, switch statements, loop types) to use to solve different problems, and learn to choose efficient solutions over brute force solutions.  
+                                                </li> !-->
+				
+											</ol>
+											</p>
+
+
+
+											<hr>
+											<h2><a name = "logistics">Technology Logistics</a></h2>
+	
+											<p>
+												Since we will be working remotely, there are an array of technologies we will be using in concert to stay in touch.  Unfortunately, there's just not a one stop shop for anything technological these days (much like there isn't one social media platform that's used for all kinds of interactions...).
+											</p>
+											<p>
+												Below is a table summarizing what kinds of communications/activities occur via each technology, and below that there are more details on everything.  This is admittedly complex, and it will take some getting used to, but it will be worth it once we get it nailed down.  
+											</p>
+											<p>
+												<b>NOTE:</b> I will repeat the same announcements across e-mail and Discord, so you don't have to check all both for announcements.
+											</p>
+											
+											<table>
+												<tr>
+													<td>
+														<a href = "Schedule/index.html">Class web site</a>
+													</td>
+													<td>
+														<ul>
+															<li>Schedule</li>
+															<li>Pre-class modules</li>
+														</ul>
+													</td>
+												</tr>
+												<tr>
+													<td>
+														E-mail
+													</td>
+													<td>
+														<ul>
+															<li>Announcements</li>
+															<li>Individual Chat with Prof. Tralie (e.g. questions about grades, academic planning, tech support, personal issues), <i>though I prefer Microsoft Teams for this and will respond more quickly over Teams</i></li>
+														</ul>
+													</td>
+												</tr>
+												<tr>
+													<td>
+														Canvas
+													</td>
+													<td>
+														<ul>
+															<li>Assignment Submission/Feedback</li>
+														</ul>
+													</td>
+												</tr>
+												<tr>
+													<td>
+														Zoom
+													</td>
+													<td>
+														<ul>
+															<li>
+																Synchronous class sessions
+															</li>
+														</ul>
+													</td>
+												</tr>
+												<tr>
+													<td>Microsoft Teams</td>
+													<td>
+														<ul>
+															<li><a href = "#buddy">Buddy</a> Collaborations/Screen Sharing</li>
+															<li>
+																Individual Chat with Prof. Tralie (e.g. questions about grades, academic planning, tech support, personal issues)
+															</li>
+															<li>Office Hours</li>
+														</ul>
+													</td>
+												</tr>
+												<tr>
+													<td>
+														Discord
+													</td>
+													<td>
+														<ul>
+															<li>
+																Class-wise questions and discussions
+															</li>
+															<li>
+																Announcements
+															</li>
+														</ul>
+													</td>
+												</tr>
+											</table>
+	
+											<h3>Canvas</h3>
+											<p>
+												We will be using Canvas, but only to submit assignments and to store all of the grades.  I will also keep all of the due dates current on the calendar there, as students have appreciated this common space for all of their classes in the past.
+											</p>
+	
+											<h3><a name = "zoommodules">Zoom / Pre-Class Modules</a></h3>
+											<p>
+												Ursinus now has a professional license for Zoom.  Due to COVID-19, we will be meeting over Zoom during regular class time.  The class will be setup so that you complete online modules <b>before class on your own time</b> (<a href = "../CS173_S2020/Modules/DataStructuresModule/video1.html">click here</a> for an example from last spring in <a href = "../CS173_S2020/">CS 173</a>).  This will be more active than simply reading a textbook, and you will get direct feedback as you're learning and writing code directly in the web browser.  Then, during class time, we will meet on Zoom in synchronous, virtual sessions.  (the main reason we're using Zoom instead of <a href = "#teams">Teams</a> for class is because of its <a href = "https://support.zoom.us/hc/en-us/articles/206476093-Enabling-breakout-rooms">breakout room functionality</a>).  <b>Attendance at the virtual class meetings is required, and attendance will be recorded</b>.  We will do the following activities during class:
+												<ul>
+													<li>At the beginning of each session, students will have an opportunity to ask questions on the pre-class modules</li>
+													<li>
+														During most classes, students will work together in groups in virtual break-out rooms on slightly more challenging problems than the modules to hone skills for the assignments.
+													</li>
+													<li>
+														We will also reserve some of the class sessions for working on assignments so that students have a chance to get a head start to ask me questions.
+													</li>
+													<li>
+														Occasionally, we will do "code roundups" in class, where we examine the good, bad, and the ugly of code that students wrote.  These are excellent opportunities for us to grow together as we learn how to write great, clean, and maintainable code.
+													</li>
+												</ul>
+												
+											</p>
+	
+											<h3><a name = "discord">Discord</a></h3>
+											<p>
+												To facilitate informal, class-wide discussions about the class, we will have a Discord channel.  My goal is for this to turn into a flourishing area to work through <a href = "#confusion">confusion</a> and to share ideas as a group.  All questions are welcome!
+											<ol>
+												<li><a href = "https://discord.gg/33JtPw">Click here</a> to signup for the general discussion channel for assignments, software issues, etc.</li>
+											</ol>
+											</p>
+											<p>
+												Please <b>do not</b> send me direct messages or anything of a sensitive nature over Discord.  Instead, use <a href = "#teams">Microsoft Teams</a> or e-mail for that, since those transactions are locked down better under Ursinus control.
+											</p>
+
+											
+	
+	
+											<h3><a name = "teams">Microsoft Teams</a></h3>
+											<p>
+												For <a href = "#officehours">office hours</a>, for one on one direct messages with me, and for <a href = "#buddy">buddy group coding</a> with screen sharing, we will be using  <a href = "https://insights.ursinus.edu/display/LEI/Microsoft+Teams">Microsoft Teams</a>, which is linked to your Office suite through Ursinus, so you are automatically enrolled.  This is an easy platform for students to initiate video sharing, so I highly recommend it for group work.
+											</p>
+
+											
+											<hr>
+											<h2><a name = "readings">Readings</a></h2>
+											<p>
+											The official textbook for this course is 
+											
+											<table>
+												<tr>
+													<td>
+														<a href = "https://www.amazon.com/Java-Everyone-Cay-S-Horstmann/dp/1118063317/"><img src = "http://images.amazon.com/images/P/1118063317.01._PI_SCMZZZZZZZ_.jpg"></a>
+														<p>
+															<a href = "https://www.amazon.com/Java-Everyone-Cay-S-Horstmann/dp/1118063317/"><i>Java For Everyone: Late Objects, 2nd Edition</i></a>
+														</p>
+													</td>
+													<td>
+														Cay Horstmann
+													</td>
+													<td>
+														ISBN-13: 978-1-118-06331-6
+													</td>
+												</tr>
+												<tr>
+													<td colspan = 3>
+													<p>
+													This book has been chosen both for its clarity and emphasis on good style, and it has been tried and true for many semesters at Ursinus.  It is also the exact same book that we use in <a href = "../CS173_S2020">CS 173</a>.
+													</p>
+													
+													<p>
+														
+														Alternatively, students may want to refer to the free online textbook <a href = "https://greenteapress.com/wp/think-java/">Think Java</a>
+
+													</p>
+													</td>
+												</tr>
+												<tr>
+
+													<td>
+														<a href = "https://greenteapress.com/wp/think-java/"><img src = "http://images.amazon.com/images/P/1491929561.01._PI_SCMZZZZZZZ_.jpg"></a>
+														<p>
+															<a href = "https://greenteapress.com/wp/think-java/"><i>Think Java</i></a>
+														</p>
+													</td>
+													<td>
+														Allen Downey and Chris Mayfield 
+													</td>
+													<td>
+														ISBN-13: 978-1491929568 
+													</td>
+												</tr>
+											</table>
+
+											<p>
+											<a name="financial"></a>
+											<b>NOTE:</b> The cost of the Horstmann book may be prohibitive for some students, so please note that renting the book is much cheaper.  Please communicate as early as possible if you are having trouble obtaining the book, rather than keeping this to yourself, so that we can work on a solution together.  The <a href = "https://www.ursinus.edu/offices/student-financial-services/grants-scholarships-loans/bear2bear-student-emergency-fund/">bear2bear student emergency fund</a> is available to help if needed.
+                                            </p>
+
+
+											<hr>
+											<h2><a name = "homework">Homework</a></h2>
+
+                                            <h3><a href = "Labs">Labs</a></h3>
+                                            <p>
+                                                Every Wednesday, we will have a lab session where students get a chance to practice concepts we just learned in a safe and <a href = "#collaboration">collaborative</a> environment.  Tasks will be given that serve as warm-ups for the larger assignments, though these are supposed to be lower stakes than the main programming assignments, so final submissions will usually be graded on a scale from 0 to 2.  Students will have a chance to refine their submissions until the Friday of every week, and there will be help from the <a href = "#labtas">Lab T.A.s</a>.
+											</p>
+											
+
+
+                                            <h3><a name = "labtas">Class T.A</a></h3>
+                                                <p>
+                                                    The class T.A. will have 2 virtual group office hours on Microsoft Teams outside of the lab each week, and they will be available for individual appointments for <a href = "#tutoring">tutoring</a>
+                                                </p>
+                                                <table>
+                                                    <tr><td> <h4>Michael Tecce</h4></td></tr>
+                                                    <tr>
+                                                        <td>
+															<ul>
+																<li>Mondays 4:30PM - 5:30 PM Microsoft Teams</li>
+																<li>Tuesdays 5PM - 6PM Microsoft Teams</li>
+															</ul>
+														</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>
+															<img src = "michael_headshot.jpg">
+															<img src = "team.jpg">
+														</td>
+                                                    </tr>
+                                                </table>
+
+											<h3><a href = "Assignments/index.html">Assignments</a> </h3>
+                                            
+                                            <p>
+                                                The bulk of the grade in the course will be earned by completing roughly 8 individual programming assignments.  Be sure to start them early!  Note that <a href = "#collaboration">collaboration and sharing rules</a> differ slightly for labs and assignments.
+											</p>
+											
+
+
+
+											<h3>A word on patience and <a name = "debugging">debugging</a></h3>
+											<p>
+												If you're taking this course, then you've certainly had experience with <a href = "https://en.wikipedia.org/wiki/Debugging">debugging</a>, but it is a skill you will still need to work on, so you should expect to hit some roadblocks.  In fact, it is time consuming and difficult even for very experienced programmers.  So do not be hard on yourself if your programs don't work the first time around (they rarely do, even if you've been programming for decades!).  But be sure you leave yourself adequate time to work on the assignments, because the amount of time it takes to resolve issues can be unpredictable.  And make use of tools like the debugger in NetBeans.
+											</p>
+
+
+											<p>
+												Inevitably, you will fall into this trap.  So don't beat yourself up too much when you do...but do listen to the advice!
+												<blockquote class="twitter-tweet"><p lang="en" dir="ltr">Me: I&#39;m stuck on a bug. What do I do<br><br>Other developers: Take a break. Walk away. Go outside. Sleep on it and come back to it the next day.<br><br>Me: *Sits at desk obsessing over bug until 2AM*</p>&mdash; Madison Kanna (@Madisonkanna) <a href="https://twitter.com/Madisonkanna/status/1218065898214436865?ref_src=twsrc%5Etfw">January 17, 2020</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script> 
+											</p>
+
+                                            
+											<hr>
+											<h2><a name = "grading">Grading</a></h2>
+											<p>
+												I am not a fan of grades, but for now, this is an established mechanism for me to hold students accountable and to push them to do things they sometimes don't like but will make them better at the subject.  I am also not a fan of exams, so all of the work will be assignment-based, where students will have multiple days to complete the work, and where students can <a href = "#collaboration">often collaborate with others</a>.  This also models the working world of software much better.
+											</p>
+
+
+											<h3>Breakdown</h3>
+											
+											<table>
+											<tr><td>Pre-Class Modules</td><td>10%</td></tr>
+											<tr><td>Labs</td><td>25%</td></tr>
+											<tr><td>Programming Assignments</td><td>60%</td></tr>
+											<tr><td>Attendance / Participation</td><td>5%</td></tr>
+											</table>					
+											
+											<h3><a name = "flexiblesubmission">Flexible Submission Policy</a></h3>
+
+											<p>
+											In the absence of <a href = "#accommodations">accommodations</a> or <a href = "#communication">communication with me</a>, all assignments are due at 11:59PM EST on the date(s) stated on the <a href = "Schedule/index.html">schedule</a>.  Students can turn in those assignments past the deadlines, and the scores will be adjusted as follows:
+											</p>
+
+											<ul>
+											<li>-5% for work submitted between 1 minute - 6 hours late</li>
+											<li>-10% for work submitted up to 12 hours late</li>
+											<li>-15% for work submitted up to 24 hours late</li>
+											<li>-25% for work submitted up to 48 hours late</li>
+											<li>-40% for work submitted up to 96 hours late</li>
+											<li>-50% for work submitted more than 96 hours late</li>
+											</ul>
+
+											<h3>Letter Grades</h3>
+											<p>
+												Letter grades will be assigned on the scale below at the end of the course. 
+												<table>
+													<tr>
+														<td>
+															<ul>
+																<li><b>A+</b>: 97-100</li>
+																<li><b>A</b>: 93-96.9</li>
+																<li><b>A-</b>: 89.5-92.9</li>
+															</ul>
+														</td>
+														<td>
+															<ul>
+																<li><b>B+</b>: 87-89.49</li>
+																<li><b>B</b>: 83-86.9</li>
+																<li><b>B-</b>: 79.5-82.9</li>
+															</ul>
+														</td>
+														<td>
+															<ul>
+																<li><b>C+</b>: 77-79.49</li>
+																<li><b>C</b>: 73-76.9</li>
+																<li><b>C-</b>: 69.5-72.9</li>
+															</ul>
+														</td>
+														<td>
+															<ul>
+																<li><b>D+</b>: 67-69.49</li>
+																<li><b>D</b>: 63-66.9</li>
+																<li><b>D-</b>: 59.5-62.9</li>
+															</ul>
+														</td>
+														<td>
+															<ul>
+																<li><b>F</b>: 59.49 and below</li>
+															</ul>
+														</td>
+													</tr>
+												</table>
+											</p>
+
+											<HR>
+											<h2><a name = "environment">Classroom Environment</a></h2>
+
+											<h3><a name = "inclusive">Inclusive Environment</a></h3>
+
+											<p>
+												Computer science is a field that has <a href = "https://www.theverge.com/2017/8/16/16153740/tech-diversity-problem-science-history-explainer-inequality">historically been and continues to be</a> steeped in inequalities.  We will do our best to put the topics we're working on into the appropriate historical context, and to address broader societal issues that are related to the code that we write.  We will strive to do better in our course, with an honest look at where we have been in the field.  To that end, my goal is to foster a environment in which students across all axes of diversity feel welcome and valued, both by me and by their peers.  Axes of diversity include, but are not limited to, age, background, beliefs, race, ethnicity, gender/gender identity/gender expression (please feel free to tell me in person or over e-mail which pronouns I should use), national origin, religious affiliation, and sexual orientation.  Discrimination of any form will not be tolerated.
+											</p>
+
+											<p>
+												<a name = "confusion">.</a>Furthermore, I want all students to feel comfortable expressing their opinions or confusion at any point in the course, as long as they do so respectfully.  As I will stress over and over, being confused is an important part of the process of learning computer science.  Learning computer science and struggling to grow is <a href = "https://i0.wp.com/katielmartin.com/wp-content/uploads/2019/02/1_9HzbByi2Uzit8474Rp4ZPg-1.jpg?w=550&ssl=1">not always comfortable</a>, but I want it to feel safe.  In other words, I will regularly keep you at the boundary of your comfort zone with challenging, real-world assignments, but I want you to feel comfortable with me and your peers and respected as a learner during the process<a name = "communication">.</a>
+											</p>
+
+											<p>
+												Finally, I am aware that, particularly during the pandemic, there are a variety of factors that may make it difficult to perform at your best level in class.  At Ursinus, we are fortunate to have quite a mix of students from different backgrounds, many of whom need to work part time, and an increasing number of whom are commuters and have family obligations.  If you find yourself having difficulty performing at the level that you want and/or turning assignments in on time because of any of these issues, please communicate with me, and we can come up with a solution together (I will gently reach out if I notice any slips even if you don't communicate).  This is a foundational course for the CS major, and I want to work to keep your excitement alive, regardless of your personal circumstances.  <u><b>You belong in CS!</b></u>
+											</p>
+
+
+											<HR>
+											<h2><a name = "participation">Participation</a></h2>
+
+
+											
+											<h3>Overall Participation Score / Classroom Etiquette</h3>
+											Students are expected to attend the Zoom sessions during class time with their camera on, and they will be graded for attendance.
+											<ul>
+												<li>Points will be evenly divided among all classes.</li>
+												<li>Students with an unexcused absence from a class will lose all points for that class.</li>
+												<li>It is imperative that students show up on time, because important announcements may happen at the beginning of every class.</li>
+											</ul>
+
+
+
+											<h3>Maximizing Your Communal Experience</h3>
+											<p>
+												Here are ways students can maximize their experience as a class community, and which could lead to extra credit in certain situations.
+											</p>
+											<ul>
+												<li>Helping to teach a student a topic during office hours.</li>
+												<li>Certain calls for participation in class</li>
+												<li>Particularly helpful or insightful messages on Discord</li>
+												<li>Finding mistakes in the book or on the assigned homework </li>
+											</ul>
+
+											<h3>Microsoft Teams / Discord Communication Policy</h3>
+											Since this is a class-wide communication, the following rules apply to online communication
+											<ul>
+												<li>
+													Students are expected to be respectful and mindful of the <a href = "#environment">classroom environment and inclusivity standards</a>.  They are equally applicable to a virtual environment as they are in class.</li>
+
+												<li>
+													Students <b>are not</b> permitted to publicly share direct answers or questions which might completely give away answers to any homework problems.  When in doubt, please send me a direct message on Microsoft Teams.
+												</li>
+
+												<li>
+													I will attempt to answer questions real time during my <a href = "#virtual">virtual office hours</a>.  Otherwise, I will make every attempt to respond within 24 hours on weekdays, at any time before 9PM.  I cannot be expected to respond at all on Saturdays or Sundays, so please plan accordingly.  (Of course, students can and should still respond to each other outside of these intervals, when appropriate).
+                                                </li>
+											</ul>
+
+											<p>
+											The points above are part of a more general term referred to as "<b>netiquette</b>."  Please refer to the chart below, provided by <a href = "http://blogs.onlineeducation.touro.edu/15-rules-netiquette-online-discussion-boards/">Touro College</a>
+											</p>
+
+											<img src = "Netiquette-Online-Discussion-Boards-infographic.png">
+
+
+
+											<!--
+                                                <ul>
+                                                    <li>Helping to teach a student a topic during office hours.</li>
+                                                    <li>Certain calls for participation in class</li>
+                                                    <li>Particularly helpful or insightful messages on Microsoft Teams</li>
+                                                    <li>Finding mistakes in the book or on the assigned homework and labs</li>
+												</ul>
+											-->
+                                            </p>
+
+											
+
+											<h2><a name = "collaboration">Collaboration Policy</a></h2>
+
+											<h3>Overall Philosophy</h3>
+											<p>
+											    The collaboration policy for this class walks the line between encouraging openness and collaboration during a challenging learning process, while also making sure that each students is progressing technically at an individual level without relying on 100% on other classmates.  Communication between students is allowed (and encouraged!) on most assignments, but it is expected that every student's code or writeups will be completely distinct.  Please do not copy code off of the Internet.  Please cite any sources in addition to materials linked from the course website that you used to help in crafting your code and completing the assignment.
+                                            </p>
+											
+											<h3><a name = "buddy">Assignment Buddies</a></h3>
+                                            <p>
+                                                To encourage collaboration, students will be allowed (not required) to choose one or more "<b>buddies</b>" to work "near" during assignments and labs.  Students are still expected to submit their own solutions, but they are allowed to provide substantial help to each other, and even to look at each others' code during the process.  Students should indicate their buddies in the README upon assignment submission.  Please let me know if you would like a buddy but are having trouble finding one.
+											</p>
+											
+											<h3>Individual Assignments</h3>
+											<p>
+												There will be a few assignments that students are expected to complete on their own with no communication with anyone but me.  They will be limited in number, but this will be just to make sure every individual students is progressing technically.  You can think of them like an open-ended, open-book take-home quiz where you can ask me questions.
+											</p>
+
+											<h3>Collaboration Scenarios Table</h3>
+                                            <p>
+                                                Below is a table spelling out in more detail when and how you are allowed to share code with people (table style cribbed from <a href = "https://www.cs.princeton.edu/courses/archive/spring19/cos126/syllabus.html">Princeton CS 126</a>).  </p>
+                                            
+
+												<p>
+													Click on each button below to view the collaboration parameters for each scenario.  Labs are more permissive than assignments, which are more permissive than individual tasks
+												</p>
+
+												<p>
+													<button type="button" onclick="viewLab()">Lab</button><button type="button" onclick = "viewAssignment()">Assignment Buddy</button><button type="button" onclick="viewIndividual()">Individual</button>
+												</p>
+
+
+												<div id="labTable">
+													<h3>Lab Collaboration Grid</h3>
+													<table class="wide-table" id="collaboration-table">
+														<tr>
+															<th></th>
+															<th>YOUR<br>BUDDY</th>
+															<th>COURSE<br>STAFF</th>
+															<th>CS 174<br>GRADS</th>
+															<th>CLASS-<br>MATES</th>
+															<th>OTHER<br>PEOPLE</th>
+														</tr>
+														<tr>
+															<th>DISCUSS CONCEPTS WITH:</th>
+															<td class="check">&#10004;</td>
+															<td class="check">&#10004;</td>
+															<td class="check">&#10004;</td>
+															<td class="check">&#10004;</td>
+															<td class="check">&#10004;</td>
+														</tr>
+														<tr>
+															<th>ACKNOWLEDGE COLLABORATION WITH:</th>
+															<td class="check">&#10004;</td>
+															<td class="check">&#10004;</td>
+															<td class="check">&#10004;</td>
+															<td class="check">&#10004;</td>
+															<td class="check">&#10004;</td>
+														</tr>
+														<tr>
+															<th>EXPOSE YOUR CODE/SOLUTIONS TO:</th>
+															<td class="check">&#10004;</td>
+															<td class="check">&#10004;</td>
+															<td class="check">&#10004;</td>
+															<td class="check">&#10004;</td>
+															<td class="ex">&#10008;</td>
+														</tr>
+														<tr>
+															<th>VIEW THE CODE/SOLUTIONS OF:</th>
+															<td class="check">&#10004;</td>
+															<td class="ex"><a href = "#instructorcode">*</a></td>
+															<td class="ex">&#10008;</td>
+															<td class="check">&#10004;</td>
+															<td class="ex">&#10008;</td>
+														</tr>
+														<tr>
+															<th>COPY CODE/SOLUTIONS FROM:</th>
+															<td class="ex">&#10008;</td>
+															<td class="ex"><a href = "#instructorcode">*</a></td>
+															<td class="ex">&#10008;</td>
+															<td class="ex">&#10008;</td>
+															<td class="ex">&#10008;</td>
+														</tr>
+													</table>
+												
+												</div>
+
+												<div id="assignmentTable">
+													<h3>Assignment Collaboration Grid</h3>
+													<table class="wide-table" id="collaboration-table">
+														<tr>
+															<th></th>
+															<th>YOUR<br>BUDDY</th>
+															<th>COURSE<br>STAFF</th>
+															<th>CS 174<br>GRADS</th>
+															<th>CLASS-<br>MATES</th>
+															<th>OTHER<br>PEOPLE</th>
+														</tr>
+														<tr>
+															<th>DISCUSS CONCEPTS WITH:</th>
+															<td class="check">&#10004;</td>
+															<td class="check">&#10004;</td>
+															<td class="check">&#10004;</td>
+															<td class="check">&#10004;</td>
+															<td class="check">&#10004;</td>
+														</tr>
+														<tr>
+															<th>ACKNOWLEDGE COLLABORATION WITH:</th>
+															<td class="check">&#10004;</td>
+															<td class="check">&#10004;</td>
+															<td class="check">&#10004;</td>
+															<td class="check">&#10004;</td>
+															<td class="check">&#10004;</td>
+														</tr>
+														<tr>
+															<th>EXPOSE YOUR CODE/SOLUTIONS TO:</th>
+															<td class="check">&#10004;</td>
+															<td class="check">&#10004;</td>
+															<td class="check">&#10004;</td>
+															<td class="ex">&#10008;</td>
+															<td class="ex">&#10008;</td>
+														</tr>
+														<tr>
+															<th>VIEW THE CODE/SOLUTIONS OF:</th>
+															<td class="check">&#10004;</td>
+															<td class="ex"><a href = "#instructorcode">*</a></td>
+															<td class="ex">&#10008;</td>
+															<td class="ex">&#10008;</td>
+															<td class="ex">&#10008;</td>
+														</tr>
+														<tr>
+															<th>COPY CODE/SOLUTIONS FROM:</th>
+															<td class="ex">&#10008;</td>
+															<td class="ex"><a href = "#instructorcode">*</a></td>
+															<td class="ex">&#10008;</td>
+															<td class="ex">&#10008;</td>
+															<td class="ex">&#10008;</td>
+														</tr>
+													</table>
+												
+												</div>
+
+												<div id="individualTable">
+													<h3>Individual Collaboration Grid</h3>
+													<table class="wide-table" id="collaboration-table">
+														<tr>
+															<th></th>
+															<th>YOUR<br>BUDDY</th>
+															<th>COURSE<br>STAFF</th>
+															<th>CS 174<br>GRADS</th>
+															<th>CLASS-<br>MATES</th>
+															<th>OTHER<br>PEOPLE</th>
+														</tr>
+														<tr>
+															<th>DISCUSS CONCEPTS WITH:</th>
+															<td class="check">N/A</td>
+															<td class="check">&#10004;</td>
+															<td class="ex">&#10008;</td>
+															<td class="ex">&#10008;</td>
+															<td class="ex">&#10008;</td>
+														</tr>
+														<tr>
+															<th>ACKNOWLEDGE COLLABORATION WITH:</th>
+															<td class="check">N/A</td>
+															<td class="check">&#10004;</td>
+															<td class="ex">&#10008;</td>
+															<td class="ex">&#10008;</td>
+															<td class="ex">&#10008;</td>
+														</tr>
+														<tr>
+															<th>EXPOSE YOUR CODE/SOLUTIONS TO:</th>
+															<td class="check">N/A</td>
+															<td class="check">&#10004;</td>
+															<td class="ex">&#10008;</td>
+															<td class="ex">&#10008;</td>
+															<td class="ex">&#10008;</td>
+														</tr>
+														<tr>
+															<th>VIEW THE CODE/SOLUTIONS OF:</th>
+															<td class="check">N/A</td>
+															<td class="ex"><a href = "#instructorcode">*</a></td>
+															<td class="ex">&#10008;</td>
+															<td class="ex">&#10008;</td>
+															<td class="ex">&#10008;</td>
+														</tr>
+														<tr>
+															<th>COPY CODE/SOLUTIONS FROM:</th>
+															<td class="ex">N/A</td>
+															<td class="ex"><a href = "#instructorcode">*</a></td>
+															<td class="ex">&#10008;</td>
+															<td class="ex">&#10008;</td>
+															<td class="ex">&#10008;</td>
+														</tr>
+													</table>
+												
+												</div>
+
+												<p>
+													<a name="instructorcode">*</a> You may view and copy code from class exercises and class resources without citing them, but you should not copy solutions from previous semesters that the instructor may have provided
+												</p>
+                                                <p>
+                                                    <b>NOTE: </b> The terms "exposing" and "viewing" exclude sending or ingesting electronically, which would be considered copying.  Exposing and viewing are normally done in the context of in-person working or in the help room.  <b>Since we are working remotely, what this means is that buddies can screen share as they are working through things, but they should not send code directly.</b>
+												</p>
+												
+
+                                                <p>
+                                                    <b>NOTE ALSO: </b> "Other people" includes internet sources.
+                                                </p>
+												
+											<script>
+												let assignment = document.getElementById("assignmentTable");
+												let individual = document.getElementById("individualTable");
+												let lab = document.getElementById("labTable");
+
+												function viewAssignment() {
+													assignment.style.display = "block";
+													individual.style.display = "none";
+													lab.style.display = "none";
+												}
+
+												function viewIndividual() {
+													assignment.style.display = "none";
+													individual.style.display = "block";
+													lab.style.display = "none";
+												}
+
+												function viewLab() {
+													assignment.style.display = "none";
+													individual.style.display = "none";
+													lab.style.display = "block";
+												}
+
+												viewAssignment();
+
+											</script>
+
+											<p>
+                                                If the collaboration policy has been violated in any way, regardless of intent, then it may be an academic dishonesty case, and it will be referred to <a href = "https://www.ursinus.edu/live/profiles/184-">the Associate Dean for Academic Affairs</a>.  I am required to make this report in every occurrence, so it is best to speak with me first if there are any questions about the policy or expectations. You should feel free to have these conversations with me anytime prior to making your submission without fear of penalty. 
+                                            </p>
+
+										<HR>
+											<h2><a name = "other">Other Resources / Policies</a></h2>
+
+											<h3><a name = "accommodations">Accommodations</a></h3>
+
+											<p>
+												In addition to our general awareness diversity, Ursinus College is also committed to providing reasonable accommodations to students with disabilities.  Students with a disability should contact the Directory of Disability Services ASAP.  Dolly Singley is located in the Center for Academic Support in the lower level of Myrin Library.  Please visit <a href = "https://www.ursinus.edu/offices/institute-for-student-success/students-with-disabilities/current-students-/">this link</a> for more information on the process.  I will do my best to accommodate your requests, and they will be kept completely confidential.
+											</p>
+
+											<h3><a name = "tutoring">One on One Tutoring</a></h3>
+											<p>
+												One on one tutoring for up to two hours per week is available through the institute for student success.  Please <a href = "https://ursinus.co1.qualtrics.com/jfe/form/SV_a3RiafTYa3m7KN7">click here</a> to fill out a Qualtrics survey if you'd like to take advantage of this.
+											</p>
+
+											<h3>Let's Talk</h3>
+											<p>
+												Mental health care is increasingly recognized as a crucial service for the undergraduate population.  To decrease the barrier for entry, Ursinus college will be providing additional drop-in hours during the semester.  Please refer to the flyer below for the awesome program.  If you are still hesitant to go, take me (Professor Tralie) as an example of someone who has benefited from talk therapy in the past.  I am happy to discuss this in office hours in more detail.
+											</p>
+											<p>
+												<img src = "letstalk.jpg">
+											</p>
+
+											<h3>Title IX</h3>
+											<p>
+												Title IX is a federal law, under which it is prohibited to discriminate on the basis of gender. The <a href = "https://www.ursinus.edu/offices/prevention-and-advocacy/title-ix/">Title IX Coordinator</a> is available to receive inquiries and to investigate allegations in this regard. 
+											</p>
+
+											<h3>Inclement Weather Policy</h3>
+											<p>
+												This is mostly a moot point since the class will run online, but in the even that weather or other events impact connectivity during our <a href = "#zoommodules">synchronous meetings</a>, we may have to reschedule or to switch to asynchronous activities in the interim.  Regardless, we will be sure to cover all of the material; we will simply adapt the delivery mechanism as needed.
+											</p>
+	
+
+								</section>
+								
+
+
+						</div>
+					</div>
+
+				<!--LaTeX in Javascript!-->
+				<script src="../../../../jsMath/easy/load.js"></script>
+				<!--Syntax highlighting in Javascript!-->
+				<script type="text/javascript" src="../../../../syntaxhighlighter/scripts/shCore.js"></script>
+				<script type="text/javascript" src="../../../syntaxhighlighter/scripts/shBrushJScript.js"></script>
+				<script type="text/javascript" src="../../../../syntaxhighlighter/scripts/shBrushCpp.js"></script>
+				<script type="text/javascript" src="../../../../syntaxhighlighter/scripts/shBrushMatlabSimple.js"></script>
+				<script type="text/javascript" src="../../../../syntaxhighlighter/scripts/shBrushPython.js"></script>
+				<link type="text/css" rel="stylesheet" href="../../../../syntaxhighlighter/styles/shCoreDefault.css"/>
+				<script type="text/javascript">SyntaxHighlighter.all();</script>
+
+<!-- Sidebar -->
+					<div id="sidebar">
+						<div class="inner">
+							<!-- Menu -->
+								<nav id="menu">
+									<header class="major">
+										<h2>Menu</h2>
+									</header>
+									<ul>
+                                        <li>
+											<span class="opener">General</span>
+											<ul>
+												<li><a href = "index.html#overview">Overview</a></li>
+												<li><a href = "index.html#logistics">Technology Logistics</a></li>
+												<li><a href = "index.html#homework">Homework</a></li>
+												<li><a href = "index.html#grading">Grading</a></li>
+												<li><a href = "index.html#environment">Classroom Environment</a></li>
+												<li><a href = "index.html#participation">Participation</a></li>
+												<li><a href = "index.html#collaboration">Collaboration Policy</a></li>
+												<li><a href = "index.html#other">Other Resources / Policies</a></li>
+											</ul>
+										</li>
+										<li><a href = "Software/index.html">Software</a></li>
+										<li><a href = "Schedule/index.html">Schedule</a></li>
+										<li><a href = "style.html">Style Guide</a></li>
+										<li><a href = "drills.html">Drills</a></li>
+                                        <li>
+											<span class="opener">Labs</span>
+											<ul>
+												<li><a href = "Labs/Lab1_Holidays/index.html">Lab1: HTML Holidays</a></li>
+												<li><a href = "Labs/Lab2_ChooseYourAdventure/index.html">Lab2: Choose Your Own Adventure</a></li>
+												<li><a href = "Labs/Lab3_ShapesInheritance/index.html">Lab3: Drawing Shapes with Inheritance</a></li>
+												<li><a href = "Labs/Lab4_COVIDPolymorphism/index.html">Lab4: COVID Polymorphism</a></li>
+												<li><a href = "Labs/Lab5_MyArrayList/index.html">Lab 5: My ArrayList</a></li>
+												<li><a href = "Labs/Lab6_RoadDetection/index.html">Lab 6: Road Detection with Threads</a></li>
+												<li><a href = "Labs/Lab7_BugHunt">Lab 7: C++ Bug Hunt</a></li> 
+											</ul>
+										</li>
+                                        <li>
+											<span class="opener">Assignments</span>
+											<ul>
+												<li><a href = "Assignments/HW0_Warmup/index.html">HW0: Warmup</a></li>
+												<li><a href = "Assignments/HW1_VirtualCities">HW1: Make Your Virtual City</a>
+												
+												<ul>
+													<li><a href = "Assignments/HW1_VirtualCities/ArtContest">Art Gallery!</a></li>
+												</ul>
+												</li>
+												<li><a href = "Assignments/HW2_MarkovMashups">HW2: Markov Mashups</a></li>
+												<li><a href = "Assignments/HW3_DequeFires">HW3: Deque Fires</a></li>
+												<li><a href = "Assignments/HW4_AudioFiltering">HW4: Consonant/Vowel Filtering in Audio</a></li>
+												<li><a href = "Assignments/HW5a_BasketballHashing">HW5a: Basketball Hashing</a></li>
+												<li><a href = "Assignments/HW5b_Shazam">HW5b: Shazam</a></li>
+											</ul>
+										</li>
+                                        <li>
+											<span class="opener">Pre-Class Modules</span>
+											<ul>
+												<li><a href = "https://ursinus-cs174-f2020.github.io/Modules/Module1/Video1">Module 1: Classes Intro</a></li>
+												<li><a href = "https://ursinus-cs174-f2020.github.io/Modules/Module2/Video1">Module 2: Hash Maps</a></li>
+												<li><a href = "https://ursinus-cs174-f2020.github.io/Modules/Module3/Inheritance1">Module 3: Inheritance1</a></li>
+												<li><a href = "https://ursinus-cs174-f2020.github.io/Modules/Module4/Video1">Module 4: Linked List Removal And Iterators</a></li>
+												<li><a href = "https://ursinus-cs174-f2020.github.io/Modules/Module5/Video1">Module 5: Threads And Synchronization</a></li>
+												<li><a href = "https://ursinus-cs174-f2020.github.io/Modules/Module6/Video1">Module 6: C++ Basics</a></li>
+												<li><a href = "https://ursinus-cs174-f2020.github.io/Modules/Module7/Video1">Module 7: Addresses And Pointers</a></li>
+												<li><a href = "https://ursinus-cs174-f2020.github.io/Modules/Module8/Exercise0">Module 8: Pointers Continued</a></li>
+												<li><a href = "https://ursinus-cs174-f2020.github.io/Modules/Module9/Video1">Module 9: C++ Classes</a></li>
+												<li><a href = "https://ursinus-cs174-f2020.github.io/Modules/Module10/Video1">Module 10: C++ Object References / Linked Lists</a></li>
+												<li><a href = "https://ursinus-cs174-f2020.github.io/Modules/Module11/Video1">Module 11: ADTs / Linked Map</a></li>
+												<li><a href = "https://ursinus-cs174-f2020.github.io/Modules/Module12/Video1">Module 12: C++ Inheritance</a></li>
+												<li><a href = "https://ursinus-cs174-f2020.github.io/Modules/Module13/Video1">Module 13: Recursion And STL Vectors</a></li>
+												<li><a href = "https://ursinus-cs174-f2020.github.io/Modules/Module14/Video1">Module 14: Recursion Part 2</a></li>
+												<li><a href = "https://ursinus-cs174-f2020.github.io/Modules/Module15/Video1">Module 15: Binary Trees Intro</a></li>
+												<li><a href = "https://ursinus-cs174-f2020.github.io/Modules/Module16/Video1">Module 16: Binary Trees Level And Depth</a></li>
+											</ul>
+										</li>
+                                        <li>
+											<span class="opener">Class Exercises</span>
+											<ul>
+												<li><a href = "ClassExercises/Week1_2048/index.html">Week 1: Building The 2048 Game Together</a></li>
+												<li><a href = "ClassExercises/Week5_SortingTweets/index.html">Week 5: Sorting Tweets</a></li>
+											</ul>
+										</li>
+									</ul>
+								</nav>
+
+							<!-- Section -->
+								<section>
+									<div class="mini-posts">
+										Announcements							
+                                    </div>
+								</section>
+
+
+							<!-- Footer -->
+								<footer id="footer">
+									<p class="copyright">&copy; <a href = "http://www.ctralie.com">Christopher J. Tralie</a>. All rights reserved.  Contact chris.tralie@gmail.com. Design: <a href="https://html5up.net">HTML5 UP</a>.</p>
+								</footer>
+
+						</div>
+					</div>
+
+			</div>
+			
+            <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+            <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+<!-- End Sidebar !-->
+
+<!-- Scripts -->
+			<script src="assets/js/jquery.min.js"></script>
+			<script src="assets/js/skel.min.js"></script>
+			<script src="assets/js/util.js"></script>
+			<!--[if lte IE 8]><script src="assets/js/ie/respond.min.js"></script><![endif]-->
+			<script src="assets/js/main.js"></script>
+<!-- End Scripts -->
+	</body>
+</html>

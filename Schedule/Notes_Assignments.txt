@@ -1,0 +1,89 @@
+
+Java Assignments
+
+Week 1:
+Lab 1: Print all of the holidays from arrays of day/month/year/name
+
+Assignment 1: 3D methods to draw a city
+http://www.mooduino.co.uk/2010/03/processing-in-netbeans.html
+
+Class activity: students make a ton of methods that fit together to play 2048 in Java
+
+----------------------------
+
+Week 2:
+Classes and file loading
+
+Running Class Activity: Load roster into a class, count people by year, number of people whose name starts with a certain letter
+
+Accessors and mutators
+http://www.billmongan.com/Ursinus-CS173-Fall2020/Activities/Classes2
+
+Assignment 2: Markov Mashups Out [file loading, classes, hash maps]
+
+
+----------------------------
+
+Week 3: Inheritance
+http://www.billmongan.com/Ursinus-CS173/Activities/Inheritance
+
+
+Lab 3: Shapes class with inheritance (triangle, circle, square)
+then draw, using only line segment
+
+Assignment 2 Due
+----------------------------
+Week 4: Polymorphism
+https://runestone.academy/runestone/books/published/csawesome/Unit9-Inheritance/topic-9-6-polymorphism.html
+
+* Have students discover polymorphism
+
+* Assignment 3: COVID-19 Monte-Carlo Out [polymorphism, SEIR model]
+- Create a medic class
+- Create a covidiot (traveler) class
+
+* Lab 4: COVID
+
+----------------------------
+Week 5: Interfaces / Collections
+
+* Talk about the diamond problem
+
+* Go over comparable again
+- Class exercise: Write a static method that takes an array of comparables and returns the min
+
+* Assignment 4 Out: The toll booth problem / queuing processes [data structures, private variables]
+
+Lab 4: Reddit posts (like the Twitter assignment)
+
+----------------------------
+Week 6: Data structures
+
+Monday HashMaps class exercise: design your own adventure
+
+
+
+----------------------------
+Week 7: Threads, Metaprogramming, Towards C++
+https://www.cs.carleton.edu/faculty/dmusican/cs348/java_multi/
+https://cse.iitkgp.ac.in/~dsamanta/java/ch6.htm
+
+C++ Labs
+* Terminal scavenger hunt
+* Something with STL
+* Ackermann function (recursion)
+* Render a binary tree
+
+
+C++ Assignments
+* Hashing and the Shazam algorithm
+* The rush hour problem
+* The hough transform (can use cimg library)
+
+
+
+
+
+Skipped
+-------
+* A lab on image processing (instance variables for width/height and methods for blurring and embossing)

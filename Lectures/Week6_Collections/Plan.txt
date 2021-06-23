@@ -1,0 +1,16 @@
+Tuesday: 
+* Recall how to delete an element in an array
+* Go over LinkedList implementation
+- Draw a picture of linked list
+- Setup inner class for node
+- Implement insertion and toString
+- Question: How could we make insertion faster?
+- Have student implement remove by key
+
+
+Lab 5: Make your own arraylist
+* Show ArrayList class
+* Start making our own version of ArrayList with a generic
+- Start with a fixed size
+
+

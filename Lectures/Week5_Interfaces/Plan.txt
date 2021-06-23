@@ -1,0 +1,20 @@
+Video 1:
+* Implement getMin on circles by location, draw the one with the min area with a different color
+* Say I want to do it on COVID simulation
+* Try to do multiple inheritance with getMin on shapes with a "Numberable" class
+- Show that it doesn't work, explain diamond problem using Dia with Numberable
+* Introduce interfaces, show how it works on circle example
+
+Tuesday Class Exercise:
+* Implement min index with interface, draw a large point over the index of the leftmost person
+* Introduce comparable, try to sort students by their x-coordinate
+
+Video 2: Pre-Class Video on Tweet data
+Wednesday Class Exercise:
+* Sorting tweets
+
+Video 3: Do binary search applet exercise
+Friday Class Exerciese:
+* Binary search
+
+

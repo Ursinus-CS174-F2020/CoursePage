@@ -1,0 +1,57 @@
+INTRODUCTION:
+
+Problem Statement:
+Given a collection of N objects, we want to efficiently:
+1) Query the collection to see if it contains an object
+2) Add an object to the collection
+3) Delete an object from the collection
+
+
+Data Structure 1: Unordered link list
+
+
+Data Structure 2: Sorted array
+
+
+Data Structure 3: Balanced binary search tree
+
+--------------------------------------------------------------------
+HASHING
+https://visualgo.net/en/hashtable
+
+Hash function definition
+
+Example: Polygons to numbers
+
+What is a collision?  Explain pigeonhole principle
+
+Example hash function for people: number of hairs on your head
+
+
+Question: How to we define a new hash function to fewer bins?
+
+
+Live demo 1:
+*Show what happens with a random function (try queries)
+*Have students try out hash functions, show modding for variable number of bins
+*Try Java's base 31 type
+*Talk about tradeoff between memory and search time
+
+
+--------------------------------------------------------------------
+Followup Slides:
+*Ideal mathematical model of hashing with bins in buckets
+
+*Java's scheme, code for C++, code for Java
+
+Applications: [Purpose, key, in list, not in list]
+*Detecting duplicates, spell checker, facebook, spam filter
+
+*Cover songs
+*Security (MD5) vs speed tradeoff
+-Adversarial attacks (and rebalancing)
+
+
+
+Wrap Up:
+Show hashing data structures in C++ and Java
