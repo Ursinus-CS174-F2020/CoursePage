@@ -37,3 +37,9 @@
 [submodule "ClassExercises/Week14_BinarySearchTrees"]
 	path = ClassExercises/Week14_BinarySearchTrees
 	url = https://github.com/Ursinus-CS174-F2020/Week14_BinarySearchTrees.git
+[submodule "Labs/Lab1_Holidays/Lab1_Holidays"]
+	path = Labs/Lab1_Holidays/Lab1_Holidays
+	url = https://github.com/Ursinus-CS174-F2020/Lab1_Holidays.git
+[submodule "Labs/Lab3_ShapesInheritance/Lab3_ShapesInheritance"]
+	path = Labs/Lab3_ShapesInheritance/Lab3_ShapesInheritance
+	url = https://github.com/Ursinus-CS174-F2020/Lab3_ShapesInheritance.git

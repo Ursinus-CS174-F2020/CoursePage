@@ -1,0 +1,497 @@
+<!DOCTYPE HTML>
+<!--
+	Editorial by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+<!-- Header !-->
+	<head>
+		<title>Ursinus CS 174: Object Oriented Programming, Fall 2020</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<!--[if lte IE 8]><script src="../../assets/js/ie/html5shiv.js"></script><![endif]-->
+		<link rel="stylesheet" href="../../assets/css/main.css" />
+		<!--[if lte IE 9]><link rel="stylesheet" href="../../assets/css/ie9.css" /><![endif]-->
+		<!--[if lte IE 8]><link rel="stylesheet" href="../../assets/css/ie8.css" /><![endif]-->
+        <style>
+        .image_off, #home:hover .image_on{
+           display:none
+        }
+        .image_on, #home:hover .image_off{
+           display:block
+        }
+        </style>
+	</head>
+	<body>
+
+		<!-- Wrapper -->
+			<div id="wrapper">
+
+				<!-- Main -->
+					<div id="main">
+						<div class="inner">
+
+							<!-- Header -->
+								<header id="header">
+									<a href="../../index.html" class="logo"><strong>Ursinus CS 174: Object Oriented Programming, Fall 2020</strong></a>
+								</header>
+<!-- End Header !-->
+
+							<!-- Content -->
+								<section>
+									<header class="main">
+                                        <h2>Lab 1: HTML Holidays (3 Points)</h2>
+                                        <h3><a href = "http://www.ctralie.com">Chris Tralie</a></h3>
+                                        <h3>Due Monday 9/14/2020</h3>
+									</header>
+
+									<div id="page-content">
+
+                                        <h2>Overview / Logistics</h2>
+										<p>
+                                            The purpose of this lab is to enable you to brush up on your knowledge of methods and how they fit together.  You will be converting data from one format (parallel arrays) to another format (HTML).  Though it is often tedious, automating such data conversions is a common task in software engineering, so this is a valuable skill.
+                                        </p>
+
+                                        <p>
+                                            Furthermore, you will get experience making <b>code that writes code!</b>.  This is also a common task, as we might have a higher level language with more context (like Java in our example) that writes tons of code in a simpler language (HTML in our example) that would be very tedious to write out by hand.  And this is actually what happens to run your Java code behind the scenes with a conversion to <a href = "https://en.wikipedia.org/wiki/Java_bytecode">Java bytecode</a>.
+                                        </p>
+
+                                        <p>
+                                            Compared to 173, you will notice that the design of your methods is left a little bit more up to you.  This is intentional.  Students are moving more towards autonomy in their design in this course, so you should spend a little bit more time up front sketching out a plan on a piece of paper before you start coding.  Of course, I am also happy to discuss your ideas!  But just be sure not to code before you think.
+                                        </p>
+
+                                        <p>
+                                            <a href = "https://github.com/Ursinus-CS174-F2020/Lab1_Holidays/archive/master.zip">Click here</a> to download the skeleton code for this assignment, which you can open with NetBeans.  You will be editing <code>src/Holidays.java</code>.  Have you read this all and still don't know where to start?? <a href = "#gettingstarted">Click here</a>.
+                                        </p>
+
+                                        <p>
+                                            <h3>Learning Objectives</h3>
+                                            <ul>
+                                                <li>Access elements in a multidimensional array using loops</li>
+                                                <li>Write methods to fit a specification</li>
+                                                <li>Use existing methods with provided documentation</li>
+                                                <li>Use methods together in concert to accomplish a task</li>
+                                                <li>Perform basic String concatenation in Java</li>
+                                                <li>Write a complete program with very little code in the <code>main</code> function</li>
+                                                <li>Programmatically convert data from one format to another</li>
+                                            </ul>
+                                        </p>
+
+                                        <h3><a name = "readme">What to submit</a></h3>
+                                        <p>When you are finished, you should submit <code>Holidays.java</code> to Canvas.  Then, please answer the following reflection questions below, which we will use to guide discussions next week.</p>
+
+                                        <iframe src="https://ursinus.co1.qualtrics.com/jfe/form/SV_9uAMvHclHAraBlH" width=800 height=300></iframe>
+
+                                    <h2><a name = "background">Background: HTML Tables</a></h2>
+                                    <p>
+                                        Modern web pages are formatted in a scripting language known as <a href = "https://simple.wikipedia.org/wiki/HTML">Hypertext Markup Language</a>, or HTML for short.  This code can be written up front and fixed for static web pages (like the one you're looking at now), but we very often want to generate it programmatically so we don't have to write it from scratch every time a small amount of data changes.  This is the basis of server-side web languages such as <a href = "https://en.wikipedia.org/wiki/PHP">PHP</a>.
+                                    </p>
+
+                                    <p>
+                                        Every type of formatting occurs in what's known as a "tag."  The web site w3schools.com has some <a href = "https://www.w3schools.com/html/default.asp">nice tutorials on different HTML tags</a>, but we will be just focusing on one set of tags today for <a href = "https://www.w3schools.com/html/html_tables.asp">HTML tables</a>.  You can read more about them at <a href = "https://www.w3schools.com/html/html_tables.asp">this link</a>, but the example covers everything you need to know for this lab.  In particular,
+                                        <ul>
+                                            <li>
+                                                Every table tag begins with <code>&lttable&gt</code> and ends with <code>&lt/table&gt</code>
+                                            </li>
+                                            <li>
+                                                Within the table, every row tag begins with <code>&lttr&gt</code> and ends with <code>&lt/tr&gt</code>
+                                            </li>
+                                            <li>
+                                                Within each row, every column tag begins with <code>&lttd&gt</code> and ends with <code>&lt/td&gt</code>
+                                            </li>
+                                            <li>
+                                                The data for the table goes within the <code>&lttd&gt ... &lt/td&gt</code> tags.
+                                            </li>
+                                        </ul> 
+                                    </p>
+
+                                    <p>
+                                        For example, the code below
+
+                                        <script type="syntaxhighlighter" class="brush: html"><![CDATA[
+                                            <table>
+                                                <tr>
+                                                    <td>Course Title</td>
+                                                    <td>Course Name</td>
+                                                    <td>Prerequisites</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>CS 173</td>
+                                                    <td>Intro To Computer Science</td>
+                                                    <td>None</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>CS 174</td>
+                                                    <td>Object Oriented Programming</td>
+                                                    <td>CS 173</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>CS 476</td>
+                                                    <td>Computer Graphics</td>
+                                                    <td>CS 174, Math 111</td>
+                                                </tr>
+                                            </table>
+                                        ]]></script>  
+
+                                        generates a table that looks like this
+                                        <table>
+                                            <tr>
+                                                <td>Course Title</td>
+                                                <td>Course Name</td>
+                                                <td>Prerequisites</td>
+                                            </tr>
+                                            <tr>
+                                                <td>CS 173</td>
+                                                <td>Intro To Computer Science</td>
+                                                <td>None</td>
+                                            </tr>
+                                            <tr>
+                                                <td>CS 174</td>
+                                                <td>Object Oriented Programming</td>
+                                                <td>CS 173</td>
+                                            </tr>
+                                            <tr>
+                                                <td>CS 476</td>
+                                                <td>Computer Graphics</td>
+                                                <td>CS 174, Math 111</td>
+                                            </tr>
+                                        </table>
+                                    </p>
+
+
+
+                                    <h2>Lab 1 Task</h2>
+
+                                    <p>
+                                        In this lab, you will programmatically generate a <code>String</code> containing all of code for a small HTML web page with a table of some major holidays in 2020, and then you will write this string to a file.  <b>You will not be writing any HTML code directly!</b>  Rather, you will be automatically creating HTML code using Java.
+                                    
+                                    <p>
+                                        The table should be formatted <a href = "#finalresult">as shown below</a>.  You will then write this string to a <code>.html</code> file, which you can open to view the generated table with any modern web browser (like the one you're using now!).  The information about the holidays is provided in two pieces in the <code>Holidays.java</code> file.  The first is constant array of <code>String</code> values with the name of the holidays, as shown below:
+                                    </p>
+
+                                    <script type="syntaxhighlighter" class="brush: cpp"><![CDATA[
+                                    public static final String[] HOLIDAY_NAMES = {
+                                        "New Year's Day", 
+                                        "Martin Luther King Jr. Day",
+                                        "Chinese New Year",
+                                        "Valentine's Day",
+                                        "Presidents' Day",
+                                        "Holi",
+                                        "Good Friday",
+                                        "Earth Day",
+                                        "Cinco de Mayo",
+                                        "Memorial Day",
+                                        "Flag Day",
+                                        "Juneteenth",
+                                        "Independence Day",
+                                        "Bastille Day",
+                                        "Hijra - Islamic New Year",
+                                        "Labor Day",
+                                        "Rosh Hashana",
+                                        "Yom Kippur",
+                                        "Sukkot",
+                                        "National Cat Day",
+                                        "Halloween",
+                                        "Veterans Day",
+                                        "Diwali",
+                                        "Thanksgiving",
+                                        "Christmas Day"
+                                    };                                       
+                                    ]]></script>  
+
+                                    <p>
+                                        Then, the month and day are provided as elements in a multidimensional array that is 
+                                    </p>
+                                    <script type="syntaxhighlighter" class="brush: cpp"><![CDATA[
+                                    public static final int[][] HOLIDAY_DATES = {
+                                        {1, 1}, {1, 20}, {1, 25}, {2, 14}, {2, 17}, {3, 9}, {4, 10}, {4, 22}, 
+                                        {5, 5}, {5, 25}, {6, 14}, {6, 19}, {7, 4}, {7, 14}, {8, 21}, {9, 7}, 
+                                        {9, 18}, {9, 27}, {10, 9}, {10, 29}, {10, 31}, {11, 11}, {11, 14}, 
+                                        {11, 26}, {12, 25} 
+                                    };
+                                    ]]></script>  
+
+                                    <p>
+                                        These arrays are <i>parallel</i>, which means that corresponding indices refer to the same item.  For instance
+                                    </p>
+                                    <p>
+                                        <code>HOLIDAY_NAMES[1]</code> is the string "Martin Luther King Jr. Day"
+                                    </p>
+                                    <p>
+                                        <code>HOLIDAY_DATES[1]</code> is the array <code>{1, 20}</code>
+                                    </p>
+                                    <p>
+                                        So, the complete information for entry <code>1</code> is the name <code>HOLIDAY_NAMES[1]</code>, the month <code>HOLIDAY_DATES[1][0]</code>, and the day <code>HOLIDAY_DATES[1][1]</code>.
+                                    </p>
+                                    
+                                    <p>
+                                        To generate the complete HTML web page, you will need to
+                                        <ol>
+                                            <li>Create a string with the <a href = "#htmlstart">HTML header</a> and the start table tag</li>
+                                            <li>Loop through all of the elements in these arrays to create each row of the HTML table, and add the string for that row to your running HTML string.</li>
+                                            <li>Add the end table tag and the <a href = "#htmlend">code to end the HTML document</a> to the end of your string</li>
+                                            <li>
+                                                Write the final string to the HTML file <code>holidays.html</code>
+                                            </li>
+                                        </ol>
+                                    </p>  
+                                    
+                                    <h3>Provided Java Helper Methods</h3>
+                                    <p>
+                                    The following methods are provided in the NetBeans project to help you out.  You should look at the <a href = "../../style.html#documentationmethods">documentation</a> in comments above each method
+                                    </p>
+
+                                    <ul>
+                                        <li><code><a name = "htmlstart">getHTMLStart()</a></code>: This method returns a string that should go at the beginning of your HTML string</li>
+                                        <li><code><a name = "htmlend">getHTMLEnd()</a></code>: This method returns a string that should go at the end of your HTML string</li>
+                                        <li><code>writeToFile(String filename, String s)</code>: A method to write a string to a file.  You should use this method to write your complete HTML string to a file called <code>holidays.html</code> when it is ready. Files will write to the root of your project directory by default.  So if I say, for example
+                                        <script type="syntaxhighlighter" class="brush: cpp"><![CDATA[
+                                        writeToFile("out.html", "Hello world");
+                                        ]]></script>  
+                                        This will create a file "out.txt" in your project.  You should navigate to the project in your file manager and double click on this file to open it in a browser.
+                                        
+                                        </li>
+                                        <li>
+                                            <code>Weekday.getWeekday(int year, int month, int day)</code>: Use this method to return the weekday as a String 
+                                        </li>
+                                    </ul>
+
+                                    <h3>Java code you need to write</h3>
+                                    <p>
+                                        You should write three methods in <code>Holidays.java</code> that work together to accomplish the task
+                                        <ol>
+                                            <li>
+                                                A method that converts a month number into a string representing that month. <b>HINT:</b> Your code will be much shorter if you use an array to store and reference the month names instead of having a bunch of if statements or a switch statement
+                                            </li>
+                                            <li>
+                                                A method that returns a string corresponding to a particular row of the table.
+                                            </li>
+                                            <li>
+                                                A method that pieces the full HTML string together and then writes all of the HTML code to a file
+                                            </li>
+                                        </ol>
+                                    </p>
+
+                                    <h3>
+                                        Extra Credit (Up To +1)
+                                    </h3>
+                                    Here are a few things you can do that are above and beyond
+                                    <ul>
+                                        <li>
+                                            If all of the tags are there, the HTML will work properly, even if there is no whitespace in between the tags.  But the code will be a big mess.  Format the HTML code nicely with line breaks and tabs where appropriate
+                                        </li>
+                                        <li>
+                                            Stylize your table using <a href = "https://www.w3schools.com/css/css_table.asp">CSS</a>
+                                        </li>
+                                    </ul>
+                                    
+
+                                    <h3><a name = "finalresult">Final Result</a></h3>
+                                    <p>
+                                        Here's an example of what a row should look like
+                                    </p>
+
+                                    <script type="syntaxhighlighter" class="brush: cpp"><![CDATA[
+                                        <tr><td>Weekday</td><td>Month</td><td>Day</td><td>Holiday</td></tr><tr><td>Wednesday</td><td>January</td><td>1</td><td>New Year's Day</td></tr>
+                                        ]]></script>  
+
+
+                                    
+                                    <p>
+                                        If all goes well, when you put all of the rows together and write them out to <code>holidays.html</code>, you should see a table with the following information:
+                                    </p>
+                                    <table>
+                                        <tr><td>Weekday</td><td>Month</td><td>Day</td><td>Holiday</td></tr><tr><td>Wednesday</td><td>January</td><td>1</td><td>New Year's Day</td></tr>
+                                        <tr><td>Monday</td><td>January</td><td>20</td><td>Martin Luther King Jr. Day</td></tr>
+                                        <tr><td>Saturday</td><td>January</td><td>25</td><td>Chinese New Year</td></tr>
+                                        <tr><td>Friday</td><td>February</td><td>14</td><td>Valentine's Day</td></tr>
+                                        <tr><td>Monday</td><td>February</td><td>17</td><td>Presidents' Day</td></tr>
+                                        <tr><td>Monday</td><td>March</td><td>9</td><td>Holi</td></tr>
+                                        <tr><td>Friday</td><td>April</td><td>10</td><td>Good Friday</td></tr>
+                                        <tr><td>Wednesday</td><td>April</td><td>22</td><td>Earth Day</td></tr>
+                                        <tr><td>Tuesday</td><td>May</td><td>5</td><td>Cinco de Mayo</td></tr>
+                                        <tr><td>Monday</td><td>May</td><td>25</td><td>Memorial Day</td></tr>
+                                        <tr><td>Sunday</td><td>June</td><td>14</td><td>Flag Day</td></tr>
+                                        <tr><td>Friday</td><td>June</td><td>19</td><td>Juneteenth</td></tr>
+                                        <tr><td>Saturday</td><td>July</td><td>4</td><td>Independence Day</td></tr>
+                                        <tr><td>Tuesday</td><td>July</td><td>14</td><td>Bastille Day</td></tr>
+                                        <tr><td>Friday</td><td>August</td><td>21</td><td>Hijra - Islamic New Year</td></tr>
+                                        <tr><td>Monday</td><td>September</td><td>7</td><td>Labor Day</td></tr>
+                                        <tr><td>Friday</td><td>September</td><td>18</td><td>Rosh Hashana</td></tr>
+                                        <tr><td>Sunday</td><td>September</td><td>27</td><td>Yom Kippur</td></tr>
+                                        <tr><td>Friday</td><td>October</td><td>9</td><td>Sukkot</td></tr>
+                                        <tr><td>Thursday</td><td>October</td><td>29</td><td>National Cat Day</td></tr>
+                                        <tr><td>Saturday</td><td>October</td><td>31</td><td>Halloween</td></tr>
+                                        <tr><td>Wednesday</td><td>November</td><td>11</td><td>Veterans Day</td></tr>
+                                        <tr><td>Saturday</td><td>November</td><td>14</td><td>Diwali</td></tr>
+                                        <tr><td>Thursday</td><td>November</td><td>26</td><td>Thanksgiving</td></tr>
+                                        <tr><td>Friday</td><td>December</td><td>25</td><td>Christmas Day</td></tr>
+                                    </table>
+
+
+                                    <h3><a name = "gettingstarted">Don't know where to start?</a></h3>
+                                    <p>
+                                        The easiest place to start would be to define the first method that takes in a number for the month and returns a string corresponding to that month.
+                                    </p>
+
+                                    <p>
+                                        To get your program to do anything, you'll have to have statements in the main.  By themselves, the functions may work perfectly, but if you don't have code that runs in the main that eventually calls them, nothing will happen when you run your code.
+                                    </p>
+
+                                    <p>
+                                        When your string is ready to go, you should save it to a file.  This is where you should look at the docstring for the "writeToFile" method.  As an example, let's say you had the following in your main:
+                                    </p>
+
+                                    <script type="syntaxhighlighter" class="brush: cpp"><![CDATA[
+                                        public static void main(String[] args) {
+                                            String html = getHTMLStart();
+                                            html += "<h1>Hello world!</h1>";
+                                            html += getHTMLEnd();
+                                            writeToFile("myfile.html", html);
+                                        }
+                                    ]]></script>  
+
+                                    <p>
+                                        Then that would save to a file called "myfile.html" in the root of your directory, and if you double click on it, it will open to a web page that looks like this:
+                                    </p>
+                                    <img src = "Example.png">
+
+                                    <p>
+                                        But that's just an example.  You should call the other methods you make from the main.
+                                    </p>
+
+
+                                    
+                                </div>
+						</div>
+					</div>
+
+					<!--LaTeX in Javascript!-->
+					<script src="../../../../jsMath/easy/load.js"></script>
+					<!--Syntax highlighting in Javascript!-->
+					<script type="text/javascript" src="../../../../syntaxhighlighter/scripts/shCore.js"></script>
+					<script type="text/javascript" src="../../../syntaxhighlighter/scripts/shBrushJScript.js"></script>
+                    <script type="text/javascript" src="../../../../syntaxhighlighter/scripts/shBrushCpp.js"></script>
+					<script type="text/javascript" src="../../../../syntaxhighlighter/scripts/shBrushXml.js"></script>
+					<script type="text/javascript" src="../../../../syntaxhighlighter/scripts/shBrushMatlabSimple.js"></script>
+					<script type="text/javascript" src="../../../../syntaxhighlighter/scripts/shBrushPython.js"></script>
+					<link type="text/css" rel="stylesheet" href="../../../../syntaxhighlighter/styles/shCoreDefault.css"/>
+					<script type="text/javascript">SyntaxHighlighter.all();</script>
+
+<!-- Sidebar -->
+					<div id="sidebar">
+						<div class="inner">
+							<!-- Menu -->
+								<nav id="menu">
+									<header class="major">
+										<h2>Menu</h2>
+									</header>
+									<ul>
+                                        <li>
+											<span class="opener">General</span>
+											<ul>
+												<li><a href = "../../index.html#overview">Overview</a></li>
+												<li><a href = "../../index.html#logistics">Technology Logistics</a></li>
+												<li><a href = "../../index.html#homework">Homework</a></li>
+												<li><a href = "../../index.html#grading">Grading</a></li>
+												<li><a href = "../../index.html#environment">Classroom Environment</a></li>
+												<li><a href = "../../index.html#participation">Participation</a></li>
+												<li><a href = "../../index.html#collaboration">Collaboration Policy</a></li>
+												<li><a href = "../../index.html#other">Other Resources / Policies</a></li>
+											</ul>
+										</li>
+										<li><a href = "../../Software/index.html">Software</a></li>
+										<li><a href = "../../Schedule/index.html">Schedule</a></li>
+										<li><a href = "../../style.html">Style Guide</a></li>
+										<li><a href = "../../drills.html">Drills</a></li>
+                                        <li>
+											<span class="opener">Labs</span>
+											<ul>
+												<li><a href = "../../Labs/Lab1_Holidays/index.html">Lab1: HTML Holidays</a></li>
+												<li><a href = "../../Labs/Lab2_ChooseYourAdventure/index.html">Lab2: Choose Your Own Adventure</a></li>
+												<li><a href = "../../Labs/Lab3_ShapesInheritance/index.html">Lab3: Drawing Shapes with Inheritance</a></li>
+												<li><a href = "../../Labs/Lab4_COVIDPolymorphism/index.html">Lab4: COVID Polymorphism</a></li>
+												<li><a href = "../../Labs/Lab5_MyArrayList/index.html">Lab 5: My ArrayList</a></li>
+												<li><a href = "../../Labs/Lab6_RoadDetection/index.html">Lab 6: Road Detection with Threads</a></li>
+												<li><a href = "../../Labs/Lab7_BugHunt">Lab 7: C++ Bug Hunt</a></li> 
+											</ul>
+										</li>
+                                        <li>
+											<span class="opener">Assignments</span>
+											<ul>
+												<li><a href = "../../Assignments/HW0_Warmup/index.html">HW0: Warmup</a></li>
+												<li><a href = "../../Assignments/HW1_VirtualCities">HW1: Make Your Virtual City</a>
+												
+												<ul>
+													<li><a href = "../../Assignments/HW1_VirtualCities/ArtContest">Art Gallery!</a></li>
+												</ul>
+												</li>
+												<li><a href = "../../Assignments/HW2_MarkovMashups">HW2: Markov Mashups</a></li>
+												<li><a href = "../../Assignments/HW3_DequeFires">HW3: Deque Fires</a></li>
+												<li><a href = "../../Assignments/HW4_AudioFiltering">HW4: Consonant/Vowel Filtering in Audio</a></li>
+												<li><a href = "../../Assignments/HW5a_BasketballHashing">HW5a: Basketball Hashing</a></li>
+												<li><a href = "../../Assignments/HW5b_Shazam">HW5b: Shazam</a></li>
+											</ul>
+										</li>
+                                        <li>
+											<span class="opener">Pre-Class Modules</span>
+											<ul>
+												<li><a href = "https://ursinus-cs174-f2020.github.io/Modules/Module1/Video1">Module 1: Classes Intro</a></li>
+												<li><a href = "https://ursinus-cs174-f2020.github.io/Modules/Module2/Video1">Module 2: Hash Maps</a></li>
+												<li><a href = "https://ursinus-cs174-f2020.github.io/Modules/Module3/Inheritance1">Module 3: Inheritance1</a></li>
+												<li><a href = "https://ursinus-cs174-f2020.github.io/Modules/Module4/Video1">Module 4: Linked List Removal And Iterators</a></li>
+												<li><a href = "https://ursinus-cs174-f2020.github.io/Modules/Module5/Video1">Module 5: Threads And Synchronization</a></li>
+												<li><a href = "https://ursinus-cs174-f2020.github.io/Modules/Module6/Video1">Module 6: C++ Basics</a></li>
+												<li><a href = "https://ursinus-cs174-f2020.github.io/Modules/Module7/Video1">Module 7: Addresses And Pointers</a></li>
+												<li><a href = "https://ursinus-cs174-f2020.github.io/Modules/Module8/Exercise0">Module 8: Pointers Continued</a></li>
+												<li><a href = "https://ursinus-cs174-f2020.github.io/Modules/Module9/Video1">Module 9: C++ Classes</a></li>
+												<li><a href = "https://ursinus-cs174-f2020.github.io/Modules/Module10/Video1">Module 10: C++ Object References / Linked Lists</a></li>
+												<li><a href = "https://ursinus-cs174-f2020.github.io/Modules/Module11/Video1">Module 11: ADTs / Linked Map</a></li>
+												<li><a href = "https://ursinus-cs174-f2020.github.io/Modules/Module12/Video1">Module 12: C++ Inheritance</a></li>
+												<li><a href = "https://ursinus-cs174-f2020.github.io/Modules/Module13/Video1">Module 13: Recursion And STL Vectors</a></li>
+												<li><a href = "https://ursinus-cs174-f2020.github.io/Modules/Module14/Video1">Module 14: Recursion Part 2</a></li>
+												<li><a href = "https://ursinus-cs174-f2020.github.io/Modules/Module15/Video1">Module 15: Binary Trees Intro</a></li>
+												<li><a href = "https://ursinus-cs174-f2020.github.io/Modules/Module16/Video1">Module 16: Binary Trees Level And Depth</a></li>
+											</ul>
+										</li>
+                                        <li>
+											<span class="opener">Class Exercises</span>
+											<ul>
+												<li><a href = "../../ClassExercises/Week1_2048/index.html">Week 1: Building The 2048 Game Together</a></li>
+												<li><a href = "../../ClassExercises/Week5_SortingTweets/index.html">Week 5: Sorting Tweets</a></li>
+											</ul>
+										</li>
+									</ul>
+								</nav>
+
+							<!-- Section -->
+								<section>
+									<div class="mini-posts">
+										Announcements							
+                                    </div>
+								</section>
+
+
+							<!-- Footer -->
+								<footer id="footer">
+									<p class="copyright">&copy; <a href = "http://www.ctralie.com">Christopher J. Tralie</a>. All rights reserved.  Contact chris.tralie@gmail.com. Design: <a href="https://html5up.net">HTML5 UP</a>.</p>
+								</footer>
+
+						</div>
+					</div>
+
+			</div>
+			
+            <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+            <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+<!-- End Sidebar !-->
+
+<!-- Scripts -->
+			<script src="../../assets/js/jquery.min.js"></script>
+			<script src="../../assets/js/skel.min.js"></script>
+			<script src="../../assets/js/util.js"></script>
+			<!--[if lte IE 8]><script src="../../assets/js/ie/respond.min.js"></script><![endif]-->
+			<script src="../../assets/js/main.js"></script>
+<!-- End Scripts -->
+	</body>

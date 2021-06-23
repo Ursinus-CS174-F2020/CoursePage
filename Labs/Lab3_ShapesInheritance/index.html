@@ -1,0 +1,327 @@
+<!DOCTYPE HTML>
+<!--
+	Editorial by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+<!-- Header !-->
+	<head>
+		<title>Ursinus CS 174: Object Oriented Programming, Fall 2020</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<!--[if lte IE 8]><script src="../../assets/js/ie/html5shiv.js"></script><![endif]-->
+		<link rel="stylesheet" href="../../assets/css/main.css" />
+		<!--[if lte IE 9]><link rel="stylesheet" href="../../assets/css/ie9.css" /><![endif]-->
+		<!--[if lte IE 8]><link rel="stylesheet" href="../../assets/css/ie8.css" /><![endif]-->
+        <style>
+        .image_off, #home:hover .image_on{
+           display:none
+        }
+        .image_on, #home:hover .image_off{
+           display:block
+        }
+        </style>
+	</head>
+	<body>
+
+		<!-- Wrapper -->
+			<div id="wrapper">
+
+				<!-- Main -->
+					<div id="main">
+						<div class="inner">
+
+							<!-- Header -->
+								<header id="header">
+									<a href="../../index.html" class="logo"><strong>Ursinus CS 174: Object Oriented Programming, Fall 2020</strong></a>
+								</header>
+<!-- End Header !-->
+
+							<!-- Content -->
+								<section>
+									<header class="main">
+                                        <h2>Lab 3: Drawing Shapes with Inheritance (3 Points)</h2>
+                                        <h3><a href = "http://www.ctralie.com">Chris Tralie</a></h3>
+                                        <h3>Due Tuesday 9/29/2020</h3>
+									</header>
+
+									<div id="page-content">
+
+                                        <h2>Overview / Logistics</h2>
+										<p>
+                                            The purpose of this lab is to give you practice with the class declarations and inheritance with a visual application.  <a href = "https://github.com/Ursinus-CS174-F2020/Lab3_ShapesInheritance/archive/master.zip">Click here</a> to download the Netbeans starter code for this lab.  When you are finished, you should <a href = "../../Software/index.html#zip">zip it up</a> and submit it on Canvas. 
+                                        </p>
+
+                                        <p>
+                                            <h3>Learning Objectives</h3>
+                                            <ul>
+                                                <li>Manipulate public and private variables/methods in classes</li>
+                                                <li>Leverage code sharing between superclasses and subclasses</li>
+                                                <li>Use multiple classes together in concert to accomplish a task</li>
+                                            </ul>
+                                        </p>
+
+                                            
+
+                                        <h2>Programming Task</h2>
+                                        <p>
+                                            In this lab, you will be designing classes to draw different 2D shapes on the cartesian grid.  You will be drawing in a square area where x and y are both between 0 and 1.  There is a superclass called <code>Shape</code> which stores the thickness with which to draw the shape and the color to use when drawing the shape, as well as setter methods for these two variables.  You should create a subclass of this class for each new shape that you draw.  Every shape you draw should be made up of a series of <a href = "#linesegment">line segments</a>.  
+                                        <p>
+                                            There are three shell methods provided in the <code>Shape</code> class which you should override in all of your shapes
+                                            <ul>
+                                                <li><code>draw()</code>: You should draw your shape using a series of <code><a href = "#linesegment">LineSegment</a></code> objects</li>
+                                                <li><code>getArea()</code>: You should return the area of your shape</li>
+                                                <li><code>toString()</code>: You should return a string with descriptive information about a shape object in each class.</li>
+                                            </ul>
+                                        </p>
+
+                                        <p>
+                                            You should also implement setter methods to update all of the parameters of your shape.  For example, you should be able to update the center and side length of a <a href = "#square">square</a> object.
+                                        </p>
+
+
+                                        <p>
+                                            Be mindful of <a href = "../../style.html">style</a> as you are coding this!
+                                        </p>
+
+                                        <h3>Point (Given Example)</h3>
+                                        <p>
+                                            The simplest thing we can draw is a point.  Have a look at the provided <code>Point</code> class.  Objects of this type will be used in the <code>LineSegment</code> class, and you may also want to use them in your classes.
+                                        </p>
+
+                                        <h3><a name = "linesegment">Line Segment (Given Example)</a></h3>
+                                        <p>
+                                            Study the <code>LineSegment</code> class that was provided with the code, and notice how it leverages code in the super <code>Shape</code> class and in the <code>Point</code> class.  You will be doing similar things in the shapes below.  You should also use objects of the <code>LineSegment</code> class in the draw methods for your shapes.  For instance, a triangle can be drawn with three line segments.  <b>Be sure to pass along the correct color and thickness when drawing the line segments</b>
+                                        </p>
+
+                                        <p>
+                                            As an example of how to use this class, consider the code below
+                                        </p>
+
+                                        <script type="syntaxhighlighter" class="brush: cpp"><![CDATA[
+                                            LineSegment L1 = new LineSegment(0.01, new Color(0, 255, 255), 0.2, 0.2, 0.5, 0.5);
+                                            System.out.println(L1);
+                                            System.out.println("length = " + L1.getLength());
+                                            L1.draw();
+                                        ]]></script>
+
+                                        <p>
+                                            This will print out the following
+                                        </p>
+
+                                        <code>
+                                        Line Segment from Point(0.2, 0.2) to Point(0.5, 0.5)</code><BR>
+                                        <code>
+                                        length = 0.4242640687119285
+                                        </code>
+
+                                        <p>
+                                            And it will draw a picture that looks like this.
+                                        </p>
+
+                                        <img src = "LineSegment.png">
+
+
+
+                                        <h3>Task 1: Triangle</h3>
+                                        <p>
+                                            You should create a class called <code>Triangle</code> which stores six pieces of information in addition to the color and thickness.  In particular, you will need an x and y coordinate for each of three different points.  There are a variety of ways to organize this class, but he most succinct way is to simply store the three line segments making up the triangle as private variables and to use their methods when drawing and computing the area.
+                                        </p>
+
+                                        <p>
+                                            To compute the area of a triangle, you can use Heron's formula.  If <b>a</b>, <b>b</b>, and <b>c</b> are the three lengths of the triangle, then define the semi-perimeter as
+                                        </p>
+
+                                        \[ s = \frac{a+b+c}{2} \]
+
+                                        Then, the area of the triangle can be computed as
+
+                                        \[ A = \sqrt{ s(s-a)(s-b)(s-c) } \]
+
+                                        <p>
+                                            As an example, below is a picture of a triangle with points <code>(0.1, 0.1), (0.5, 0.9), (0.8, 0.2)</code>. It should have an area of 0.26
+                                        </p>
+
+                                        <img src = "Triangle.png">
+
+
+                                        <h3>Task 2: Square</h3>
+                                        <p>
+                                            Create a class called <code>Square</code> which stores the center of the square and the length of its sides.  Recall that the area of a square is its side length squared (hence the name "square").  Below is an example of a blue square of thickness 0.005 centered at (0.4, 0.4) with a side length of 0.2 and a red square of thickness 0.01 centered at (0.6, 0.6) with a side length of 0.3.
+                                        </p>
+
+                                        <img src = "Squares.png">
+
+                                        <h3>Task 3: Circle</h3>
+                                        <p>
+                                            Create a class called <code>Circle</code> which stores the center of a circle and its radius.  Recall that the area of a circle of radius <code>r</code> is
+                                        </p>
+
+                                        <h3>
+                                        \[ \pi r^2 \]
+                                        </h3>
+
+                                        <p>
+                                            A circle would require an infinite amount of line segments to draw properly, but you can draw an approximate circle as a regular polygon with many sides.  You can specify the number of sides to draw as a parameter to the constructor.  If you have <code>N</code> sides for a circle of radius <code>r</code> centered at <code>(cx, cy)</code>, then you can generate the coordinates of the <code>i<SUP>th</SUP></code> point as
+                                        </p>
+
+                                        <h3>
+                                        \[ x = cx + r* \cos \left( \frac{2 \pi i}{N} \right) \]
+                                        </h3>
+                                        <h3>
+                                        \[ y = cy + r* \sin \left( \frac{2 \pi i}{N} \right) \]
+                                        </h3>
+
+                                        <p>
+                                            Then simply connect these points with line segments in a loop to form an approximate circle drawing.  You can use <a href = "https://docs.oracle.com/javase/8/docs/api/java/lang/Math.html#cos-double-">Math.cos</a>, <a href = "https://docs.oracle.com/javase/8/docs/api/java/lang/Math.html#sin-double-">Math.sin</a>, and <a href = "https://docs.oracle.com/javase/8/docs/api/java/lang/Math.html#PI">Math.PI</a> to help you.
+                                        </p>
+
+                                        <p>
+                                            Below is an example of drawing two circles with this class.  The first circle is centered at <code>(0.3, 0.7)</code> with a radius of 0.2, using 15 points, a line width of 0.01, and the color orange.  The second circle is centered at <code>(0.8, 0.3)</code> with radius of 0.1, using 100 points, a line width of 0.005, and the color pink.
+                                        </p>
+
+                                        <img src = "Circles.png">
+
+                                        <h3>Task 4: Putting It All Together</h3>
+                                        <p>
+                                            Fill in some code in <code>MyDrawing.java</code> to draw at least one of each shape you've created before your final submission.  You may actually want to make an interesting drawing, but that's not required here.
+                                        </p>
+
+
+
+
+
+                                    
+                                </div>
+						</div>
+					</div>
+
+					<!--LaTeX in Javascript!-->
+					<script src="../../../../jsMath/easy/load.js"></script>
+					<!--Syntax highlighting in Javascript!-->
+					<script type="text/javascript" src="../../../../syntaxhighlighter/scripts/shCore.js"></script>
+					<script type="text/javascript" src="../../../syntaxhighlighter/scripts/shBrushJScript.js"></script>
+                    <script type="text/javascript" src="../../../../syntaxhighlighter/scripts/shBrushCpp.js"></script>
+					<script type="text/javascript" src="../../../../syntaxhighlighter/scripts/shBrushXml.js"></script>
+					<script type="text/javascript" src="../../../../syntaxhighlighter/scripts/shBrushMatlabSimple.js"></script>
+					<script type="text/javascript" src="../../../../syntaxhighlighter/scripts/shBrushPython.js"></script>
+					<link type="text/css" rel="stylesheet" href="../../../../syntaxhighlighter/styles/shCoreDefault.css"/>
+					<script type="text/javascript">SyntaxHighlighter.all();</script>
+
+<!-- Sidebar -->
+					<div id="sidebar">
+						<div class="inner">
+							<!-- Menu -->
+								<nav id="menu">
+									<header class="major">
+										<h2>Menu</h2>
+									</header>
+									<ul>
+                                        <li>
+											<span class="opener">General</span>
+											<ul>
+												<li><a href = "../../index.html#overview">Overview</a></li>
+												<li><a href = "../../index.html#logistics">Technology Logistics</a></li>
+												<li><a href = "../../index.html#homework">Homework</a></li>
+												<li><a href = "../../index.html#grading">Grading</a></li>
+												<li><a href = "../../index.html#environment">Classroom Environment</a></li>
+												<li><a href = "../../index.html#participation">Participation</a></li>
+												<li><a href = "../../index.html#collaboration">Collaboration Policy</a></li>
+												<li><a href = "../../index.html#other">Other Resources / Policies</a></li>
+											</ul>
+										</li>
+										<li><a href = "../../Software/index.html">Software</a></li>
+										<li><a href = "../../Schedule/index.html">Schedule</a></li>
+										<li><a href = "../../style.html">Style Guide</a></li>
+										<li><a href = "../../drills.html">Drills</a></li>
+                                        <li>
+											<span class="opener">Labs</span>
+											<ul>
+												<li><a href = "../../Labs/Lab1_Holidays/index.html">Lab1: HTML Holidays</a></li>
+												<li><a href = "../../Labs/Lab2_ChooseYourAdventure/index.html">Lab2: Choose Your Own Adventure</a></li>
+												<li><a href = "../../Labs/Lab3_ShapesInheritance/index.html">Lab3: Drawing Shapes with Inheritance</a></li>
+												<li><a href = "../../Labs/Lab4_COVIDPolymorphism/index.html">Lab4: COVID Polymorphism</a></li>
+												<li><a href = "../../Labs/Lab5_MyArrayList/index.html">Lab 5: My ArrayList</a></li>
+												<li><a href = "../../Labs/Lab6_RoadDetection/index.html">Lab 6: Road Detection with Threads</a></li>
+												<li><a href = "../../Labs/Lab7_BugHunt">Lab 7: C++ Bug Hunt</a></li> 
+											</ul>
+										</li>
+                                        <li>
+											<span class="opener">Assignments</span>
+											<ul>
+												<li><a href = "../../Assignments/HW0_Warmup/index.html">HW0: Warmup</a></li>
+												<li><a href = "../../Assignments/HW1_VirtualCities">HW1: Make Your Virtual City</a>
+												
+												<ul>
+													<li><a href = "../../Assignments/HW1_VirtualCities/ArtContest">Art Gallery!</a></li>
+												</ul>
+												</li>
+												<li><a href = "../../Assignments/HW2_MarkovMashups">HW2: Markov Mashups</a></li>
+												<li><a href = "../../Assignments/HW3_DequeFires">HW3: Deque Fires</a></li>
+												<li><a href = "../../Assignments/HW4_AudioFiltering">HW4: Consonant/Vowel Filtering in Audio</a></li>
+												<li><a href = "../../Assignments/HW5a_BasketballHashing">HW5a: Basketball Hashing</a></li>
+												<li><a href = "../../Assignments/HW5b_Shazam">HW5b: Shazam</a></li>
+											</ul>
+										</li>
+                                        <li>
+											<span class="opener">Pre-Class Modules</span>
+											<ul>
+												<li><a href = "https://ursinus-cs174-f2020.github.io/Modules/Module1/Video1">Module 1: Classes Intro</a></li>
+												<li><a href = "https://ursinus-cs174-f2020.github.io/Modules/Module2/Video1">Module 2: Hash Maps</a></li>
+												<li><a href = "https://ursinus-cs174-f2020.github.io/Modules/Module3/Inheritance1">Module 3: Inheritance1</a></li>
+												<li><a href = "https://ursinus-cs174-f2020.github.io/Modules/Module4/Video1">Module 4: Linked List Removal And Iterators</a></li>
+												<li><a href = "https://ursinus-cs174-f2020.github.io/Modules/Module5/Video1">Module 5: Threads And Synchronization</a></li>
+												<li><a href = "https://ursinus-cs174-f2020.github.io/Modules/Module6/Video1">Module 6: C++ Basics</a></li>
+												<li><a href = "https://ursinus-cs174-f2020.github.io/Modules/Module7/Video1">Module 7: Addresses And Pointers</a></li>
+												<li><a href = "https://ursinus-cs174-f2020.github.io/Modules/Module8/Exercise0">Module 8: Pointers Continued</a></li>
+												<li><a href = "https://ursinus-cs174-f2020.github.io/Modules/Module9/Video1">Module 9: C++ Classes</a></li>
+												<li><a href = "https://ursinus-cs174-f2020.github.io/Modules/Module10/Video1">Module 10: C++ Object References / Linked Lists</a></li>
+												<li><a href = "https://ursinus-cs174-f2020.github.io/Modules/Module11/Video1">Module 11: ADTs / Linked Map</a></li>
+												<li><a href = "https://ursinus-cs174-f2020.github.io/Modules/Module12/Video1">Module 12: C++ Inheritance</a></li>
+												<li><a href = "https://ursinus-cs174-f2020.github.io/Modules/Module13/Video1">Module 13: Recursion And STL Vectors</a></li>
+												<li><a href = "https://ursinus-cs174-f2020.github.io/Modules/Module14/Video1">Module 14: Recursion Part 2</a></li>
+												<li><a href = "https://ursinus-cs174-f2020.github.io/Modules/Module15/Video1">Module 15: Binary Trees Intro</a></li>
+												<li><a href = "https://ursinus-cs174-f2020.github.io/Modules/Module16/Video1">Module 16: Binary Trees Level And Depth</a></li>
+											</ul>
+										</li>
+                                        <li>
+											<span class="opener">Class Exercises</span>
+											<ul>
+												<li><a href = "../../ClassExercises/Week1_2048/index.html">Week 1: Building The 2048 Game Together</a></li>
+												<li><a href = "../../ClassExercises/Week5_SortingTweets/index.html">Week 5: Sorting Tweets</a></li>
+											</ul>
+										</li>
+									</ul>
+								</nav>
+
+							<!-- Section -->
+								<section>
+									<div class="mini-posts">
+										Announcements							
+                                    </div>
+								</section>
+
+
+							<!-- Footer -->
+								<footer id="footer">
+									<p class="copyright">&copy; <a href = "http://www.ctralie.com">Christopher J. Tralie</a>. All rights reserved.  Contact chris.tralie@gmail.com. Design: <a href="https://html5up.net">HTML5 UP</a>.</p>
+								</footer>
+
+						</div>
+					</div>
+
+			</div>
+			
+            <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+            <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+<!-- End Sidebar !-->
+
+<!-- Scripts -->
+			<script src="../../assets/js/jquery.min.js"></script>
+			<script src="../../assets/js/skel.min.js"></script>
+			<script src="../../assets/js/util.js"></script>
+			<!--[if lte IE 8]><script src="../../assets/js/ie/respond.min.js"></script><![endif]-->
+			<script src="../../assets/js/main.js"></script>
+<!-- End Scripts -->
+	</body>
