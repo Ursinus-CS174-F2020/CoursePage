@@ -43,3 +43,15 @@
 [submodule "Labs/Lab3_ShapesInheritance/Lab3_ShapesInheritance"]
 	path = Labs/Lab3_ShapesInheritance/Lab3_ShapesInheritance
 	url = https://github.com/Ursinus-CS174-F2020/Lab3_ShapesInheritance.git
+[submodule "Labs/Lab4_COVIDPolymorphism/Lab4_COVIDPolymorphism"]
+	path = Labs/Lab4_COVIDPolymorphism/Lab4_COVIDPolymorphism
+	url = https://github.com/Ursinus-CS174-F2020/Lab4_COVIDPolymorphism.git
+[submodule "Labs/Lab5_MyArrayList/Lab5_MyArrayList"]
+	path = Labs/Lab5_MyArrayList/Lab5_MyArrayList
+	url = https://github.com/Ursinus-CS174-F2020/Lab5_MyArrayList.git
+[submodule "Labs/Lab6_RoadDetection/Lab6_RoadDetection"]
+	path = Labs/Lab6_RoadDetection/Lab6_RoadDetection
+	url = https://github.com/Ursinus-CS174-F2020/Lab6_RoadDetection.git
+[submodule "Labs/Lab7_BugHunt/Lab7_BugHunt"]
+	path = Labs/Lab7_BugHunt/Lab7_BugHunt
+	url = https://github.com/Ursinus-CS174-F2020/Lab7_BugHunt.git

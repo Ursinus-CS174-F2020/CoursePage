@@ -1,0 +1,352 @@
+<!DOCTYPE HTML>
+<!--
+	Editorial by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+<!-- Header !-->
+	<head>
+		<title>Ursinus CS 174: Object Oriented Programming, Fall 2020</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<!--[if lte IE 8]><script src="../../assets/js/ie/html5shiv.js"></script><![endif]-->
+		<link rel="stylesheet" href="../../assets/css/main.css" />
+		<!--[if lte IE 9]><link rel="stylesheet" href="../../assets/css/ie9.css" /><![endif]-->
+		<!--[if lte IE 8]><link rel="stylesheet" href="../../assets/css/ie8.css" /><![endif]-->
+        <style>
+        .image_off, #home:hover .image_on{
+           display:none
+        }
+        .image_on, #home:hover .image_off{
+           display:block
+        }
+        </style>
+	</head>
+	<body>
+
+		<!-- Wrapper -->
+			<div id="wrapper">
+
+				<!-- Main -->
+					<div id="main">
+						<div class="inner">
+
+							<!-- Header -->
+								<header id="header">
+									<a href="../../index.html" class="logo"><strong>Ursinus CS 174: Object Oriented Programming, Fall 2020</strong></a>
+								</header>
+<!-- End Header !-->
+
+							<!-- Content -->
+								<section>
+									<header class="main">
+                                        <h2>Lab 5: Make Your Own ArrayList</h2>
+                                        <h3><a href = "http://www.ctralie.com">Chris Tralie</a></h3>
+                                        <h3>Due Tuesday 10/20/2020</h3>
+									</header>
+
+									<div id="page-content">
+
+                                        <h2>Overview / Logistics</h2>
+										<p>
+                                            The purpose of this lab is to give you practice designing collections.  <a href = "https://github.com/Ursinus-CS174-F2020/Lab5_MyArrayList/archive/main.zip">Click here</a> to download the Netbeans starter code for this lab.  When you are finished, please upload the file <code>MyArrayList.java</code> to canvas.
+                                        </p>
+
+                                        <p>
+                                            <h3>Learning Objectives</h3>
+                                            <ul>
+                                                <li>Manipulate public and private variables/methods in classes to accomplish information hiding</li>
+                                                <li>
+                                                    Use multiple methods together in concert, including overloaded methods
+                                                </li>
+                                                <li>Use multiple classes together in concert to accomplish a task</li>
+                                                <li>Gain experience using information hiding and object references to implement a user-friendly collection class.</li>
+                                            </ul>
+                                        </p>
+
+                                        <h2>Background</h2>
+                                        <p>
+                                            The <code><a href = "https://docs.oracle.com/javase/8/docs/api/java/util/ArrayList.html">ArrayList</a></code> container class in the <code>java.util</code> package provides a more flexible alternative to the additional array.  We can still access elements at particular indices in constant time, but it is much easier to grow the data structure.  For instance, if we wanted to add an element to the end of a regular array, we would have to make an entirely new array, copy everything over that was in there before, and then finally put in the new element:
+                                        </p>
+
+                                        <script type="syntaxhighlighter" class="brush: cpp"><![CDATA[
+                                            /**
+                                            * Create a new array with all of the elements in the original 
+                                            * array, plus a new one at the end
+                                            * @param array Original array
+                                            * @param elem Element to add
+                                            * @return The new array
+                                            */
+                                           public static int[] addElement(int[] array, int elem) {
+                                               int[] newArray = new int[array.length+1];
+                                               for (int i = 0; i < array.length; i++) {
+                                                   newArray[i] = array[i];
+                                               }
+                                               newArray[array.length] = elem;
+                                               return newArray;
+                                           }
+                                           ... 
+                                           int arr = new int[N];
+                                           ... 
+                                           arr = addElement(arr, elem); // Add some element to the array
+                                        ]]></script>
+
+                                        <p>
+                                            By contrast, if we have an <code>ArrayList</code>, all we have to do is say 
+
+                                            <script type="syntaxhighlighter" class="brush: cpp"><![CDATA[
+                                                ArrayList<Integer> arr;
+                                                ...
+                                                arr.add(elem); // Add some element to the ArrayList
+                                            ]]></script>
+                                        </p>
+
+                                        <p>
+                                            The ArrayList has a number of other utilities that make it a much better choice than a regular array for dynamic lists that change their size throughout the program's execution.  For instance, one can insert objects within the middle of an array without having to manually move everything after that to the right (like you did in the <a href = "https://ursinus-cs174-f2020.github.io/Modules/ArrayDrills/ArrayInsert">drill</a> for a regular array), and one can similarly delete elements in the middle without having to move everything after that over to the left.  For instance, consider the following code
+                                        </p>
+
+                                        <script type="syntaxhighlighter" class="brush: cpp"><![CDATA[
+                                            import java.util.ArrayList;
+                                            
+                                            ...
+
+                                            ArrayList<Double> arr = new ArrayList<>();
+                                            for (double i = 0; i < 10; i++) {
+                                                arr.add(i + i/10);
+                                            }
+                                            arr.add(5, 100.0); // Add 100.0 at index 5
+                                            arr.remove(7); // Remove the item at index 7
+                                            arr.remove(8.8); // Remove the first occurrence of 8.8 in the list
+                                            System.out.println(arr);
+                                        ]]></script>
+
+                                        <p>
+                                            This will output the following (make sure you understand why as you trace through the code)
+                                        </p>
+
+                                        <script type="syntaxhighlighter" class="brush: cpp"><![CDATA[
+                                            [0.0, 1.1, 2.2, 3.3, 4.4, 100.0, 5.5, 7.7, 9.9]
+                                        ]]></script>
+
+
+
+                                        <p>
+                                            You will be implementing some of these utilities in this lab in our own version of a vanilla ArrayList, called <code>MyArrayList</code>.
+                                        </p>
+
+                                        <h3>Flexible resizing algorithm</h3>
+                                        <p>
+                                            Behind the scenes, and ArrayList actually has an array of generic items, which we call the "underlying array."  This private array is resized and maintained to accommodate the elements that are added to /removed from it.
+                                        </p>
+                                        <p>
+                                            One possible implementation of an ArrayList is to create a new array every time an element is added to the end, but this is very inefficient.  A better strategy is actually to keep an array that's longer than we need, and <b>only to resize it when we run out of room</b>.  When it runs out of room, we can double its size.  This ensures that the average "time complexity" (amount of time it takes per task) of adding an element to the end of the list is still a constant number of steps on average.  Or in more CS language, we have a "constant amortized cost for an add operation."  For example, let's say we start with an underlying array of size 10 and we add 100 elements to it.  We have to resize at the following places:
+                                            <ul>
+                                                <li>At 10, copying over 10 elements</li>
+                                                <li>At 20, copying over 20 elements</li>
+                                                <li>At 40, copying over 40 elements</li>
+                                                <li>At 80, copying over 80 elements</li>
+                                            </ul>
+                                            Otherwise, it's a simple assignment to an array index which takes constant time.  So the total number of steps is (100 + 10 + 20 + 40 + 80), or an average of <b>2.875</b> operations per add task (and this will never be more than 3 with the doubling scheme).
+                                        </p>
+
+                                        <p>
+                                            By the same token, if a lot of items are removed, it's wasteful to keep too large of an array in memory.  So if the list is holding fewer than half the capacity of the underlying array after you remove an element, then you should halve the underlying array.
+                                        </p>
+
+                                        <p>
+                                            Bearing this in mind, below are the private variables of the <code>MyArrayList</code> class
+                                        </p>
+
+                                        <script type="syntaxhighlighter" class="brush: cpp"><![CDATA[
+                                            private static final int DEFAULT_CAPACITY = 10;
+                                            private Object[] items; // Underlying array that holds everything
+                                            private int N; // size of the arraylist
+                                        ]]></script>
+
+                                        <p>
+                                            There are actually two member variables per object: one for the underlying array, and another for storing how many elements have actually been added to it (since the underlying array is usually larger than the number of elements in the ArrayList).  By default, the underlying array starts off with a capacity of <code>DEFAULT_CAPCITY</code>, but it is possible to initialize it with an overloaded constructor where this initial capacity is a parameter:
+                                        </p>
+
+                                        <script type="syntaxhighlighter" class="brush: cpp"><![CDATA[
+                                            /**
+                                            * Initialize an ArrayList object with a particular 
+                                            * starting capacity
+                                            * @param startSize Initial capacity of the array
+                                            */
+                                           public MyArrayList(int startSize) {
+                                               items = new Object[startSize];
+                                               N = 0;
+                                           }
+                                           /**
+                                            * Initialize an ArrayList object with the underlying array
+                                            * having the default capacity
+                                            */
+                                           public MyArrayList() {
+                                               this(DEFAULT_CAPACITY);
+                                           }
+                                        ]]></script>
+
+                                        <h2>Programming Tasks</h2>
+                                        <p>
+                                            Your job will be to fill in methods to add and remove items from the data structure, while maintaining the underlying array.  <b>You should not use any methods from the built-in Java <code>ArrayList</code> class</b>.  Rather, you will be making your own implementation from scratch that has the same performance characteristics of Java's version.
+                                        </p>
+                                        <p>
+                                            First, study the provided code in <code>MyArrayList.java</code>.  A number of methods have been provided to you already, and numerous hints have been provided in the comments.  Below are the methods you should implement.  It is recommended that you implement them in the order specified below.  A file <code>Tester.java</code> has been provided that compares your method implementations to an actual Java <code>ArrayList</code> object on a random set of many of these operations, so feel free to use that or to write your own code to test it.
+                                        </p>
+                                        <ul>
+                                            <li><code>void doubleCapacity()</code>:  Double the capacity of the underlying array by creating a new underlying array and copying everything over that was there before up to N.  You may want to refer to <code>halveCapacity()</code> as a reference</li>
+                                            <li>
+                                                <code>void add(Item item)</code>:  Add an item to the end of the list and update its size.  The default implementation throws an exception if the underlying array runs out of space, but you should call your <code>doubleCapacity()</code> method to make space if needed so this doesn't happen.
+                                            </li>
+                                            <li>
+                                                <code>void add(int index, Item item)</code>: This is an overloaded version of the add method in which an item is added at a specific index in the array.  You should move the item that was at that index before, and everything to the right of it, over by one index to accommodate this new item.  You should double the capacity of the underlying array if necessary.
+                                            </li>
+                                            <li>
+                                                <code>Item remove(int index)</code>: Remove an item at a particular index and return it.  You should also move everything to the right of this index over one to the left and update the size N. Finally, if the new number of elements being stored is small enough, you should halve the capacity (using the provided <code>halveCapacity()</code> method).
+                                            </li>
+                                            <li>
+                                                <code>Item remove(Item item)</code>: An overloaded version of the <code>remove</code> method that removes the first occurrence of a particular item in the list if it is present and returns it.
+                                            </li>
+                                        </ul>
+
+
+
+
+
+
+
+
+                                    
+                                </div>
+						</div>
+					</div>
+
+					<!--LaTeX in Javascript!-->
+					<script src="../../../../jsMath/easy/load.js"></script>
+					<!--Syntax highlighting in Javascript!-->
+					<script type="text/javascript" src="../../../../syntaxhighlighter/scripts/shCore.js"></script>
+					<script type="text/javascript" src="../../../syntaxhighlighter/scripts/shBrushJScript.js"></script>
+                    <script type="text/javascript" src="../../../../syntaxhighlighter/scripts/shBrushCpp.js"></script>
+					<script type="text/javascript" src="../../../../syntaxhighlighter/scripts/shBrushXml.js"></script>
+					<script type="text/javascript" src="../../../../syntaxhighlighter/scripts/shBrushMatlabSimple.js"></script>
+					<script type="text/javascript" src="../../../../syntaxhighlighter/scripts/shBrushPython.js"></script>
+					<link type="text/css" rel="stylesheet" href="../../../../syntaxhighlighter/styles/shCoreDefault.css"/>
+					<script type="text/javascript">SyntaxHighlighter.all();</script>
+
+<!-- Sidebar -->
+					<div id="sidebar">
+						<div class="inner">
+							<!-- Menu -->
+								<nav id="menu">
+									<header class="major">
+										<h2>Menu</h2>
+									</header>
+									<ul>
+                                        <li>
+											<span class="opener">General</span>
+											<ul>
+												<li><a href = "../../index.html#overview">Overview</a></li>
+												<li><a href = "../../index.html#logistics">Technology Logistics</a></li>
+												<li><a href = "../../index.html#homework">Homework</a></li>
+												<li><a href = "../../index.html#grading">Grading</a></li>
+												<li><a href = "../../index.html#environment">Classroom Environment</a></li>
+												<li><a href = "../../index.html#participation">Participation</a></li>
+												<li><a href = "../../index.html#collaboration">Collaboration Policy</a></li>
+												<li><a href = "../../index.html#other">Other Resources / Policies</a></li>
+											</ul>
+										</li>
+										<li><a href = "../../Software/index.html">Software</a></li>
+										<li><a href = "../../Schedule/index.html">Schedule</a></li>
+										<li><a href = "../../style.html">Style Guide</a></li>
+										<li><a href = "../../drills.html">Drills</a></li>
+                                        <li>
+											<span class="opener">Labs</span>
+											<ul>
+												<li><a href = "../../Labs/Lab1_Holidays/index.html">Lab1: HTML Holidays</a></li>
+												<li><a href = "../../Labs/Lab2_ChooseYourAdventure/index.html">Lab2: Choose Your Own Adventure</a></li>
+												<li><a href = "../../Labs/Lab3_ShapesInheritance/index.html">Lab3: Drawing Shapes with Inheritance</a></li>
+												<li><a href = "../../Labs/Lab4_COVIDPolymorphism/index.html">Lab4: COVID Polymorphism</a></li>
+												<li><a href = "../../Labs/Lab5_MyArrayList/index.html">Lab 5: My ArrayList</a></li>
+												<li><a href = "../../Labs/Lab6_RoadDetection/index.html">Lab 6: Road Detection with Threads</a></li>
+												<li><a href = "../../Labs/Lab7_BugHunt">Lab 7: C++ Bug Hunt</a></li> 
+											</ul>
+										</li>
+                                        <li>
+											<span class="opener">Assignments</span>
+											<ul>
+												<li><a href = "../../Assignments/HW0_Warmup/index.html">HW0: Warmup</a></li>
+												<li><a href = "../../Assignments/HW1_VirtualCities">HW1: Make Your Virtual City</a>
+												
+												<ul>
+													<li><a href = "../../Assignments/HW1_VirtualCities/ArtContest">Art Gallery!</a></li>
+												</ul>
+												</li>
+												<li><a href = "../../Assignments/HW2_MarkovMashups">HW2: Markov Mashups</a></li>
+												<li><a href = "../../Assignments/HW3_DequeFires">HW3: Deque Fires</a></li>
+												<li><a href = "../../Assignments/HW4_AudioFiltering">HW4: Consonant/Vowel Filtering in Audio</a></li>
+												<li><a href = "../../Assignments/HW5a_BasketballHashing">HW5a: Basketball Hashing</a></li>
+												<li><a href = "../../Assignments/HW5b_Shazam">HW5b: Shazam</a></li>
+											</ul>
+										</li>
+                                        <li>
+											<span class="opener">Pre-Class Modules</span>
+											<ul>
+												<li><a href = "https://ursinus-cs174-f2020.github.io/Modules/Module1/Video1">Module 1: Classes Intro</a></li>
+												<li><a href = "https://ursinus-cs174-f2020.github.io/Modules/Module2/Video1">Module 2: Hash Maps</a></li>
+												<li><a href = "https://ursinus-cs174-f2020.github.io/Modules/Module3/Inheritance1">Module 3: Inheritance1</a></li>
+												<li><a href = "https://ursinus-cs174-f2020.github.io/Modules/Module4/Video1">Module 4: Linked List Removal And Iterators</a></li>
+												<li><a href = "https://ursinus-cs174-f2020.github.io/Modules/Module5/Video1">Module 5: Threads And Synchronization</a></li>
+												<li><a href = "https://ursinus-cs174-f2020.github.io/Modules/Module6/Video1">Module 6: C++ Basics</a></li>
+												<li><a href = "https://ursinus-cs174-f2020.github.io/Modules/Module7/Video1">Module 7: Addresses And Pointers</a></li>
+												<li><a href = "https://ursinus-cs174-f2020.github.io/Modules/Module8/Exercise0">Module 8: Pointers Continued</a></li>
+												<li><a href = "https://ursinus-cs174-f2020.github.io/Modules/Module9/Video1">Module 9: C++ Classes</a></li>
+												<li><a href = "https://ursinus-cs174-f2020.github.io/Modules/Module10/Video1">Module 10: C++ Object References / Linked Lists</a></li>
+												<li><a href = "https://ursinus-cs174-f2020.github.io/Modules/Module11/Video1">Module 11: ADTs / Linked Map</a></li>
+												<li><a href = "https://ursinus-cs174-f2020.github.io/Modules/Module12/Video1">Module 12: C++ Inheritance</a></li>
+												<li><a href = "https://ursinus-cs174-f2020.github.io/Modules/Module13/Video1">Module 13: Recursion And STL Vectors</a></li>
+												<li><a href = "https://ursinus-cs174-f2020.github.io/Modules/Module14/Video1">Module 14: Recursion Part 2</a></li>
+												<li><a href = "https://ursinus-cs174-f2020.github.io/Modules/Module15/Video1">Module 15: Binary Trees Intro</a></li>
+												<li><a href = "https://ursinus-cs174-f2020.github.io/Modules/Module16/Video1">Module 16: Binary Trees Level And Depth</a></li>
+											</ul>
+										</li>
+                                        <li>
+											<span class="opener">Class Exercises</span>
+											<ul>
+												<li><a href = "../../ClassExercises/Week1_2048/index.html">Week 1: Building The 2048 Game Together</a></li>
+												<li><a href = "../../ClassExercises/Week5_SortingTweets/index.html">Week 5: Sorting Tweets</a></li>
+											</ul>
+										</li>
+									</ul>
+								</nav>
+
+							<!-- Section -->
+								<section>
+									<div class="mini-posts">
+										Announcements							
+                                    </div>
+								</section>
+
+
+							<!-- Footer -->
+								<footer id="footer">
+									<p class="copyright">&copy; <a href = "http://www.ctralie.com">Christopher J. Tralie</a>. All rights reserved.  Contact chris.tralie@gmail.com. Design: <a href="https://html5up.net">HTML5 UP</a>.</p>
+								</footer>
+
+						</div>
+					</div>
+
+			</div>
+			
+            <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+            <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+<!-- End Sidebar !-->
+
+<!-- Scripts -->
+			<script src="../../assets/js/jquery.min.js"></script>
+			<script src="../../assets/js/skel.min.js"></script>
+			<script src="../../assets/js/util.js"></script>
+			<!--[if lte IE 8]><script src="../../assets/js/ie/respond.min.js"></script><![endif]-->
+			<script src="../../assets/js/main.js"></script>
+<!-- End Scripts -->
+	</body>

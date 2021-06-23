@@ -1,0 +1,373 @@
+<!DOCTYPE HTML>
+<!--
+	Editorial by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+<!-- Header !-->
+	<head>
+		<title>Ursinus CS 174: Object Oriented Programming, Fall 2020</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<!--[if lte IE 8]><script src="../../assets/js/ie/html5shiv.js"></script><![endif]-->
+		<link rel="stylesheet" href="../../assets/css/main.css" />
+		<!--[if lte IE 9]><link rel="stylesheet" href="../../assets/css/ie9.css" /><![endif]-->
+		<!--[if lte IE 8]><link rel="stylesheet" href="../../assets/css/ie8.css" /><![endif]-->
+        <style>
+        .image_off, #home:hover .image_on{
+           display:none
+        }
+        .image_on, #home:hover .image_off{
+           display:block
+        }
+        </style>
+	</head>
+	<body>
+
+		<!-- Wrapper -->
+			<div id="wrapper">
+
+				<!-- Main -->
+					<div id="main">
+						<div class="inner">
+
+							<!-- Header -->
+								<header id="header">
+									<a href="../../index.html" class="logo"><strong>Ursinus CS 174: Object Oriented Programming, Fall 2020</strong></a>
+								</header>
+<!-- End Header !-->
+
+							<!-- Content -->
+								<section>
+									<header class="main">
+                                        <h2>Lab 4: COVID Polymorphism (3 Points)</h2>
+                                        <h3><a href = "http://www.ctralie.com">Chris Tralie</a></h3>
+                                        <h3>Due Friday 10/9/2020</h3>
+									</header>
+
+									<div id="page-content">
+
+										<h3>
+										<ul>
+											<li><a href = "#basic">Task 1: Basic Simulation</a></li>
+											<li><a href = "#covidiot">Task 2: The Covidiot Class</a></li>
+											<li><a href = "#essential">Task 3: The EssentialWorker Class</a></li>
+											<li><a href = "#together">Putting It All Together</a></li>
+											<li><a href = "#extra">Extra Credit</a></li>
+										</ul>
+										</h3>
+
+										<h2>Overview / Logistics</h2>
+
+
+										<p>
+                                            The purpose of this lab is to give you practice with the class declarations, polymorphism, and inheritance with a visual and highly relevant application.  <a href = "https://github.com/Ursinus-CS174-F2020/Lab4_COVIDPolymorphism/archive/main.zip">Click here</a> to download the Netbeans starter code for this lab.  When you are finished, you should <a href = "../../Software/index.html#zip">zip it up</a> and submit it on Canvas. 
+                                        </p>
+
+                                        <p>
+                                            <h3>Learning Objectives</h3>
+                                            <ul>
+                                                <li>Manipulate public, private, and protected variables/methods in classes</li>
+                                                <li>Leverage code sharing between superclasses and subclasses</li>
+                                                <li>Leverage polymorphism to create varying behaviors of otherwise similar objects</li>
+                                                <li>Use multiple classes together in concert to accomplish a task</li>
+                                            </ul>
+                                        </p>
+
+										<h2>
+											Background
+										</h2>
+
+										<p>
+											The dynamics of a pandemic can be complicated since they involve millions of people, each with their own agenda.  One way to get a handle on the qualitative behavior of complex phenomena that are difficult to model with equations is to run a <a href = "https://en.wikipedia.org/wiki/Monte_Carlo_method">Monte Carlo simulation</a>.  The idea is to have the computer crunch through a bunch of random experiments via simulation and to draw conclusions from their results.  
+										</p>
+
+										<p>
+											In this assignment, you will be exploring how simple rules for local movements of people lead to complex global patterns during a pandemic.  To simplify things, each person is a dot on a grid, and they take one step every hour, but their movements can vary based on a predefined set of behaviors.  As they move around and come into contact with other people, each person can be <i>uninfected</i>, <i>infected</i>, or <i>recovered</i>.
+										</p>
+
+										<p>
+											Some of my former 173 students will recognize this as very similar to <a href = "../../../CS173_S2020/Labs/Lab7_COVID19">a lab we did last spring</a> when the pandemic first hit.  However, as you will see, using object-oriented programming strategies allows us to write much cleaner, more organized code.  It will also allow us to easily implement varying motion patterns while keeping our code clean, so we will extend what we did before.
+										</p>
+                                            
+
+                                        <h2>Programming Tasks</h2>
+                                        
+
+										<p>
+											The simulation consists of an array of people that is continually processed in a time loop in the main driver class <code>COVID19.java</code>.  Feel free to study this code, but there is very little you will need to modify, other than the types of people you place in the simulation in the <code>initializePandemic()</code> method; rather, you will focus on the classes that represent the people.  In particular, the type of the array is <code>Person</code>, which is a parent class that holds variables common to all people, including
+											<ul>
+												<li><code>double x, y</code>: The position of a person on a grid, where 0 &lt= x &lt= 1, 0 &lt= y &lt= 1</li>
+												<li><code>boolean moving</code>: Whether a person is moving or staying still</li>
+												<li><code>int state</code>: Whether the person is infected, uninfected, or recovered</li>
+												<li><code>int timeSick</code>: The amount of time a person has spent sick</li>
+											</ul>
+										</p>
+
+										Each person object also has a number of instance methods that are useful, such as 
+										<ul>
+											<li><code>move(double dist)</code>: A method to move by an amount <code>dist</code> </li>
+											
+											<li><code>void contactWith(Person other, double infectDist)</code>: A method to figure out if this person is in contact with another person by being within a distance of <code>infectDist</code>, and infecting them if so</li>
+
+											<li>
+												<code>void updateStatus(int recoveryTime)</code>: A method to keep track of the amount of time someone has been sick and to recover them if they've been sick for long enough.
+											</li>
+
+											<li>
+												<code>void draw(double size)</code>: Draw this person on the 2D grid.  By default, people are drawn as dots, but you will draw slightly different shapes for the other tasks.  Regardless, uninfected people are drawn in blue, infected people are drawn in orange, and recovered people are drawn in purple.  When you override the <code>draw()</code> method, you can use the <code>setupPenColor()</code> helper method to enforce this color scheme.
+											</li>
+										</ul>
+
+										<p>
+											Aside from extra credit tasks, the behavior of <code>contactWith()</code> and <code>updateStatus()</code> should be the same.  But you will be creating two different kinds of classes that extend <code>Person</code> and override the <code>move()</code> method to model different motion patterns and the <code>draw()</code> method so that you can visually pick out dots exhibiting different behaviors.  
+										</p>
+
+										<h2><a name = "basic">Task 1: Basic Simulation</a></h2>
+										<p>
+											Complete the basic simulation by filling in the <code>contactWith</code> and <code>updateStatus</code> methods in <code>Person.java</code> (see the comments for more details).  Once you have them correct, you can play around with the parameters passed to the simulation.  Even in this basic simulation where all people are simply taking random walks, the benefits of social distancing are already apparent. If there are 1000 people in the simulation and they are all moving, then the simulation proceeds as follows:
+										</p>
+
+										<img src = "1000Moving.gif">
+
+										<p>
+											And at the end of the simulation, the program draws the following plot to summarize how many people were uninfected/infected/recovered at any point in time
+										</p>
+
+										<img src = "1000Moving.png">
+
+										<p>
+											As you can see, there's a peak of around 350 people infected at one time, which is a large percentage and which could put a strain on the healthcare system.  By contract, if only 200 out of 100 people are moving, the simulation should look more like this:
+										</p>
+
+										<img src = "200Moving.gif">
+
+										<p>
+											As we can see from the plot summarizing the behavior below, the infection spreads much more slowly, and the number of infected people rarely rises above 100.  This is the principle behind <b>social distancing</b>
+										</p>
+
+										<img src = "200Moving.png">
+
+										<h2><a name = "covidiot">Task 2: The Covidiot Class</a></h2>
+										<p>
+											There will always be troublemakers in any society.  You can model one type of troublemaker that travels far and wide in spite of a global pandemic.  We will call this type of person a <code>Covidiot</code>.  A covidiot can be infected just as any other, but they have different motion patterns.  In particular, they move in straight lines until they reach the boundary of the simulation, infecting everyone in their path if they are sick, and then they turn around.  In the simulation, we draw them as dots that are twice as big so we can see who they are.  Below is an example with only 20 Covidiots and everyone else staying completely still:
+										</p>
+
+										<img src = "20Covidiots.gif">
+
+										<p>
+											And we see that even with relatively few covidiots and a complete stay in place order otherwise, these covidiots can do a lot of damage.  In fact, while the random local motion of the default person can lead to a quadratic rate of spread of the infection (roughly the area of a propagating circular wave), covidiots who move across large distances to see new infection sites can lead to an <i>exponential</i> spread of the infection, which is why many closed form models of pandemics include an exponential term.
+										</p>
+
+										<img src = "20Covidiots.png">
+
+										<p>
+											To implement this, you should create a file <code>Covidiot.java</code> that extends the class in <code>Person.java</code>.  Then, you should override the <code>move</code> method to get them to move in straight lines that stay within the bounds of the simulation.  You can accomplish this by following these steps:
+											<ul>
+												<li>Pick two random numbers <code>vx</code> and <code>vy</code> between 0 and 1 and set them in the constructor</li>
+												<li>In the <code>move</code> method, change the x coordinate by <code>vx*dist</code>, and change the y coordinate by <code>vy*dist</code>.  </li>
+												<li>
+													If the x coordinate goes out of bounds (&lt 0 or &gt 1), then move it back into the box and flip the sign of <code>vx</code>.  Do the same for <code>y</code> and <code>vy</code>
+												</li>
+											</ul>
+										</p>
+
+										<p>
+											In addition overriding the <code>move</code> method, you should also override the <code>draw</code> method so that these dots are drawn at twice the radius of other dots.  
+										</p>
+
+										<p>
+											<b>Hint: </b> you may want to change the <code>setupPenColor()</code> method to <code>protected</code> so that you can leverage that in your overridden drawn method.
+										</p>
+
+										<p>
+											<b>Hint: </b> To test this, you should modify the <code>initializePandemic()</code> method in <code>COVID19.java</code> so that some of the elements of the array are of type <code>Covidiot</code>.  Because of polymorphism, that's all you need to change; the simulation will automatically determine at runtime which objects have overridden <code>move</code> and <code>draw</code> methods.
+										</p>
+
+
+										<h2><a name = "essential">Task 3: The EssentialWorker Class</a></h2>
+										<p>
+											There are some people who have to go to work even during a pandemic, and they put themselves at risk to help us all.  To model these, you will create a different class called <code>EssentialWorker</code> that also extends the <code>Person</code> class.  You should randomly generate a direction that they move in to go to work (much like the <code>vx</code> and <code>vy</code> with the <code>Covidiot</code> class), and you should move in that reverse direction when they're coming home from work.  The breakdown of their 24 hours should be as follows, in this order
+											
+											<ol>
+												<li>8 hours at home</li>
+												<li>4 hours commuting to work (moving in the direction chosen in the constructor)</li>
+												<li>8 hours at work</li>
+												<li>4 hours commuting home (moving in the opposite direction chosen in the constructor), then back to 1</li>
+											</ol>You should also override the <code>draw</code> method to draw them as a <code><a href = "https://algs4.cs.princeton.edu/code/javadoc/edu/princeton/cs/algs4/StdDraw.html#filledSquare-double-double-double-">filledSquare</a></code> instead of a <code>filledCircle</code> so we can see who they are.
+										</p>
+
+										<p>
+											The simulation below shows a number of essential workers doing their thing, while others either stay still or move randomly
+										</p>
+
+										<p>
+											<img src = "Essential.gif">
+										</p>
+
+										<h2><a name = "together">Putting It All Together</a></h2>
+										<p>
+											Once you've finished testing out the above to your satisfaction, you should create a simulation with all different types of people moving at once.  To do this, add some number of each type to the <code>people</code> array in the <code>initializePandemic()</code> function <code>COVID19.java</code>  You should play around with this to see the results and if they make sense.
+										</p>
+
+										<h2><a name = "extra">Extra Credit</a> (Up to +1)</h2>
+										<p>
+											We have only scratched the surface of what can be done with this type of Monte Carlo simulation.  Here are a few other things you should try if you have time:
+										</p>
+
+										<ul>
+											<li>Create a Nurse class and override the <code>contactWith</code> method so that they have a 50% chance of healing infected person they're near and a 10% chance of getting sick if they are uninfected.  To make this extra fancy, you can override the <code>move()</code> method so that the nurse stays still when they are sick, or they move towards the nearest sick person otherwise.</li>
+
+											<li>Add a variable about who's wearing a mask, and make it random whether people are infected based on who's wearing a mask.  For instance:
+												<ul>
+													<li>If an infected person and an uninfected person are wearing masks, there should be a 5% chance of infection</li>
+													<li>If an infected person is wearing a mask and an uninfected person is not wearing a mask, then there is a 20% chance of infection</li>
+													<li>
+														If an uninfected person is wearing a mask but an infected person is not wearing a mask, there's a 60% chance of infection
+													</li>
+													<li>
+														If neither are wearing a mask, there's a 95% chance of infection
+													</li>
+												</ul>
+											</li>
+											<li>
+												Add a class representing quarantine zones (such as rectangular regions), and update the simulation so that people move across these boundaries only with a very small probability.  Play with this probability and see how effective the quarantines are at keeping the disease in/out based on how high the probability of a breach is.
+											</li>
+										</ul>
+
+
+
+                                    
+                                </div>
+						</div>
+					</div>
+
+					<!--LaTeX in Javascript!-->
+					<script src="../../../../jsMath/easy/load.js"></script>
+					<!--Syntax highlighting in Javascript!-->
+					<script type="text/javascript" src="../../../../syntaxhighlighter/scripts/shCore.js"></script>
+					<script type="text/javascript" src="../../../syntaxhighlighter/scripts/shBrushJScript.js"></script>
+                    <script type="text/javascript" src="../../../../syntaxhighlighter/scripts/shBrushCpp.js"></script>
+					<script type="text/javascript" src="../../../../syntaxhighlighter/scripts/shBrushXml.js"></script>
+					<script type="text/javascript" src="../../../../syntaxhighlighter/scripts/shBrushMatlabSimple.js"></script>
+					<script type="text/javascript" src="../../../../syntaxhighlighter/scripts/shBrushPython.js"></script>
+					<link type="text/css" rel="stylesheet" href="../../../../syntaxhighlighter/styles/shCoreDefault.css"/>
+					<script type="text/javascript">SyntaxHighlighter.all();</script>
+
+<!-- Sidebar -->
+					<div id="sidebar">
+						<div class="inner">
+							<!-- Menu -->
+								<nav id="menu">
+									<header class="major">
+										<h2>Menu</h2>
+									</header>
+									<ul>
+                                        <li>
+											<span class="opener">General</span>
+											<ul>
+												<li><a href = "../../index.html#overview">Overview</a></li>
+												<li><a href = "../../index.html#logistics">Technology Logistics</a></li>
+												<li><a href = "../../index.html#homework">Homework</a></li>
+												<li><a href = "../../index.html#grading">Grading</a></li>
+												<li><a href = "../../index.html#environment">Classroom Environment</a></li>
+												<li><a href = "../../index.html#participation">Participation</a></li>
+												<li><a href = "../../index.html#collaboration">Collaboration Policy</a></li>
+												<li><a href = "../../index.html#other">Other Resources / Policies</a></li>
+											</ul>
+										</li>
+										<li><a href = "../../Software/index.html">Software</a></li>
+										<li><a href = "../../Schedule/index.html">Schedule</a></li>
+										<li><a href = "../../style.html">Style Guide</a></li>
+										<li><a href = "../../drills.html">Drills</a></li>
+                                        <li>
+											<span class="opener">Labs</span>
+											<ul>
+												<li><a href = "../../Labs/Lab1_Holidays/index.html">Lab1: HTML Holidays</a></li>
+												<li><a href = "../../Labs/Lab2_ChooseYourAdventure/index.html">Lab2: Choose Your Own Adventure</a></li>
+												<li><a href = "../../Labs/Lab3_ShapesInheritance/index.html">Lab3: Drawing Shapes with Inheritance</a></li>
+												<li><a href = "../../Labs/Lab4_COVIDPolymorphism/index.html">Lab4: COVID Polymorphism</a></li>
+												<li><a href = "../../Labs/Lab5_MyArrayList/index.html">Lab 5: My ArrayList</a></li>
+												<li><a href = "../../Labs/Lab6_RoadDetection/index.html">Lab 6: Road Detection with Threads</a></li>
+												<li><a href = "../../Labs/Lab7_BugHunt">Lab 7: C++ Bug Hunt</a></li> 
+											</ul>
+										</li>
+                                        <li>
+											<span class="opener">Assignments</span>
+											<ul>
+												<li><a href = "../../Assignments/HW0_Warmup/index.html">HW0: Warmup</a></li>
+												<li><a href = "../../Assignments/HW1_VirtualCities">HW1: Make Your Virtual City</a>
+												
+												<ul>
+													<li><a href = "../../Assignments/HW1_VirtualCities/ArtContest">Art Gallery!</a></li>
+												</ul>
+												</li>
+												<li><a href = "../../Assignments/HW2_MarkovMashups">HW2: Markov Mashups</a></li>
+												<li><a href = "../../Assignments/HW3_DequeFires">HW3: Deque Fires</a></li>
+												<li><a href = "../../Assignments/HW4_AudioFiltering">HW4: Consonant/Vowel Filtering in Audio</a></li>
+												<li><a href = "../../Assignments/HW5a_BasketballHashing">HW5a: Basketball Hashing</a></li>
+												<li><a href = "../../Assignments/HW5b_Shazam">HW5b: Shazam</a></li>
+											</ul>
+										</li>
+                                        <li>
+											<span class="opener">Pre-Class Modules</span>
+											<ul>
+												<li><a href = "https://ursinus-cs174-f2020.github.io/Modules/Module1/Video1">Module 1: Classes Intro</a></li>
+												<li><a href = "https://ursinus-cs174-f2020.github.io/Modules/Module2/Video1">Module 2: Hash Maps</a></li>
+												<li><a href = "https://ursinus-cs174-f2020.github.io/Modules/Module3/Inheritance1">Module 3: Inheritance1</a></li>
+												<li><a href = "https://ursinus-cs174-f2020.github.io/Modules/Module4/Video1">Module 4: Linked List Removal And Iterators</a></li>
+												<li><a href = "https://ursinus-cs174-f2020.github.io/Modules/Module5/Video1">Module 5: Threads And Synchronization</a></li>
+												<li><a href = "https://ursinus-cs174-f2020.github.io/Modules/Module6/Video1">Module 6: C++ Basics</a></li>
+												<li><a href = "https://ursinus-cs174-f2020.github.io/Modules/Module7/Video1">Module 7: Addresses And Pointers</a></li>
+												<li><a href = "https://ursinus-cs174-f2020.github.io/Modules/Module8/Exercise0">Module 8: Pointers Continued</a></li>
+												<li><a href = "https://ursinus-cs174-f2020.github.io/Modules/Module9/Video1">Module 9: C++ Classes</a></li>
+												<li><a href = "https://ursinus-cs174-f2020.github.io/Modules/Module10/Video1">Module 10: C++ Object References / Linked Lists</a></li>
+												<li><a href = "https://ursinus-cs174-f2020.github.io/Modules/Module11/Video1">Module 11: ADTs / Linked Map</a></li>
+												<li><a href = "https://ursinus-cs174-f2020.github.io/Modules/Module12/Video1">Module 12: C++ Inheritance</a></li>
+												<li><a href = "https://ursinus-cs174-f2020.github.io/Modules/Module13/Video1">Module 13: Recursion And STL Vectors</a></li>
+												<li><a href = "https://ursinus-cs174-f2020.github.io/Modules/Module14/Video1">Module 14: Recursion Part 2</a></li>
+												<li><a href = "https://ursinus-cs174-f2020.github.io/Modules/Module15/Video1">Module 15: Binary Trees Intro</a></li>
+												<li><a href = "https://ursinus-cs174-f2020.github.io/Modules/Module16/Video1">Module 16: Binary Trees Level And Depth</a></li>
+											</ul>
+										</li>
+                                        <li>
+											<span class="opener">Class Exercises</span>
+											<ul>
+												<li><a href = "../../ClassExercises/Week1_2048/index.html">Week 1: Building The 2048 Game Together</a></li>
+												<li><a href = "../../ClassExercises/Week5_SortingTweets/index.html">Week 5: Sorting Tweets</a></li>
+											</ul>
+										</li>
+									</ul>
+								</nav>
+
+							<!-- Section -->
+								<section>
+									<div class="mini-posts">
+										Announcements							
+                                    </div>
+								</section>
+
+
+							<!-- Footer -->
+								<footer id="footer">
+									<p class="copyright">&copy; <a href = "http://www.ctralie.com">Christopher J. Tralie</a>. All rights reserved.  Contact chris.tralie@gmail.com. Design: <a href="https://html5up.net">HTML5 UP</a>.</p>
+								</footer>
+
+						</div>
+					</div>
+
+			</div>
+			
+            <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+            <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+<!-- End Sidebar !-->
+
+<!-- Scripts -->
+			<script src="../../assets/js/jquery.min.js"></script>
+			<script src="../../assets/js/skel.min.js"></script>
+			<script src="../../assets/js/util.js"></script>
+			<!--[if lte IE 8]><script src="../../assets/js/ie/respond.min.js"></script><![endif]-->
+			<script src="../../assets/js/main.js"></script>
+<!-- End Scripts -->
+	</body>
