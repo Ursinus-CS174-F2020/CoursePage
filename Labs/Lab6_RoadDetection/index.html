@@ -1,0 +1,253 @@
+<!DOCTYPE HTML>
+<!--
+	Editorial by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+<!-- Header !-->
+	<head>
+		<title>Ursinus CS 174: Object Oriented Programming, Fall 2020</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<!--[if lte IE 8]><script src="../../assets/js/ie/html5shiv.js"></script><![endif]-->
+		<link rel="stylesheet" href="../../assets/css/main.css" />
+		<!--[if lte IE 9]><link rel="stylesheet" href="../../assets/css/ie9.css" /><![endif]-->
+		<!--[if lte IE 8]><link rel="stylesheet" href="../../assets/css/ie8.css" /><![endif]-->
+        <style>
+        .image_off, #home:hover .image_on{
+           display:none
+        }
+        .image_on, #home:hover .image_off{
+           display:block
+        }
+        </style>
+	</head>
+	<body>
+
+		<!-- Wrapper -->
+			<div id="wrapper">
+
+				<!-- Main -->
+					<div id="main">
+						<div class="inner">
+
+							<!-- Header -->
+								<header id="header">
+									<a href="../../index.html" class="logo"><strong>Ursinus CS 174: Object Oriented Programming, Fall 2020</strong></a>
+								</header>
+<!-- End Header !-->
+
+							<!-- Content -->
+								<section>
+									<header class="main">
+                                        <h2>Lab 6: Road Detection with Threads (2 pts)</h2>
+                                        <h3><a href = "http://www.ctralie.com">Chris Tralie</a></h3>
+                                        <h3>Due Wednesday 10/28/2020</h3>
+									</header>
+
+									<div id="page-content">
+
+                                        <h2>Overview / Logistics</h2>
+										<p>
+                                            The purpose of this lab is to give you practice with the basics of threads in Java.  <a href = "https://github.com/Ursinus-CS174-F2020/Lab6_RoadDetection/archive/main.zip">Click here</a> to download the Netbeans starter code for this lab.  When you are finished, please upload your modified <code>Hough.java</code> to canvas, <b>as well as a README.txt file with timings running the code with only one thread on your computer versus with multiple threads</b>.  If you've done this properly, you should see a speedup when running it with multiple threads, as virtually all computers these days have multiple cores.
+                                        </p>
+
+                                        <p>
+                                            <h3>Learning Objectives</h3>
+                                            <ul>
+                                                <li>Make slight tweaks to a fully functioning codebase that someone else wrote to make it run faster.</li>
+                                                <li>Practice using threads and synchronization in Java</li>
+                                            </ul>
+                                        </p>
+
+                                        <h2>Background / Programming Task</h2>
+
+                                        <p>
+                                            Autonomous vehicle engineering has been in progress <a href = "https://en.wikipedia.org/wiki/DARPA_Grand_Challenge#History_and_background">for decades</a>, and has recently seen major improvements with the advent of more robust computer vision systems.  In this lab, you will examine a very simple (not necessarily state of the art) part of such a system that works to detect roads.  You have been provided with a naive implementation of code that detects lines in an image, which include the road boundaries and lane markers.  This code first creates a "gradient image" (high intensity for large changes around edges), followed by a "thinned edge image"  (See <a href = "http://www.ctralie.com/PrincetonUGRAD/Projects/COS429/Assignment1/#canny">my writeup</a> about this process back from 2009, back when I was an undergraduate taking computer vision).  Then, it checks all possible lines and sums up how much energy in the thinned edge image is in each one, and it keeps the lines above a certain threshold.  The animation below shows this process
+                                        </p>
+
+                                        <img src = "Anim/Anim.gif">
+
+                                        <p>
+                                            Unfortunately, as written, this process is slow, since it's a triply nested loop, as seen in the <code>getEdges()</code> method of <code>Hough.java</code>:
+                                            <ul>
+                                                <li>For each angle the line can be
+                                                    <ul>
+                                                        <li>
+                                                            For each shift of the line from one corner of the image to the opposite corner
+                                                            <ul>
+                                                                <li>
+                                                                    Sum up each pixel on the line
+                                                                </li>
+                                                            </ul>
+                                                        </li>
+                                                    </ul>
+                                                </li>
+                                            </ul>
+                                        </p>
+
+                                        <p>
+                                            But the process to sum up the energy on each line can be parallelized easily, since the lines don't depend on each other.  Therefore, your job will be to use threads to make this run faster, <b>and you should report evidence in a README file of timings to show that this is indeed the case</b>.  The easiest way to modify your code to run with threads in parallel is to split up the angles that the program checks and put different ranges of angles on different threads.  Here are some hints:
+                                            <ul>
+                                                <li>
+                                                    The main method in <code>Hough.java</code> takes two command line arguments.  The first is a path to the image on which lines are being detected, and the second is the minimum energy threshold at which to keep a line.  For example
+                                                    <script type="syntaxhighlighter" class="brush: cpp"><![CDATA[
+                                                        java Hough road.png 5
+                                                    ]]></script>
+
+                                                    will yield the image shown above.  Larger thresholds will lead to fewer lines.
+
+                                                </li>
+                                                <li>
+                                                    You will need to make the <code>Hough</code> class implement the <code>Runnable</code> interface, and you will need to make the heavy lifting occur in the <code>public void run()</code> method.  You will then need to setup different <code>Hough</code> objects to run in separate threads.  Refer to our <a href = "https://github.com/Ursinus-CS174-F2020/Week7_Threads">examples from class</a> for help with this.
+                                                </li>
+                                                <li>
+                                                    Thread collisions can occur when they go to draw lines whose energy is above a particular threshold, so you should <code>synchronize</code> the image when you go to do the draw.  Refer again to our <a href = "https://github.com/Ursinus-CS174-F2020/Week7_Threads/blob/85600d4f1a2db6d12c85a3b2965da58f8150938e/MyThread.java#L32">class example</a> on this.
+                                                </li>
+                                            </ul>
+                                        </p>
+
+
+ 
+
+
+
+
+
+
+
+
+                                    
+                                </div>
+						</div>
+					</div>
+
+					<!--LaTeX in Javascript!-->
+					<script src="../../../../jsMath/easy/load.js"></script>
+					<!--Syntax highlighting in Javascript!-->
+					<script type="text/javascript" src="../../../../syntaxhighlighter/scripts/shCore.js"></script>
+					<script type="text/javascript" src="../../../syntaxhighlighter/scripts/shBrushJScript.js"></script>
+                    <script type="text/javascript" src="../../../../syntaxhighlighter/scripts/shBrushCpp.js"></script>
+					<script type="text/javascript" src="../../../../syntaxhighlighter/scripts/shBrushXml.js"></script>
+					<script type="text/javascript" src="../../../../syntaxhighlighter/scripts/shBrushMatlabSimple.js"></script>
+					<script type="text/javascript" src="../../../../syntaxhighlighter/scripts/shBrushPython.js"></script>
+					<link type="text/css" rel="stylesheet" href="../../../../syntaxhighlighter/styles/shCoreDefault.css"/>
+					<script type="text/javascript">SyntaxHighlighter.all();</script>
+
+<!-- Sidebar -->
+					<div id="sidebar">
+						<div class="inner">
+							<!-- Menu -->
+								<nav id="menu">
+									<header class="major">
+										<h2>Menu</h2>
+									</header>
+									<ul>
+                                        <li>
+											<span class="opener">General</span>
+											<ul>
+												<li><a href = "../../index.html#overview">Overview</a></li>
+												<li><a href = "../../index.html#logistics">Technology Logistics</a></li>
+												<li><a href = "../../index.html#homework">Homework</a></li>
+												<li><a href = "../../index.html#grading">Grading</a></li>
+												<li><a href = "../../index.html#environment">Classroom Environment</a></li>
+												<li><a href = "../../index.html#participation">Participation</a></li>
+												<li><a href = "../../index.html#collaboration">Collaboration Policy</a></li>
+												<li><a href = "../../index.html#other">Other Resources / Policies</a></li>
+											</ul>
+										</li>
+										<li><a href = "../../Software/index.html">Software</a></li>
+										<li><a href = "../../Schedule/index.html">Schedule</a></li>
+										<li><a href = "../../style.html">Style Guide</a></li>
+										<li><a href = "../../drills.html">Drills</a></li>
+                                        <li>
+											<span class="opener">Labs</span>
+											<ul>
+												<li><a href = "../../Labs/Lab1_Holidays/index.html">Lab1: HTML Holidays</a></li>
+												<li><a href = "../../Labs/Lab2_ChooseYourAdventure/index.html">Lab2: Choose Your Own Adventure</a></li>
+												<li><a href = "../../Labs/Lab3_ShapesInheritance/index.html">Lab3: Drawing Shapes with Inheritance</a></li>
+												<li><a href = "../../Labs/Lab4_COVIDPolymorphism/index.html">Lab4: COVID Polymorphism</a></li>
+												<li><a href = "../../Labs/Lab5_MyArrayList/index.html">Lab 5: My ArrayList</a></li>
+												<li><a href = "../../Labs/Lab6_RoadDetection/index.html">Lab 6: Road Detection with Threads</a></li>
+												<li><a href = "../../Labs/Lab7_BugHunt">Lab 7: C++ Bug Hunt</a></li> 
+											</ul>
+										</li>
+                                        <li>
+											<span class="opener">Assignments</span>
+											<ul>
+												<li><a href = "../../Assignments/HW0_Warmup/index.html">HW0: Warmup</a></li>
+												<li><a href = "../../Assignments/HW1_VirtualCities">HW1: Make Your Virtual City</a>
+												
+												<ul>
+													<li><a href = "../../Assignments/HW1_VirtualCities/ArtContest">Art Gallery!</a></li>
+												</ul>
+												</li>
+												<li><a href = "../../Assignments/HW2_MarkovMashups">HW2: Markov Mashups</a></li>
+												<li><a href = "../../Assignments/HW3_DequeFires">HW3: Deque Fires</a></li>
+												<li><a href = "../../Assignments/HW4_AudioFiltering">HW4: Consonant/Vowel Filtering in Audio</a></li>
+												<li><a href = "../../Assignments/HW5a_BasketballHashing">HW5a: Basketball Hashing</a></li>
+												<li><a href = "../../Assignments/HW5b_Shazam">HW5b: Shazam</a></li>
+											</ul>
+										</li>
+                                        <li>
+											<span class="opener">Pre-Class Modules</span>
+											<ul>
+												<li><a href = "https://ursinus-cs174-f2020.github.io/Modules/Module1/Video1">Module 1: Classes Intro</a></li>
+												<li><a href = "https://ursinus-cs174-f2020.github.io/Modules/Module2/Video1">Module 2: Hash Maps</a></li>
+												<li><a href = "https://ursinus-cs174-f2020.github.io/Modules/Module3/Inheritance1">Module 3: Inheritance1</a></li>
+												<li><a href = "https://ursinus-cs174-f2020.github.io/Modules/Module4/Video1">Module 4: Linked List Removal And Iterators</a></li>
+												<li><a href = "https://ursinus-cs174-f2020.github.io/Modules/Module5/Video1">Module 5: Threads And Synchronization</a></li>
+												<li><a href = "https://ursinus-cs174-f2020.github.io/Modules/Module6/Video1">Module 6: C++ Basics</a></li>
+												<li><a href = "https://ursinus-cs174-f2020.github.io/Modules/Module7/Video1">Module 7: Addresses And Pointers</a></li>
+												<li><a href = "https://ursinus-cs174-f2020.github.io/Modules/Module8/Exercise0">Module 8: Pointers Continued</a></li>
+												<li><a href = "https://ursinus-cs174-f2020.github.io/Modules/Module9/Video1">Module 9: C++ Classes</a></li>
+												<li><a href = "https://ursinus-cs174-f2020.github.io/Modules/Module10/Video1">Module 10: C++ Object References / Linked Lists</a></li>
+												<li><a href = "https://ursinus-cs174-f2020.github.io/Modules/Module11/Video1">Module 11: ADTs / Linked Map</a></li>
+												<li><a href = "https://ursinus-cs174-f2020.github.io/Modules/Module12/Video1">Module 12: C++ Inheritance</a></li>
+												<li><a href = "https://ursinus-cs174-f2020.github.io/Modules/Module13/Video1">Module 13: Recursion And STL Vectors</a></li>
+												<li><a href = "https://ursinus-cs174-f2020.github.io/Modules/Module14/Video1">Module 14: Recursion Part 2</a></li>
+												<li><a href = "https://ursinus-cs174-f2020.github.io/Modules/Module15/Video1">Module 15: Binary Trees Intro</a></li>
+												<li><a href = "https://ursinus-cs174-f2020.github.io/Modules/Module16/Video1">Module 16: Binary Trees Level And Depth</a></li>
+											</ul>
+										</li>
+                                        <li>
+											<span class="opener">Class Exercises</span>
+											<ul>
+												<li><a href = "../../ClassExercises/Week1_2048/index.html">Week 1: Building The 2048 Game Together</a></li>
+												<li><a href = "../../ClassExercises/Week5_SortingTweets/index.html">Week 5: Sorting Tweets</a></li>
+											</ul>
+										</li>
+									</ul>
+								</nav>
+
+							<!-- Section -->
+								<section>
+									<div class="mini-posts">
+										Announcements							
+                                    </div>
+								</section>
+
+
+							<!-- Footer -->
+								<footer id="footer">
+									<p class="copyright">&copy; <a href = "http://www.ctralie.com">Christopher J. Tralie</a>. All rights reserved.  Contact chris.tralie@gmail.com. Design: <a href="https://html5up.net">HTML5 UP</a>.</p>
+								</footer>
+
+						</div>
+					</div>
+
+			</div>
+			
+            <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+            <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+<!-- End Sidebar !-->
+
+<!-- Scripts -->
+			<script src="../../assets/js/jquery.min.js"></script>
+			<script src="../../assets/js/skel.min.js"></script>
+			<script src="../../assets/js/util.js"></script>
+			<!--[if lte IE 8]><script src="../../assets/js/ie/respond.min.js"></script><![endif]-->
+			<script src="../../assets/js/main.js"></script>
+<!-- End Scripts -->
+	</body>
